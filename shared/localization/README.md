@@ -1,0 +1,9 @@
+# Localization
+
+Each UTF-8 JSON object maps stable lower snake case keys to strings. `greeting_recipient` names the recipient passed to the Rust greeting. Its English translation is the canonical terminology for this example. Both applications render the exact string returned from Rust.
+
+Use `ll.json` for a two-letter language or `ll-RR.json` for a regional variant, following BCP 47 casing. Every catalog must have the same keys as the configured default, currently `en`. Unsupported device languages use the platform’s fallback resource. A missing key in a supplied catalog fails generation.
+
+If a string needs a text argument, write `{name}`. Keep each placeholder’s name and occurrence count across translations. Arguments follow the order of first appearance in the default catalog. Translations can reorder them. The generator produces positional string specifiers for Foundation and Android. Double literal braces. Keep numeric and date formatting native. To introduce plural messages, extend the format and project to Apple's native plural resources and Android quantity strings with tests for the affected locales. The current catalog format supports plain strings and named string substitutions.
+
+Run `scripts/generate-design-tokens.sh`. The generator writes iOS `<locale>.lproj/Localizable.strings` and Android `foundation_strings.xml` in `values` or `values-b+…`. Keep these filenames reserved for shared output. Xcode discovers the generated locale directories through the synchronized App group. When adding a language, switch the OS locale and exercise both apps. Renaming a key requires simultaneous migration of every catalog and call site. [Locale schema](../specifications/localization.schema.json) · [Android string and plural resources](https://developer.android.com/guide/topics/resources/string-resource)

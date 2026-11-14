@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generated from shared/localization by scripts/generate-design-tokens.sh. -->
+<resources>
+    <string name="greeting_recipient" formatted="false">"World"</string>
+</resources>

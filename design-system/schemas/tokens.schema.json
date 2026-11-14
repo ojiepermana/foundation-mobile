@@ -1,0 +1,119 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Foundation tokens keyed by source filename",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["colors", "typography", "spacing", "radius", "motion"],
+  "properties": {
+    "colors": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primitives", "semantic"],
+      "properties": {
+        "primitives": {
+          "type": "object",
+          "propertyNames": { "$ref": "#/definitions/name" },
+          "additionalProperties": { "type": "string", "pattern": "^#[A-F0-9]{6}$" }
+        },
+        "semantic": {
+          "type": "object",
+          "required": ["brand", "primary", "secondary", "background", "surface", "textPrimary", "textSecondary", "border", "success", "warning", "error"],
+          "propertyNames": { "$ref": "#/definitions/name" },
+          "additionalProperties": {
+            "type": "object",
+            "required": ["light", "dark"],
+            "properties": {
+              "light": { "$ref": "#/definitions/name" },
+              "dark": { "$ref": "#/definitions/name" }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    "typography": {
+      "type": "object",
+      "required": ["primitives", "semantic"],
+      "additionalProperties": false,
+      "properties": {
+        "primitives": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["scale", "weight"],
+          "properties": {
+            "scale": {
+              "type": "object",
+              "propertyNames": { "$ref": "#/definitions/name" },
+              "additionalProperties": {
+                "type": "object",
+                "required": ["size", "lineHeight"],
+                "additionalProperties": false,
+                "properties": {
+                  "size": { "type": "integer", "minimum": 1 },
+                  "lineHeight": { "type": "integer", "minimum": 1 }
+                }
+              }
+            },
+            "weight": {
+              "type": "object",
+              "propertyNames": { "$ref": "#/definitions/name" },
+              "additionalProperties": { "type": "integer", "enum": [100, 200, 300, 400, 500, 600, 700, 800, 900] }
+            }
+          }
+        },
+        "semantic": {
+          "type": "object",
+          "required": ["greeting", "body"],
+          "propertyNames": { "$ref": "#/definitions/name" },
+          "additionalProperties": {
+            "type": "object",
+            "required": ["scale", "weight"],
+            "additionalProperties": false,
+            "properties": {
+              "scale": { "$ref": "#/definitions/name" },
+              "weight": { "$ref": "#/definitions/name" }
+            }
+          }
+        }
+      }
+    },
+    "spacing": {
+      "allOf": [
+        { "$ref": "#/definitions/magnitude" },
+        { "properties": { "semantic": { "required": ["page", "content"] } } }
+      ]
+    },
+    "radius": {
+      "allOf": [
+        { "$ref": "#/definitions/magnitude" },
+        { "properties": { "semantic": { "required": ["surface"] } } }
+      ]
+    },
+    "motion": {
+      "allOf": [
+        { "$ref": "#/definitions/magnitude" },
+        { "properties": { "semantic": { "required": ["feedback"] } } }
+      ]
+    }
+  },
+  "definitions": {
+    "name": { "type": "string", "pattern": "^[a-z][a-zA-Z0-9]*$" },
+    "magnitude": {
+      "type": "object",
+      "required": ["primitives", "semantic"],
+      "additionalProperties": false,
+      "properties": {
+        "primitives": {
+          "type": "object",
+          "propertyNames": { "$ref": "#/definitions/name" },
+          "additionalProperties": { "type": "integer", "minimum": 0 }
+        },
+        "semantic": {
+          "type": "object",
+          "propertyNames": { "$ref": "#/definitions/name" },
+          "additionalProperties": { "$ref": "#/definitions/name" }
+        }
+      }
+    }
+  }
+}

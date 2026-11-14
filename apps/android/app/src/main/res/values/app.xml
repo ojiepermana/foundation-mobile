@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name" translatable="false">Foundation</string>
+    <style name="FoundationTheme" parent="android:style/Theme.Material.Light.NoActionBar" />
+</resources>

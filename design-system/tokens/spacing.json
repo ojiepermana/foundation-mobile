@@ -1,0 +1,4 @@
+{
+  "primitives": { "small": 12, "large": 24 },
+  "semantic": { "content": "small", "page": "large" }
+}

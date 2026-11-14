@@ -1,0 +1,8 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Shared strings for one locale",
+  "type": "object",
+  "required": ["greeting_recipient"],
+  "propertyNames": { "pattern": "^[a-z][a-z0-9]*(_[a-z0-9]+)*$" },
+  "additionalProperties": { "type": "string", "minLength": 1 }
+}

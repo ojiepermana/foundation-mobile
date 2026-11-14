@@ -1,0 +1,36 @@
+{
+  "primitives": {
+    "white": "#FFFFFF",
+    "fog": "#F4F6FA",
+    "ink": "#172133",
+    "slate": "#46546B",
+    "silver": "#BBC6D6",
+    "navy": "#111824",
+    "steel": "#202B3D",
+    "mist": "#CBD6E5",
+    "line": "#738098",
+    "blue": "#235CBA",
+    "sky": "#9ABCFF",
+    "teal": "#006A69",
+    "mint": "#71D5CC",
+    "green": "#216B41",
+    "leaf": "#8CD9A2",
+    "umber": "#895000",
+    "amber": "#FFBC6A",
+    "red": "#A9262D",
+    "rose": "#FFA5A6"
+  },
+  "semantic": {
+    "brand":         { "light": "blue", "dark": "sky" },
+    "primary":       { "light": "blue", "dark": "sky" },
+    "secondary":     { "light": "teal", "dark": "mint" },
+    "background":    { "light": "fog", "dark": "navy" },
+    "surface":       { "light": "white", "dark": "steel" },
+    "textPrimary":   { "light": "ink", "dark": "white" },
+    "textSecondary": { "light": "slate", "dark": "mist" },
+    "border":        { "light": "silver", "dark": "line" },
+    "success":       { "light": "green", "dark": "leaf" },
+    "warning":       { "light": "umber", "dark": "amber" },
+    "error":         { "light": "red", "dark": "rose" }
+  }
+}

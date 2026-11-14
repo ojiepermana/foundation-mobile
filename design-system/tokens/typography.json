@@ -1,0 +1,13 @@
+{
+  "primitives": {
+    "scale": {
+      "headline": { "size": 32, "lineHeight": 40 },
+      "reading": { "size": 16, "lineHeight": 24 }
+    },
+    "weight": { "regular": 400, "semibold": 600 }
+  },
+  "semantic": {
+    "greeting": { "scale": "headline", "weight": "semibold" },
+    "body": { "scale": "reading", "weight": "regular" }
+  }
+}
