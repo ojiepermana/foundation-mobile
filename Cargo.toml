@@ -1,0 +1,12 @@
+[workspace]
+members = ["crates/core", "crates/mobile-ffi"]
+resolver = "3"
+
+[workspace.package]
+edition = "2024"
+version = "0.1.0"
+publish = false
+
+[workspace.dependencies]
+foundation-core = { path = "crates/core" }
+uniffi = { version = "=0.31.2", default-features = false }

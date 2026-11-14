@@ -1,0 +1,25 @@
+[package]
+name = "mobile-ffi"
+edition.workspace = true
+version.workspace = true
+publish.workspace = true
+
+[lib]
+name = "mobile_ffi"
+crate-type = ["lib", "staticlib", "cdylib"]
+
+[features]
+bindgen = ["uniffi/cli", "uniffi/cargo-metadata"]
+
+[[bin]]
+name = "uniffi-bindgen"
+path = "src/bindgen.rs"
+required-features = ["bindgen"]
+
+[[test]]
+name = "greeting_contract"
+path = "../../tests/contracts/greeting.rs"
+
+[dependencies]
+foundation-core.workspace = true
+uniffi.workspace = true
