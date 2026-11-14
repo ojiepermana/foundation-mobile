@@ -37,7 +37,13 @@ jobs:
         run: |
           udid=$(xcrun simctl create FoundationSmoke 'iPhone 17' com.apple.CoreSimulator.SimRuntime.iOS-26-5)
           xcrun simctl bootstatus "$udid" -b
-          scripts/build-ios.sh test "$udid"
+          for appearance in light dark; do
+            xcrun simctl ui "$udid" appearance "$appearance"
+            xcrun simctl shutdown "$udid"
+            xcrun simctl bootstatus "$udid" -b
+            test "$(xcrun simctl ui "$udid" appearance)" = "$appearance"
+            scripts/build-ios.sh test "$udid" "$appearance"
+          done
 
   android:
     runs-on: ubuntu-24.04

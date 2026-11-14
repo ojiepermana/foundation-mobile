@@ -3,7 +3,7 @@ import XCTest
 
 final class GreetingUITests: XCTestCase {
     @MainActor
-    func testDisplaysRustGreetingInBothAppearances() async throws {
+    func testDisplaysRustGreetingInSystemAppearance() async throws {
         let device = XCUIDevice.shared
         let previousAppearance = device.appearance
         defer { device.appearance = previousAppearance }
@@ -15,8 +15,20 @@ final class GreetingUITests: XCTestCase {
         XCTAssertTrue(greeting.waitForExistence(timeout: 10))
 
         let context = CIContext()
-        for appearance in [XCUIDevice.Appearance.light, .dark] {
-            device.appearance = appearance
+        let requestedMode = ProcessInfo.processInfo.environment["FOUNDATION_APPEARANCE"]
+        let appearances: [XCUIDevice.Appearance]
+        switch requestedMode {
+        case "light": appearances = [.light]
+        case "dark": appearances = [.dark]
+        case nil: appearances = [.light, .dark]
+        default: return XCTFail("Unknown appearance: \(requestedMode ?? "")")
+        }
+        for appearance in appearances {
+            if requestedMode == nil {
+                device.appearance = appearance
+            } else {
+                XCTAssertEqual(device.appearance, appearance, "Expected the configured simulator appearance")
+            }
             // XCTest can return before the foreground app has drawn the new appearance.
             let deadline = ContinuousClock.now + .seconds(15)
             var screenshot = app.screenshot()
