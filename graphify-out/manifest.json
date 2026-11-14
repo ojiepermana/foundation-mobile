@@ -1,0 +1,548 @@
+{
+  "Cargo.toml": {
+    "mtime": 1794654858.9479094,
+    "seen": 1794661938.2512262,
+    "ast_hash": "106110d29b223914dff326ca76ca1677",
+    "semantic_hash": "106110d29b223914dff326ca76ca1677"
+  },
+  "apps/android/app/build.gradle.kts": {
+    "mtime": 1794654994.1031063,
+    "seen": 1794661938.251233,
+    "ast_hash": "c40213b28e9d196b2a60a6fc50cc2f0c",
+    "semantic_hash": "c40213b28e9d196b2a60a6fc50cc2f0c"
+  },
+  "apps/android/app/src/androidTest/kotlin/foundation/mobile/GreetingTest.kt": {
+    "mtime": 1794655562.4077172,
+    "seen": 1794661938.251235,
+    "ast_hash": "bfaab8992fb30a22a061d3689ce2f7c9",
+    "semantic_hash": "bfaab8992fb30a22a061d3689ce2f7c9"
+  },
+  "apps/android/app/src/main/kotlin/foundation/mobile/MainActivity.kt": {
+    "mtime": 1794654962.4745653,
+    "seen": 1794661938.2512362,
+    "ast_hash": "b7e9adf5e3aebfd3277c3012841ef3c7",
+    "semantic_hash": "b7e9adf5e3aebfd3277c3012841ef3c7"
+  },
+  "apps/android/build.gradle.kts": {
+    "mtime": 1794654933.9579682,
+    "seen": 1794661938.2512372,
+    "ast_hash": "f4da7ec151390f327abebb73adc05bb6",
+    "semantic_hash": "f4da7ec151390f327abebb73adc05bb6"
+  },
+  "apps/android/designsystem/src/main/kotlin/foundation/designsystem/FoundationTheme.kt": {
+    "mtime": 1794655075.4767807,
+    "seen": 1794661938.2512372,
+    "ast_hash": "bd81950ea3951933dc1ea81889b82cd0",
+    "semantic_hash": "bd81950ea3951933dc1ea81889b82cd0"
+  },
+  "apps/android/designsystem/src/main/kotlin/foundation/designsystem/FoundationTokens.kt": {
+    "mtime": 1794655077.2997136,
+    "seen": 1794661938.2512379,
+    "ast_hash": "cc6463aec7504b772b81d102a2f2b2e5",
+    "semantic_hash": "cc6463aec7504b772b81d102a2f2b2e5"
+  },
+  "apps/android/gradlew": {
+    "mtime": 1794654933.9483979,
+    "seen": 1794661938.2512388,
+    "ast_hash": "780b1d3e23a3b82154795f73df943a14",
+    "semantic_hash": "780b1d3e23a3b82154795f73df943a14"
+  },
+  "apps/android/presentation/src/main/kotlin/foundation/presentation/GreetingScreen.kt": {
+    "mtime": 1794654962.4801178,
+    "seen": 1794661938.25124,
+    "ast_hash": "0c815aafb486f203d0a2b83e0cd40bc0",
+    "semantic_hash": "0c815aafb486f203d0a2b83e0cd40bc0"
+  },
+  "apps/android/settings.gradle.kts": {
+    "mtime": 1794654933.9550538,
+    "seen": 1794661938.25124,
+    "ast_hash": "71b2483c60e36c1740d0d06dd766dd9b",
+    "semantic_hash": "71b2483c60e36c1740d0d06dd766dd9b"
+  },
+  "apps/ios/App/MobileFoundationApp.swift": {
+    "mtime": 1794655034.167488,
+    "seen": 1794661938.251241,
+    "ast_hash": "99e4923afa6a5aad33c9227cdba5ca16",
+    "semantic_hash": "99e4923afa6a5aad33c9227cdba5ca16"
+  },
+  "apps/ios/DesignSystem/Generated/FoundationTokens.swift": {
+    "mtime": 1794655077.29956,
+    "seen": 1794661938.251242,
+    "ast_hash": "c9d9af150c38d369bd8717dca5a85f64",
+    "semantic_hash": "c9d9af150c38d369bd8717dca5a85f64"
+  },
+  "apps/ios/Presentation/GreetingScreen.swift": {
+    "mtime": 1794655034.171055,
+    "seen": 1794661938.251243,
+    "ast_hash": "98593d12589916391094fbcea69eddde",
+    "semantic_hash": "98593d12589916391094fbcea69eddde"
+  },
+  "apps/ios/UITests/GreetingUITests.swift": {
+    "mtime": 1794658102.1973753,
+    "seen": 1794661938.251243,
+    "ast_hash": "b58fd69c61e1d66f4acb0dc70e1bfa91",
+    "semantic_hash": "b58fd69c61e1d66f4acb0dc70e1bfa91"
+  },
+  "bindings/kotlin/uniffi/mobile_ffi/mobile_ffi.kt": {
+    "mtime": 1794654916.3019013,
+    "seen": 1794661938.251244,
+    "ast_hash": "334eec75ebd95dbeb0302dfea4c9bdee",
+    "semantic_hash": "334eec75ebd95dbeb0302dfea4c9bdee"
+  },
+  "bindings/swift/mobile_ffi.swift": {
+    "mtime": 1794654916.3021595,
+    "seen": 1794661938.251245,
+    "ast_hash": "711ef69a25ce71e0bbba6ae958842c5a",
+    "semantic_hash": "711ef69a25ce71e0bbba6ae958842c5a"
+  },
+  "bindings/swift/mobile_ffiFFI.h": {
+    "mtime": 1794654916.3023713,
+    "seen": 1794661938.251245,
+    "ast_hash": "907d0aa234d0404b7854ae48f1112f2e",
+    "semantic_hash": "907d0aa234d0404b7854ae48f1112f2e"
+  },
+  "crates/core/Cargo.toml": {
+    "mtime": 1794654858.962515,
+    "seen": 1794661938.251246,
+    "ast_hash": "582d04bf287a70d153b716e9c86e8d4b",
+    "semantic_hash": "582d04bf287a70d153b716e9c86e8d4b"
+  },
+  "crates/core/src/lib.rs": {
+    "mtime": 1794654858.9696221,
+    "seen": 1794661938.2512472,
+    "ast_hash": "fbbabdaa3080a6ad981d438899d30bae",
+    "semantic_hash": "fbbabdaa3080a6ad981d438899d30bae"
+  },
+  "crates/mobile-ffi/Cargo.toml": {
+    "mtime": 1794654858.9775693,
+    "seen": 1794661938.2512472,
+    "ast_hash": "c6549d2791c9ff3ba2c162447bd33b4e",
+    "semantic_hash": "c6549d2791c9ff3ba2c162447bd33b4e"
+  },
+  "crates/mobile-ffi/src/bindgen.rs": {
+    "mtime": 1794654858.99712,
+    "seen": 1794661938.2512481,
+    "ast_hash": "2cef546e4454f34146d737130b0e6065",
+    "semantic_hash": "2cef546e4454f34146d737130b0e6065"
+  },
+  "crates/mobile-ffi/src/lib.rs": {
+    "mtime": 1794654858.9855003,
+    "seen": 1794661938.2512488,
+    "ast_hash": "1d617fac217ed84a6580dee0a3251e95",
+    "semantic_hash": "1d617fac217ed84a6580dee0a3251e95"
+  },
+  "design-system/tokens/colors.json": {
+    "mtime": 1794654945.1204665,
+    "seen": 1794661938.25125,
+    "ast_hash": "d2f9be8e5cfa02b5b5bba9fc84037ecd",
+    "semantic_hash": "d2f9be8e5cfa02b5b5bba9fc84037ecd"
+  },
+  "design-system/tokens/motion.json": {
+    "mtime": 1794654945.1289368,
+    "seen": 1794661938.25125,
+    "ast_hash": "39aa2459faca323a95f1ea3b74b5d4a8",
+    "semantic_hash": "39aa2459faca323a95f1ea3b74b5d4a8"
+  },
+  "design-system/tokens/radius.json": {
+    "mtime": 1794654945.1259656,
+    "seen": 1794661938.251251,
+    "ast_hash": "16e2287b8913c0103c5e440da5bc8c8c",
+    "semantic_hash": "16e2287b8913c0103c5e440da5bc8c8c"
+  },
+  "design-system/tokens/spacing.json": {
+    "mtime": 1794654945.1231973,
+    "seen": 1794661938.251252,
+    "ast_hash": "75ef78c732cae8100816ba059a6867ab",
+    "semantic_hash": "75ef78c732cae8100816ba059a6867ab"
+  },
+  "design-system/tokens/typography.json": {
+    "mtime": 1794655434.51455,
+    "seen": 1794661938.251252,
+    "ast_hash": "d4088d391f6c5f16a3512778aa6c4e3a",
+    "semantic_hash": "d4088d391f6c5f16a3512778aa6c4e3a"
+  },
+  "scripts/build-android-rust.sh": {
+    "mtime": 1794654933.9682548,
+    "seen": 1794661938.251253,
+    "ast_hash": "2ef386e9d06b01d6d9964a965673060f",
+    "semantic_hash": "2ef386e9d06b01d6d9964a965673060f"
+  },
+  "scripts/build-android.sh": {
+    "mtime": 1794654933.9656494,
+    "seen": 1794661938.251254,
+    "ast_hash": "b098bee98f32399fffc2eb60b1b163bd",
+    "semantic_hash": "b098bee98f32399fffc2eb60b1b163bd"
+  },
+  "scripts/build-ios-rust.sh": {
+    "mtime": 1794655107.119498,
+    "seen": 1794661938.251254,
+    "ast_hash": "9ba2f88e6ba0d928ed78428d29c225ed",
+    "semantic_hash": "9ba2f88e6ba0d928ed78428d29c225ed"
+  },
+  "scripts/build-ios.sh": {
+    "mtime": 1794658102.1823087,
+    "seen": 1794661938.251255,
+    "ast_hash": "5ea58eced47c4fabe6d068f7d6b1317b",
+    "semantic_hash": "5ea58eced47c4fabe6d068f7d6b1317b"
+  },
+  "scripts/generate-bindings.sh": {
+    "mtime": 1794655545.3258386,
+    "seen": 1794661938.251256,
+    "ast_hash": "006a9b19cd50f9c90b635b90b28423a5",
+    "semantic_hash": "006a9b19cd50f9c90b635b90b28423a5"
+  },
+  "scripts/generate-design-tokens.sh": {
+    "mtime": 1794654945.1420474,
+    "seen": 1794661938.251256,
+    "ast_hash": "cb52b484013a3af718d8c9bf7be17e9b",
+    "semantic_hash": "cb52b484013a3af718d8c9bf7be17e9b"
+  },
+  "scripts/test.sh": {
+    "mtime": 1794655026.5751455,
+    "seen": 1794661938.2512572,
+    "ast_hash": "f6d86859fd3b920c8b2d7578fb7dcf68",
+    "semantic_hash": "f6d86859fd3b920c8b2d7578fb7dcf68"
+  },
+  "shared/config/foundation.json": {
+    "mtime": 1794654945.1346238,
+    "seen": 1794661938.2512572,
+    "ast_hash": "e4b8587f504532eeb39c8328432c8c23",
+    "semantic_hash": "e4b8587f504532eeb39c8328432c8c23"
+  },
+  "shared/localization/en.json": {
+    "mtime": 1794654945.1369443,
+    "seen": 1794661938.2512581,
+    "ast_hash": "236d45a2ba603abd93a7320e3f2699f8",
+    "semantic_hash": "236d45a2ba603abd93a7320e3f2699f8"
+  },
+  "shared/specifications/config.schema.json": {
+    "mtime": 1794655260.3005579,
+    "seen": 1794661938.2512589,
+    "ast_hash": "6057f4a99cd5ff40c5050e3f49d1725c",
+    "semantic_hash": "6057f4a99cd5ff40c5050e3f49d1725c"
+  },
+  "shared/specifications/localization.schema.json": {
+    "mtime": 1794654995.0774963,
+    "seen": 1794661938.2512598,
+    "ast_hash": "1b3772194516bf1689f39215811f324f",
+    "semantic_hash": "1b3772194516bf1689f39215811f324f"
+  },
+  "tests/contracts/greeting.rs": {
+    "mtime": 1794654859.0105717,
+    "seen": 1794661938.2512598,
+    "ast_hash": "82c5ac48d13a9b63fae3019d6d6423fb",
+    "semantic_hash": "82c5ac48d13a9b63fae3019d6d6423fb"
+  },
+  "tooling/codegen/generate.py": {
+    "mtime": 1794655074.124592,
+    "seen": 1794661938.251261,
+    "ast_hash": "d230e6b2a5727ffa02e74b493f93ebe5",
+    "semantic_hash": "d230e6b2a5727ffa02e74b493f93ebe5"
+  },
+  "tooling/codegen/resources.py": {
+    "mtime": 1794655276.6727219,
+    "seen": 1794661938.251261,
+    "ast_hash": "487942bebe464f5f7445a54df427bb5e",
+    "semantic_hash": "487942bebe464f5f7445a54df427bb5e"
+  },
+  "tooling/codegen/test_generation.py": {
+    "mtime": 1794655434.523183,
+    "seen": 1794661938.251262,
+    "ast_hash": "bc23a860592b86e739d363bbd99a7157",
+    "semantic_hash": "bc23a860592b86e739d363bbd99a7157"
+  },
+  "tooling/codegen/tokens.py": {
+    "mtime": 1794655434.5162141,
+    "seen": 1794661938.251263,
+    "ast_hash": "bffea0a0762c500ad16b0da0d99e1191",
+    "semantic_hash": "bffea0a0762c500ad16b0da0d99e1191"
+  },
+  "tooling/validation/check-architecture.py": {
+    "mtime": 1794655441.8063657,
+    "seen": 1794661938.251264,
+    "ast_hash": "99fc1c9ae2a02efe4b322be814655036",
+    "semantic_hash": "99fc1c9ae2a02efe4b322be814655036"
+  },
+  ".github/workflows/foundation.yml": {
+    "mtime": 1794658102.1706326,
+    "seen": 1794661938.251264,
+    "ast_hash": "f83ec32dfb97c4f49745ccd388442c0c",
+    "semantic_hash": "f83ec32dfb97c4f49745ccd388442c0c"
+  },
+  "AGENTS.md": {
+    "mtime": 1794655026.58245,
+    "seen": 1794661938.251265,
+    "ast_hash": "08e3d9317e0c7b967e8066580ac44e6b",
+    "semantic_hash": "08e3d9317e0c7b967e8066580ac44e6b"
+  },
+  "README.md": {
+    "mtime": 1794657332.245189,
+    "seen": 1794661938.251266,
+    "ast_hash": "496ef268ecb2fc250afddcdc0bbe2910",
+    "semantic_hash": "496ef268ecb2fc250afddcdc0bbe2910"
+  },
+  "design-system/README.md": {
+    "mtime": 1794655276.6731412,
+    "seen": 1794661938.251266,
+    "ast_hash": "09014445cfa2fd0af52ef2680ca7ab43",
+    "semantic_hash": "09014445cfa2fd0af52ef2680ca7ab43"
+  },
+  "docs/architecture/boundaries.md": {
+    "mtime": 1794655026.5991004,
+    "seen": 1794661938.251267,
+    "ast_hash": "c5e1ec55dc2b659e593bd58ab92f09d0",
+    "semantic_hash": "c5e1ec55dc2b659e593bd58ab92f09d0"
+  },
+  "docs/architecture/dependency-rules.md": {
+    "mtime": 1794655026.6090648,
+    "seen": 1794661938.2512681,
+    "ast_hash": "02bcd8c1081f3a927eda45cf20339da0",
+    "semantic_hash": "02bcd8c1081f3a927eda45cf20339da0"
+  },
+  "docs/architecture/overview.md": {
+    "mtime": 1794655026.5862486,
+    "seen": 1794661938.2512681,
+    "ast_hash": "49fa9791275924f903f320ba8514baf9",
+    "semantic_hash": "49fa9791275924f903f320ba8514baf9"
+  },
+  "docs/architecture/ownership-matrix.md": {
+    "mtime": 1794655026.6022685,
+    "seen": 1794661938.251269,
+    "ast_hash": "ffbc9eac243f28878ff70bc744adcc1d",
+    "semantic_hash": "ffbc9eac243f28878ff70bc744adcc1d"
+  },
+  "docs/architecture/repository-structure.md": {
+    "mtime": 1794655026.6062684,
+    "seen": 1794661938.2512698,
+    "ast_hash": "fc5a2aab439f0d7704c03529b066540a",
+    "semantic_hash": "fc5a2aab439f0d7704c03529b066540a"
+  },
+  "docs/contracts/ffi-conventions.md": {
+    "mtime": 1794655108.1038845,
+    "seen": 1794661938.2512698,
+    "ast_hash": "959c6ccaa3088f6ccc30d16882db756d",
+    "semantic_hash": "959c6ccaa3088f6ccc30d16882db756d"
+  },
+  "docs/decisions/ADR-0001-foundation.md": {
+    "mtime": 1794655108.1132407,
+    "seen": 1794661938.251271,
+    "ast_hash": "e4ab18a976f42be9c931f2d0d8ba37cd",
+    "semantic_hash": "e4ab18a976f42be9c931f2d0d8ba37cd"
+  },
+  "docs/design-system/accessibility.md": {
+    "mtime": 1794655221.082297,
+    "seen": 1794661938.251272,
+    "ast_hash": "ae023a5a960eb4663f0f211529f7d462",
+    "semantic_hash": "ae023a5a960eb4663f0f211529f7d462"
+  },
+  "docs/design-system/component-guidelines.md": {
+    "mtime": 1794655221.0786028,
+    "seen": 1794661938.251272,
+    "ast_hash": "7a9d38ac14687af45338a44225759aed",
+    "semantic_hash": "7a9d38ac14687af45338a44225759aed"
+  },
+  "docs/design-system/platform-mapping.md": {
+    "mtime": 1794655434.522144,
+    "seen": 1794661938.251273,
+    "ast_hash": "94367eb822da34f8ca38a3be74286c6a",
+    "semantic_hash": "94367eb822da34f8ca38a3be74286c6a"
+  },
+  "docs/design-system/principles.md": {
+    "mtime": 1794655221.068058,
+    "seen": 1794661938.2512739,
+    "ast_hash": "321f4edbba4c8b3b0714b777e3e80209",
+    "semantic_hash": "321f4edbba4c8b3b0714b777e3e80209"
+  },
+  "docs/design-system/token-conventions.md": {
+    "mtime": 1794655434.5175273,
+    "seen": 1794661938.2512739,
+    "ast_hash": "148f1b660d8d4af43cabec9bb2bf15ed",
+    "semantic_hash": "148f1b660d8d4af43cabec9bb2bf15ed"
+  },
+  "docs/plans/README.md": {
+    "mtime": 1794655108.119766,
+    "seen": 1794661938.251275,
+    "ast_hash": "89d20196d4f44c04ca88c1d7d1bbca51",
+    "semantic_hash": "89d20196d4f44c04ca88c1d7d1bbca51"
+  },
+  "docs/quality/architecture-compliance.md": {
+    "mtime": 1794655619.6688921,
+    "seen": 1794661938.251276,
+    "ast_hash": "d3ffd2b05257d2a5935f4d10939e8688",
+    "semantic_hash": "d3ffd2b05257d2a5935f4d10939e8688"
+  },
+  "docs/quality/verification.md": {
+    "mtime": 1794655953.5454888,
+    "seen": 1794661938.251276,
+    "ast_hash": "496aa7efabe79ea15e9d72922545393c",
+    "semantic_hash": "496aa7efabe79ea15e9d72922545393c"
+  },
+  "docs/rules/android-rules.md": {
+    "mtime": 1794655108.0934105,
+    "seen": 1794661938.251277,
+    "ast_hash": "08796250396329c3b8bfff1d2ec38620",
+    "semantic_hash": "08796250396329c3b8bfff1d2ec38620"
+  },
+  "docs/rules/anti-duplication.md": {
+    "mtime": 1794655108.098658,
+    "seen": 1794661938.251277,
+    "ast_hash": "b83b140f6ff69a721f2be2ba8193a84a",
+    "semantic_hash": "b83b140f6ff69a721f2be2ba8193a84a"
+  },
+  "docs/rules/design-system-rules.md": {
+    "mtime": 1794655221.0858727,
+    "seen": 1794661938.2512782,
+    "ast_hash": "768da27320c34a12bfda8f777690e12c",
+    "semantic_hash": "768da27320c34a12bfda8f777690e12c"
+  },
+  "docs/rules/development-rules.md": {
+    "mtime": 1794655108.0716798,
+    "seen": 1794661938.251279,
+    "ast_hash": "2efd82d35759b06d8ae53822f7e72b5f",
+    "semantic_hash": "2efd82d35759b06d8ae53822f7e72b5f"
+  },
+  "docs/rules/ios-rules.md": {
+    "mtime": 1794655108.087868,
+    "seen": 1794661938.251279,
+    "ast_hash": "5c176116811aa0328d865004d4b5964c",
+    "semantic_hash": "5c176116811aa0328d865004d4b5964c"
+  },
+  "docs/rules/rust-rules.md": {
+    "mtime": 1794655108.0824413,
+    "seen": 1794661938.2512798,
+    "ast_hash": "456440d350d2681b33bb9624c6e70503",
+    "semantic_hash": "456440d350d2681b33bb9624c6e70503"
+  },
+  "docs/rules/service-rules.md": {
+    "mtime": 1794655108.0761569,
+    "seen": 1794661938.2512808,
+    "ast_hash": "5f1d84d5e7b81e1f27daa7abcabd160f",
+    "semantic_hash": "5f1d84d5e7b81e1f27daa7abcabd160f"
+  },
+  "docs/rules/shared-resources-rules.md": {
+    "mtime": 1794655221.0893912,
+    "seen": 1794661938.2512808,
+    "ast_hash": "8180431d0d4cbefd0068b2eb14c8d060",
+    "semantic_hash": "8180431d0d4cbefd0068b2eb14c8d060"
+  },
+  "docs/scope/_root/001 - Ownership and development rules.md": {
+    "mtime": 1794661901.9688416,
+    "seen": 1794661938.251282,
+    "ast_hash": "c01794d1ffe4720638f9ea9ca2addac4",
+    "semantic_hash": "c01794d1ffe4720638f9ea9ca2addac4"
+  },
+  "docs/scope/_root/002 - Shared greeting contract.md": {
+    "mtime": 1794661147.5198169,
+    "seen": 1794661938.251283,
+    "ast_hash": "9b8e6a53a1d74b4bb535280e09169360",
+    "semantic_hash": "9b8e6a53a1d74b4bb535280e09169360"
+  },
+  "docs/scope/_root/003 - Shared visual definitions.md": {
+    "mtime": 1794661147.5199914,
+    "seen": 1794661938.251283,
+    "ast_hash": "d3112fc39121329010c125d4f5834af6",
+    "semantic_hash": "d3112fc39121329010c125d4f5834af6"
+  },
+  "docs/scope/_root/004 - Shared settings, text and brand assets.md": {
+    "mtime": 1794661147.5201516,
+    "seen": 1794661938.251284,
+    "ast_hash": "d5f83ad36ef85a9d9c5442b2675439e4",
+    "semantic_hash": "d5f83ad36ef85a9d9c5442b2675439e4"
+  },
+  "docs/scope/_root/005 - Reproducible local builds and checks.md": {
+    "mtime": 1794661147.5203004,
+    "seen": 1794661938.251285,
+    "ast_hash": "f00de3afa37ea18d0ec0ce658c93e649",
+    "semantic_hash": "f00de3afa37ea18d0ec0ce658c93e649"
+  },
+  "docs/scope/_root/006 - Hosted build verification.md": {
+    "mtime": 1794660563.6574273,
+    "seen": 1794661938.251285,
+    "ast_hash": "40720e5a5d08faaf06fcabfe07abbcb3",
+    "semantic_hash": "40720e5a5d08faaf06fcabfe07abbcb3"
+  },
+  "docs/scope/_root/007 - One planning path.md": {
+    "mtime": 1794661147.5204113,
+    "seen": 1794661938.251286,
+    "ast_hash": "58f7c536255cb61d9fa6a65c0921ce4a",
+    "semantic_hash": "58f7c536255cb61d9fa6a65c0921ce4a"
+  },
+  "docs/scope/_root/008 - Hosted results in the verification record.md": {
+    "mtime": 1794661147.5205426,
+    "seen": 1794661938.251287,
+    "ast_hash": "7b3b174ea150523272bdd05bc64b2a42",
+    "semantic_hash": "7b3b174ea150523272bdd05bc64b2a42"
+  },
+  "docs/scope/_root/scope.md": {
+    "mtime": 1794661147.5207045,
+    "seen": 1794661938.251287,
+    "ast_hash": "fbabfeaa475c1968f4f443026ce23359",
+    "semantic_hash": "fbabfeaa475c1968f4f443026ce23359"
+  },
+  "docs/scope/android/001 - Native Android greeting.md": {
+    "mtime": 1794661147.520863,
+    "seen": 1794661938.2512882,
+    "ast_hash": "b9b0fa3d3cda897725b804c857333d0b",
+    "semantic_hash": "b9b0fa3d3cda897725b804c857333d0b"
+  },
+  "docs/scope/android/002 - Lowest supported Android and large text.md": {
+    "mtime": 1794661147.5209715,
+    "seen": 1794661938.2512891,
+    "ast_hash": "e7c3ead238bd0dff5a2209d4a5b6f178",
+    "semantic_hash": "e7c3ead238bd0dff5a2209d4a5b6f178"
+  },
+  "docs/scope/android/scope.md": {
+    "mtime": 1794661147.5211062,
+    "seen": 1794661938.2512891,
+    "ast_hash": "06eb03231c340acb71a94351a52900e8",
+    "semantic_hash": "06eb03231c340acb71a94351a52900e8"
+  },
+  "docs/scope/index.md": {
+    "mtime": 1794661147.5212638,
+    "seen": 1794661938.25129,
+    "ast_hash": "3e5ae78f181b1ef30ef8f63cca1d7392",
+    "semantic_hash": "3e5ae78f181b1ef30ef8f63cca1d7392"
+  },
+  "docs/scope/ios/001 - Native iOS greeting.md": {
+    "mtime": 1794661147.5214124,
+    "seen": 1794661938.2512908,
+    "ast_hash": "ff59d2632230af6c4f3f569c13ed7de9",
+    "semantic_hash": "ff59d2632230af6c4f3f569c13ed7de9"
+  },
+  "docs/scope/ios/002 - Lowest supported iOS and large text.md": {
+    "mtime": 1794661147.521525,
+    "seen": 1794661938.251292,
+    "ast_hash": "ce484c074daacf9b02f25cd303bbfd5e",
+    "semantic_hash": "ce484c074daacf9b02f25cd303bbfd5e"
+  },
+  "docs/scope/ios/scope.md": {
+    "mtime": 1794661147.5216675,
+    "seen": 1794661938.251293,
+    "ast_hash": "cbda84ee245348c74305424e143830ff",
+    "semantic_hash": "cbda84ee245348c74305424e143830ff"
+  },
+  "shared/assets/README.md": {
+    "mtime": 1794655221.0992708,
+    "seen": 1794661938.251294,
+    "ast_hash": "f6363ae1d93d5452ac81d50ae4cd3313",
+    "semantic_hash": "f6363ae1d93d5452ac81d50ae4cd3313"
+  },
+  "shared/config/README.md": {
+    "mtime": 1794655221.0926611,
+    "seen": 1794661938.251294,
+    "ast_hash": "d9cd3004a85c03c8d7d5885387738575",
+    "semantic_hash": "d9cd3004a85c03c8d7d5885387738575"
+  },
+  "shared/localization/README.md": {
+    "mtime": 1794655493.8994746,
+    "seen": 1794661938.251295,
+    "ast_hash": "11b63b3a738f9c557f124cae8ed1ae7f",
+    "semantic_hash": "11b63b3a738f9c557f124cae8ed1ae7f"
+  },
+  "tooling/codegen/requirements.txt": {
+    "mtime": 1794654945.139328,
+    "seen": 1794661938.251296,
+    "ast_hash": "2218711ddf64ea6cb505c61e33566908",
+    "semantic_hash": "2218711ddf64ea6cb505c61e33566908"
+  }
+}

@@ -11,3 +11,13 @@ apps/android/local.properties
 .DS_Store
 __pycache__/
 /.venv/
+
+# graphify: share the knowledge, ignore what can be regenerated
+/graphify-out/*
+!/graphify-out/graph.json
+!/graphify-out/GRAPH_REPORT.md
+!/graphify-out/manifest.json
+!/graphify-out/.graphify_labels.json
+!/graphify-out/cache/
+/graphify-out/cache/*
+!/graphify-out/cache/semantic/
