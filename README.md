@@ -57,7 +57,7 @@ The debug package is `apps/android/app/build/outputs/apk/debug/app-debug.apk`. T
 | Component | Selection |
 | --- | --- |
 | Rust and UniFFI | Rust 1.100.0 with rustfmt and Clippy. UniFFI runtime and host generator 0.31.2. Exact toolchain, Cargo manifest and lockfile live at the repository root. |
-| Apple | Local verification uses Xcode 27.1 and Apple Swift 6.4. CI selects Xcode 26.3, Swift 6.2.3 and the iOS 26.2 simulator on the macOS 15 runner. |
+| Apple | Local verification uses Xcode 27.1 and Apple Swift 6.4. CI selects Xcode 26.5 and the iOS 26.5 simulator on the macOS 26 runner. |
 | Android | AGP 9.1.0, embedded Kotlin 2.2.10, matching Compose compiler, Compose BOM 2025.08.01, Gradle 9.3.1 and JNA 5.18.1. Compile/target API 36, minimum API 24 and NDK r28c. |
 
-Compatibility references include the [UniFFI release and feature list](https://docs.rs/crate/uniffi/0.31.2), [Apple Xcode release notes](https://developer.apple.com/documentation/xcode-release-notes/xcode-26_3-release-notes), [GitHub macOS runner inventory](https://github.com/actions/runner-images/blob/main/images/macos/macos-15-arm64-Readme.md), [Android Gradle plugin compatibility table](https://developer.android.com/build/releases/agp-9-1-0-release-notes) and [JNA release notes](https://github.com/java-native-access/jna/blob/5.18.1/CHANGES.md).
+Compatibility references include the [UniFFI release and feature list](https://docs.rs/crate/uniffi/0.31.2), [Apple Xcode release notes](https://developer.apple.com/documentation/xcode-release-notes/xcode-26_5-release-notes), [GitHub macOS runner inventory](https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md), [Android Gradle plugin compatibility table](https://developer.android.com/build/releases/agp-9-1-0-release-notes) and [JNA release notes](https://github.com/java-native-access/jna/blob/5.18.1/CHANGES.md).
