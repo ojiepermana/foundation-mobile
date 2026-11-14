@@ -9,15 +9,21 @@ You can build two native apps that display a greeting from one shared implementa
 
 | Workspace | What it owns | Complete | Open |
 | --- | --- | --- | --- |
-| [Shared foundation](_root/scope.md) | Ownership, shared behavior, design, resources and build checks | 6 of 6 | |
-| [iOS](ios/scope.md) | The native greeting on Apple devices | 1 of 1 | |
-| [Android](android/scope.md) | The native greeting on Android devices | 1 of 1 | |
+| [Shared foundation](_root/scope.md) | Ownership, shared behavior, design, resources and build checks | 6 of 8 | 007 One planning path, 008 Hosted results in the verification record |
+| [iOS](ios/scope.md) | The native greeting on Apple devices | 1 of 2 | 002 Lowest supported iOS and large text |
+| [Android](android/scope.md) | The native greeting on Android devices | 1 of 2 | 002 Lowest supported Android and large text |
 
 All three hosted jobs passed on `6587579`, including the iOS and Android greeting tests in both appearances. [Hosted results](https://github.com/ojiepermana/foundation-mobile/actions/runs/43593365100)
 
 ## Deferred
 
-The foundation ends at Hello World. Accounts, business modules, backend clients, storage, offline sync, image processing, background transfers, remote flags, advanced navigation, a component library and desktop apps need their own product brief and scope. Signing and store delivery are outside this slice.
+The foundation ends at Hello World. Three pieces of work stay close to the greeting and are kept here so the plan stays honest.
+
+* **A contract beyond one string**: a record, a typed error and an async call that cross into both apps. The repository rules ask for a real caller first, so the first product feature is the place to prove them · needs a decision
+* **A second language end to end**: a second catalog running in both apps. The core forms the greeting sentence in English, so where the sentence shape lives comes first · needs a decision
+* **Signing, physical device runs and store delivery**: a signed build on real hardware and a path to the stores · needs a decision
+
+Accounts, business modules, backend clients, storage, offline sync, image processing, background transfers, remote flags, advanced navigation, a component library and desktop apps need their own product brief and scope.
 
 ## Legend
 
