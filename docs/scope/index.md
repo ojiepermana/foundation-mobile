@@ -21,4 +21,4 @@ The foundation ends at Hello World. Accounts, business modules, backend clients,
 
 ## Legend
 
-`existing` means the capability shipped before this scope. `done` means the planned outcome has been verified. The first open box is the suggested next step. Each feature has one owner, and its number is local to that workspace.
+`existing` means the capability shipped before this scope. `done` means the planned outcome has been verified. The first open box is the suggested next step. Each workspace numbers its scope files independently from `001`, using `001 - Scope name.md`. The workspace index links to each file.
