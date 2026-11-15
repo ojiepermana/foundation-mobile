@@ -468,10 +468,10 @@
     "semantic_hash": "ba5f20b4ab38a450dcebd80a02266bbd"
   },
   "docs/scope/_root/scope.md": {
-    "mtime": 1794721134.7742336,
-    "seen": 1794724379.502456,
-    "ast_hash": "8c8f81e22910ab5e0be21342f31148ee",
-    "semantic_hash": "8c8f81e22910ab5e0be21342f31148ee"
+    "mtime": 1794732586.1578748,
+    "seen": 1794733142.2058508,
+    "ast_hash": "4a4e162305529f3624e31bfee4cd0f6c",
+    "semantic_hash": "4a4e162305529f3624e31bfee4cd0f6c"
   },
   "docs/scope/android/001 - Native Android greeting.md": {
     "mtime": 1794661147.520863,
@@ -492,10 +492,10 @@
     "semantic_hash": "06eb03231c340acb71a94351a52900e8"
   },
   "docs/scope/index.md": {
-    "mtime": 1794719556.7272375,
-    "seen": 1794724379.5024588,
-    "ast_hash": "b42c7a35fbdf95c8516ecc4707f247bc",
-    "semantic_hash": "b42c7a35fbdf95c8516ecc4707f247bc"
+    "mtime": 1794732586.1829407,
+    "seen": 1794733142.2058518,
+    "ast_hash": "05dc3d52b46e442b69481c178fa133e4",
+    "semantic_hash": "05dc3d52b46e442b69481c178fa133e4"
   },
   "docs/scope/ios/001 - Native iOS greeting.md": {
     "mtime": 1794661147.5214124,
@@ -550,5 +550,23 @@
     "seen": 1794705644.382018,
     "ast_hash": "9aa7022aefbe1f43a15080943eb7b546",
     "semantic_hash": "9aa7022aefbe1f43a15080943eb7b546"
+  },
+  "docs/scope/_root/009 - A new project from the foundation.md": {
+    "mtime": 1794732586.1157808,
+    "seen": 1794733142.2058492,
+    "ast_hash": "280cccfd651f408785f588803953adff",
+    "semantic_hash": "280cccfd651f408785f588803953adff"
+  },
+  "docs/scope/_root/010 - Schemas free of sample names.md": {
+    "mtime": 1794732586.135462,
+    "seen": 1794733142.2058501,
+    "ast_hash": "d8a8185c3874e4b2bffe0f4c516dd136",
+    "semantic_hash": "d8a8185c3874e4b2bffe0f4c516dd136"
+  },
+  "docs/specs/_root/0003-new-project-from-foundation.md": {
+    "mtime": 1794732537.4002469,
+    "seen": 1794733142.205853,
+    "ast_hash": "792fa25d312bb5b6269eaf7c54e62f57",
+    "semantic_hash": "792fa25d312bb5b6269eaf7c54e62f57"
   }
 }
