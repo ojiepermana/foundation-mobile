@@ -544,5 +544,11 @@
     "seen": 1794661938.251296,
     "ast_hash": "2218711ddf64ea6cb505c61e33566908",
     "semantic_hash": "2218711ddf64ea6cb505c61e33566908"
+  },
+  "docs/specs/_root/0001-ownership-development-rules.md": {
+    "mtime": 1794661863.0023289,
+    "seen": 1794699975.84079,
+    "ast_hash": "07513d0c8b9814d7a14257900e7efa3f",
+    "semantic_hash": "07513d0c8b9814d7a14257900e7efa3f"
   }
 }
