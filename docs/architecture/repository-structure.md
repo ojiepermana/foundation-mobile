@@ -13,7 +13,7 @@
 | `tests/contracts/` | Cargo integration tests for exported behavior. Platform runtime tests live with their apps. |
 | `scripts/` | Public commands that resolve paths from the checkout. |
 | `.github/workflows/` | Hosted verification of the same entry points. |
-| `docs/` | Architecture, rules, design system, contracts, quality, decisions and future plans. |
+| `docs/` | Architecture, rules, design system, contracts and quality. `docs/scope/` lists what to build and its status. `docs/specs/` holds design and decision records. `docs/decisions/` holds the founding decision. |
 | `target/`, `build/`, Android Gradle build directories | Local compilation, tools, packages and test evidence. Excluded from source control. |
 
 Create a platform adapter directory when a feature needs an OS capability. Add fixtures when a test consumes them. [Service rules](../rules/service-rules.md) describe when a separate module or crate is justified.

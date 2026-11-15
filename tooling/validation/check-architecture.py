@@ -19,7 +19,7 @@ REQUIRED_DOCS = {
     "contracts": ["ffi-conventions"],
     "quality": ["architecture-compliance", "verification"],
     "decisions": ["ADR-0001-foundation"],
-    "plans": ["README"],
+    "scope": ["index"],
 }
 
 

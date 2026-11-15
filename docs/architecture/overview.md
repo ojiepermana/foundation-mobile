@@ -13,4 +13,4 @@ locale JSON → generator → native localization resources
 
 The two arrows from JSON describe build-time generation. Color selection, font scaling, layout and accessibility run natively. An app can use its platform's navigation, gestures and controls without coordinating a shared renderer.
 
-For a new capability, follow the [extension procedure](../plans/README.md). The [ownership matrix](ownership-matrix.md) identifies the source to change for each responsibility. The [foundation decision](../decisions/ADR-0001-foundation.md) records the trade-offs.
+For a new capability, start in the [scope](../scope/index.md) and follow the [development rules](../rules/development-rules.md). The [ownership matrix](ownership-matrix.md) identifies the source to change for each responsibility. The [foundation decision](../decisions/ADR-0001-foundation.md) records the trade-offs.

@@ -9,7 +9,7 @@ You can build two native apps that display a greeting from one shared implementa
 
 | Workspace | What it owns | Complete | Open |
 | --- | --- | --- | --- |
-| [Shared foundation](_root/scope.md) | Ownership, shared behavior, design, resources and build checks | 6 of 8 | 007 One planning path, 008 Hosted results in the verification record |
+| [Shared foundation](_root/scope.md) | Ownership, shared behavior, design, resources and build checks | 7 of 8 | 008 Hosted results in the verification record |
 | [iOS](ios/scope.md) | The native greeting on Apple devices | 1 of 2 | 002 Lowest supported iOS and large text |
 | [Android](android/scope.md) | The native greeting on Android devices | 1 of 2 | 002 Lowest supported Android and large text |
 
@@ -23,7 +23,7 @@ The foundation ends at Hello World. Three pieces of work stay close to the greet
 * **A second language end to end**: a second catalog running in both apps. The core forms the greeting sentence in English, so where the sentence shape lives comes first · needs a decision
 * **Signing, physical device runs and store delivery**: a signed build on real hardware and a path to the stores · needs a decision
 
-Accounts, business modules, backend clients, storage, offline sync, image processing, background transfers, remote flags, advanced navigation, a component library and desktop apps need their own product brief and scope.
+Accounts, business modules, backend clients, storage, offline sync, image processing, background transfers, remote flags, advanced navigation, a component library and desktop apps each need their own scope before work starts.
 
 ## Legend
 

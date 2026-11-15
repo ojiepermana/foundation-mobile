@@ -96,7 +96,7 @@ The rule set. The file named in each row is the owner of the wording.
 | R7 | Presentation and OS integration belong to the owning app and follow that platform's rules. | `docs/rules/ios-rules.md`, `docs/rules/android-rules.md` | UI tests in CI for the greeting, review for the rest |
 | R8 | Real caller first. A service, adapter, view model or capability interface needs an actual caller before it exists. Each change is the smallest slice its real caller can exercise. | `docs/rules/service-rules.md`, `docs/architecture/boundaries.md` | Review |
 | R9 | Search before adding. Look in the crates, the canonical inputs and both apps before adding a constant, rule, data shape, translation or asset. | `docs/rules/anti-duplication.md` | Review |
-| R10 | A new capability needs a plan. A material ownership, contract or dependency decision needs an ADR (architecture decision record), with the affected architecture documents updated in the same change. | `AGENTS.md`, `docs/rules/development-rules.md` | The validator fails on a Cargo dependency or workspace crate the policy does not list. Native (Gradle and Xcode) dependencies and the record itself rest on review |
+| R10 | A new capability needs a scope row and a spec. A material ownership, contract or dependency decision needs a spec, with the affected architecture documents updated in the same change. | `AGENTS.md`, `docs/rules/development-rules.md` | The validator fails on a Cargo dependency or workspace crate the policy does not list. Native (Gradle and Xcode) dependencies and the record itself rest on review |
 | R11 | A handoff reports what compiled and what ran as two separate facts, per platform. | `docs/rules/development-rules.md`, `AGENTS.md` | Review, with CI as a second run |
 | R12 | Binaries, signing material, SDK paths and IDE user data stay out of the repository. The compiler and dependencies are pinned and builds use `--locked`. | `docs/rules/development-rules.md`, `docs/rules/rust-rules.md` | `.gitignore` covers build output, SDK paths and IDE user data. It has no pattern for signing material, which rests on review. `rust-toolchain.toml` and `Cargo.lock` pin, and every script passes `--locked` |
 | R13 | The governing documents exist and are not empty. | `tooling/validation/check-architecture.py` (two lists: `REQUIRED_DOCS` for `docs/`, and a second list for `AGENTS.md` and the README files) | The validator, run by `scripts/test.sh` and CI |
@@ -107,7 +107,7 @@ The rule set. The file named in each row is the owner of the wording.
 | R18 | A service proposal names its single responsibility, the existing module that might own it, its caller and why extraction pays. It documents the owner, public operations and data, permitted dependencies, errors, lifecycle, concurrency, cancellation and tests, and rejects cycles before a crate is added. | `docs/rules/service-rules.md` | Review. Cargo rejects a cycle between crates, and the validator fails on a new workspace crate |
 | R19 | A visual change is verified on the affected screen in both appearances (light and dark) and at larger text sizes. | `docs/rules/design-system-rules.md`, `docs/rules/ios-rules.md`, `docs/rules/android-rules.md` | CI runs the greeting in both appearances. Nothing checks large text yet |
 
-When R10 asks for an ADR. The triggers are written in four places:
+When R10 asks for a spec. The triggers are written in four places:
 
 - `ADR-0001`: a capability changes the dependency direction, crosses the native boundary asynchronously, needs clients versioned apart, or adds a shared crate or service.
 - `docs/quality/architecture-compliance.md`: a new dependency or a material change to the architecture, together with a policy update in the validator.
@@ -171,16 +171,16 @@ In force since the first foundation commit on 2026-11-14. It applies to all code
 
 **Neutral**:
 
-- The first feature that needs a record, a typed error or an async call across the bridge will trigger R10 and a new ADR. That is the standard working as intended.
+- The first feature that needs a record, a typed error or an async call across the bridge will trigger R10 and a new spec. That is the standard working as intended.
 - A second contributor changes the review assumption. That is the moment to name reviewers per owner.
 
 ## Follow-up
 
 - [ ] Confirm or correct the inferred rationale: small files chosen for agent and contributor loading, the matrix as the first lookup, the exact dependency list as a stand in for a second reviewer, real caller first as a guard against speculative layers, and the maintainer as the one who decides what is material.
-- [ ] R10 sends a new capability to `docs/plans/`, while features are tracked in `docs/scope/`. Already planned as scope row `007 One planning path`.
-- [ ] This spec opens `docs/specs/` beside `docs/decisions/` and `docs/plans/`. `repository-structure.md` and the validator's `REQUIRED_DOCS` name neither `docs/specs/` nor `docs/scope/`. Settle how the three relate inside row `007`.
+- [x] R10 sends a new capability to `docs/plans/`, while features are tracked in `docs/scope/`. Already planned as scope row `007 One planning path`. Settled by [0002](0002-one-planning-path.md).
+- [x] This spec opens `docs/specs/` beside `docs/decisions/` and `docs/plans/`. `repository-structure.md` and the validator's `REQUIRED_DOCS` name neither `docs/specs/` nor `docs/scope/`. Settle how the three relate inside row `007`. Settled by [0002](0002-one-planning-path.md).
 - [ ] `docs/quality/verification.md` says the hosted jobs have not run, while the scope index records a passing run on `6587579`. Already planned as scope row `008`.
-- [ ] Record keeping that no file settles yet: how ADR and plan files are named and numbered, whether a new ADR joins `REQUIRED_DOCS`, how an ADR is superseded, and whether a spec under `docs/specs/` counts as the record R10 asks for. Settle these inside row `007`.
+- [x] Record keeping that no file settles yet: how ADR and plan files are named and numbered, whether a new ADR joins `REQUIRED_DOCS`, how an ADR is superseded, and whether a spec under `docs/specs/` counts as the record R10 asks for. Settle these inside row `007`. Settled by [0002](0002-one-planning-path.md).
 - [ ] R19 asks for larger text sizes and nothing checks them. Already planned as scope row `002` in both the iOS and Android workspaces.
 - [ ] Decide whether the checks must pass before a change reaches `main` (a branch rule or a local hook). Today a direct push lands first.
 - [ ] R3 has no automated check. A small import scan in `check-architecture.py` becomes worth adding when the first feature brings a module that both apps could reach for.

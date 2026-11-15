@@ -2,7 +2,7 @@
 
 A SwiftUI app and a Jetpack Compose app both display **Hello, World!**. Each reads the recipient from a generated native localization resource and calls the same Rust function through UniFFI. The core has no dependencies. Both screens use the generated semantic palette, type role and spacing and follow the system appearance.
 
-Start with the [architecture overview](docs/architecture/overview.md), [ownership matrix](docs/architecture/ownership-matrix.md) and [foundation decision](docs/decisions/ADR-0001-foundation.md). Contributors should read [AGENTS.md](AGENTS.md). The [verification record](docs/quality/verification.md) lists what actually ran.
+Start with the [architecture overview](docs/architecture/overview.md), [ownership matrix](docs/architecture/ownership-matrix.md) and [foundation decision](docs/decisions/ADR-0001-foundation.md). The [scope](docs/scope/index.md) lists what is built and what is next. Contributors should read [AGENTS.md](AGENTS.md). The [verification record](docs/quality/verification.md) lists what actually ran.
 
 ## Shared build and generation
 

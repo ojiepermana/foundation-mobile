@@ -11,6 +11,6 @@
 | Resource generation, schema checks and compliance | `tooling/` | Shell entry points and CI |
 | Generation of Swift and Kotlin FFI code | UniFFI from the compiled Rust library | `bindings/swift/` and `bindings/kotlin/` |
 | Build and verification orchestration | `scripts/` and `.github/workflows/` | Developers and CI |
-| Architecture, ADRs and agent workflow | `docs/` and root `AGENTS.md` | Contributors and coding agents |
+| Architecture, decision records, scope and agent workflow | `docs/` and root `AGENTS.md` | Contributors and coding agents |
 
 A derived file can live beside its consumer. Change its canonical input and regenerate every output in the same review.
