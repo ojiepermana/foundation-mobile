@@ -604,5 +604,89 @@
     "seen": 1794736126.8494458,
     "ast_hash": "4a3061315d472a74e8555e32b4bb14f0",
     "semantic_hash": "4a3061315d472a74e8555e32b4bb14f0"
+  },
+  "docs/scope/coordination/009 - A new project from the foundation.log.md": {
+    "mtime": 1794736882.77792,
+    "seen": 1794737640.785273,
+    "ast_hash": "3f08ac03853d4e6a1734ccb49b6d6dd8",
+    "semantic_hash": "3f08ac03853d4e6a1734ccb49b6d6dd8"
+  },
+  "docs/scope/coordination/009 - A new project from the foundation.brief-umum.md": {
+    "mtime": 1794736773.3715515,
+    "seen": 1794737640.785275,
+    "ast_hash": "bb5cbc414f98754aafae9254a4afb224",
+    "semantic_hash": "bb5cbc414f98754aafae9254a4afb224"
+  },
+  "docs/scope/coordination/009 - A new project from the foundation.manual.md": {
+    "mtime": 1794736773.390204,
+    "seen": 1794737640.785276,
+    "ast_hash": "e753254581b8f4ce78929bd3362a5842",
+    "semantic_hash": "e753254581b8f4ce78929bd3362a5842"
+  },
+  ".claude/skills/coordinate/SKILL.md": {
+    "mtime": 1794735177.538391,
+    "seen": 1794737640.78526,
+    "ast_hash": "1247c49882084a73f19f21369c88da61",
+    "semantic_hash": "1247c49882084a73f19f21369c88da61"
+  },
+  ".claude/skills/coordinate/roles/architect.md": {
+    "mtime": 1794735177.5405266,
+    "seen": 1794737640.785264,
+    "ast_hash": "fccc8b7f4aa28c59e04dfdafc1c6ec42",
+    "semantic_hash": "fccc8b7f4aa28c59e04dfdafc1c6ec42"
+  },
+  ".claude/skills/coordinate/roles/checker.md": {
+    "mtime": 1794735177.5416436,
+    "seen": 1794737640.785265,
+    "ast_hash": "bd6d1f0440aebf1283d7de01824e80dd",
+    "semantic_hash": "bd6d1f0440aebf1283d7de01824e80dd"
+  },
+  ".claude/skills/coordinate/roles/debugger.md": {
+    "mtime": 1794735177.5427306,
+    "seen": 1794737640.785266,
+    "ast_hash": "0bb4a99f5ed7013514bf6969a799406d",
+    "semantic_hash": "0bb4a99f5ed7013514bf6969a799406d"
+  },
+  ".claude/skills/coordinate/roles/developer.md": {
+    "mtime": 1794735177.5436187,
+    "seen": 1794737640.785266,
+    "ast_hash": "4bed7bfc0ef6334d5d7cc8ac52a437b8",
+    "semantic_hash": "4bed7bfc0ef6334d5d7cc8ac52a437b8"
+  },
+  ".claude/skills/coordinate/roles/tester.md": {
+    "mtime": 1794735177.544518,
+    "seen": 1794737640.7852669,
+    "ast_hash": "fd3fb072b04137be5a680eb6c17015e9",
+    "semantic_hash": "fd3fb072b04137be5a680eb6c17015e9"
+  },
+  ".claude/skills/coordinate/templates/brief-umum.md": {
+    "mtime": 1794735177.5462599,
+    "seen": 1794737640.785268,
+    "ast_hash": "b1ea6eb587532aaaf098f8ce728feabe",
+    "semantic_hash": "b1ea6eb587532aaaf098f8ce728feabe"
+  },
+  ".claude/skills/coordinate/templates/brief.md": {
+    "mtime": 1794735177.5470743,
+    "seen": 1794737640.785269,
+    "ast_hash": "6b38a61be18e3b9abfe384d974601e37",
+    "semantic_hash": "6b38a61be18e3b9abfe384d974601e37"
+  },
+  ".claude/skills/coordinate/templates/log.md": {
+    "mtime": 1794735177.5487783,
+    "seen": 1794737640.78527,
+    "ast_hash": "9fa77d77f535a1e3d7e2043937054a4d",
+    "semantic_hash": "9fa77d77f535a1e3d7e2043937054a4d"
+  },
+  ".claude/skills/coordinate/templates/manual.md": {
+    "mtime": 1794735177.5498629,
+    "seen": 1794737640.78527,
+    "ast_hash": "01b790961ef3d55cd1ce4c6778e1f23d",
+    "semantic_hash": "01b790961ef3d55cd1ce4c6778e1f23d"
+  },
+  ".claude/skills/coordinate/templates/report.md": {
+    "mtime": 1794735177.550681,
+    "seen": 1794737640.785271,
+    "ast_hash": "5f945d4f3dd6ba02b18d2750b25c3b5b",
+    "semantic_hash": "5f945d4f3dd6ba02b18d2750b25c3b5b"
   }
 }
