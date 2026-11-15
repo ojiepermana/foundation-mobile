@@ -6,10 +6,10 @@
     "semantic_hash": "106110d29b223914dff326ca76ca1677"
   },
   "apps/android/app/build.gradle.kts": {
-    "mtime": 1794654994.1031063,
-    "seen": 1794661938.251233,
-    "ast_hash": "c40213b28e9d196b2a60a6fc50cc2f0c",
-    "semantic_hash": "c40213b28e9d196b2a60a6fc50cc2f0c"
+    "mtime": 1794733596.0249064,
+    "seen": 1794736126.8493922,
+    "ast_hash": "dfd1a0d18af4162594b700b281dde5ca",
+    "semantic_hash": "dfd1a0d18af4162594b700b281dde5ca"
   },
   "apps/android/app/src/androidTest/kotlin/foundation/mobile/GreetingTest.kt": {
     "mtime": 1794655562.4077172,
@@ -198,10 +198,10 @@
     "semantic_hash": "cb52b484013a3af718d8c9bf7be17e9b"
   },
   "scripts/test.sh": {
-    "mtime": 1794655026.5751455,
-    "seen": 1794661938.2512572,
-    "ast_hash": "f6d86859fd3b920c8b2d7578fb7dcf68",
-    "semantic_hash": "f6d86859fd3b920c8b2d7578fb7dcf68"
+    "mtime": 1794733854.3473673,
+    "seen": 1794736126.849424,
+    "ast_hash": "7bff8f8c332f51c122db4055909bfdde",
+    "semantic_hash": "7bff8f8c332f51c122db4055909bfdde"
   },
   "shared/config/foundation.json": {
     "mtime": 1794654945.1346238,
@@ -264,10 +264,10 @@
     "semantic_hash": "0729cd538e2563d70e5f0de396b8dc40"
   },
   ".github/workflows/foundation.yml": {
-    "mtime": 1794658102.1706326,
-    "seen": 1794661938.251264,
-    "ast_hash": "f83ec32dfb97c4f49745ccd388442c0c",
-    "semantic_hash": "f83ec32dfb97c4f49745ccd388442c0c"
+    "mtime": 1794733783.1141536,
+    "seen": 1794736126.8494341,
+    "ast_hash": "f7856204c26d9ec2ca2a179c8f310121",
+    "semantic_hash": "f7856204c26d9ec2ca2a179c8f310121"
   },
   "AGENTS.md": {
     "mtime": 1794705327.743124,
@@ -276,10 +276,10 @@
     "semantic_hash": "1a5e784c320577132385fab2b9705dcf"
   },
   "README.md": {
-    "mtime": 1794704865.05168,
-    "seen": 1794705644.381987,
-    "ast_hash": "68368a33d737af85a6707f24fbd4907a",
-    "semantic_hash": "68368a33d737af85a6707f24fbd4907a"
+    "mtime": 1794733854.3912382,
+    "seen": 1794736126.8494349,
+    "ast_hash": "e035d08f2d07165df67dd2b2279be589",
+    "semantic_hash": "e035d08f2d07165df67dd2b2279be589"
   },
   "design-system/README.md": {
     "mtime": 1794655276.6731412,
@@ -306,16 +306,16 @@
     "semantic_hash": "2cd1b96e2e29964e24b2579c735975b8"
   },
   "docs/architecture/ownership-matrix.md": {
-    "mtime": 1794704873.2570882,
-    "seen": 1794705644.38199,
-    "ast_hash": "f4c314470468e6a8e1ae0cae430c240b",
-    "semantic_hash": "f4c314470468e6a8e1ae0cae430c240b"
+    "mtime": 1794733854.3504262,
+    "seen": 1794736126.8494358,
+    "ast_hash": "ebae76df5abe58a77fb32d8af7b92e89",
+    "semantic_hash": "ebae76df5abe58a77fb32d8af7b92e89"
   },
   "docs/architecture/repository-structure.md": {
-    "mtime": 1794704863.6309648,
-    "seen": 1794705644.381991,
-    "ast_hash": "a7eebaa63cfd1df9488ccf950a31905c",
-    "semantic_hash": "a7eebaa63cfd1df9488ccf950a31905c"
+    "mtime": 1794733854.3548086,
+    "seen": 1794736126.849437,
+    "ast_hash": "dbde7a931ba5ea010440811211e69006",
+    "semantic_hash": "dbde7a931ba5ea010440811211e69006"
   },
   "docs/contracts/ffi-conventions.md": {
     "mtime": 1794655108.1038845,
@@ -360,16 +360,16 @@
     "semantic_hash": "148f1b660d8d4af43cabec9bb2bf15ed"
   },
   "docs/quality/architecture-compliance.md": {
-    "mtime": 1794719556.7256694,
-    "seen": 1794724379.502442,
-    "ast_hash": "44323726a97e2493aa5a32ad7ba2e066",
-    "semantic_hash": "44323726a97e2493aa5a32ad7ba2e066"
+    "mtime": 1794733854.3703518,
+    "seen": 1794736126.849438,
+    "ast_hash": "12434a56cc45cc3413dca0c98ed35a82",
+    "semantic_hash": "12434a56cc45cc3413dca0c98ed35a82"
   },
   "docs/quality/verification.md": {
-    "mtime": 1794719556.726204,
-    "seen": 1794724379.502443,
-    "ast_hash": "a026c967b4595c7e8ed01c865f320ab7",
-    "semantic_hash": "a026c967b4595c7e8ed01c865f320ab7"
+    "mtime": 1794735153.1360335,
+    "seen": 1794736126.849439,
+    "ast_hash": "4f481f659c2895d2ef379ca9e4f1f637",
+    "semantic_hash": "4f481f659c2895d2ef379ca9e4f1f637"
   },
   "docs/rules/android-rules.md": {
     "mtime": 1794655108.0934105,
@@ -492,10 +492,10 @@
     "semantic_hash": "06eb03231c340acb71a94351a52900e8"
   },
   "docs/scope/index.md": {
-    "mtime": 1794732586.1829407,
-    "seen": 1794733142.2058518,
-    "ast_hash": "05dc3d52b46e442b69481c178fa133e4",
-    "semantic_hash": "05dc3d52b46e442b69481c178fa133e4"
+    "mtime": 1794733854.3479102,
+    "seen": 1794736126.849442,
+    "ast_hash": "02d627fae587935e3328630119c4de10",
+    "semantic_hash": "02d627fae587935e3328630119c4de10"
   },
   "docs/scope/ios/001 - Native iOS greeting.md": {
     "mtime": 1794661147.5214124,
@@ -522,10 +522,10 @@
     "semantic_hash": "f6363ae1d93d5452ac81d50ae4cd3313"
   },
   "shared/config/README.md": {
-    "mtime": 1794655221.0926611,
-    "seen": 1794661938.251294,
-    "ast_hash": "d9cd3004a85c03c8d7d5885387738575",
-    "semantic_hash": "d9cd3004a85c03c8d7d5885387738575"
+    "mtime": 1794733854.3743744,
+    "seen": 1794736126.849445,
+    "ast_hash": "04199ed5cf30140de6c48cfb1b23e630",
+    "semantic_hash": "04199ed5cf30140de6c48cfb1b23e630"
   },
   "shared/localization/README.md": {
     "mtime": 1794655493.8994746,
@@ -540,10 +540,10 @@
     "semantic_hash": "2218711ddf64ea6cb505c61e33566908"
   },
   "docs/specs/_root/0001-ownership-development-rules.md": {
-    "mtime": 1794704890.5944486,
-    "seen": 1794705644.3820171,
-    "ast_hash": "31f9135dd2c9ec0a41cc50410ac39840",
-    "semantic_hash": "31f9135dd2c9ec0a41cc50410ac39840"
+    "mtime": 1794733854.3848765,
+    "seen": 1794736126.849442,
+    "ast_hash": "ddb3e00336aa565d3635aa51e651e5ef",
+    "semantic_hash": "ddb3e00336aa565d3635aa51e651e5ef"
   },
   "docs/specs/_root/0002-one-planning-path.md": {
     "mtime": 1794705591.938854,
@@ -552,21 +552,57 @@
     "semantic_hash": "9aa7022aefbe1f43a15080943eb7b546"
   },
   "docs/scope/_root/009 - A new project from the foundation.md": {
-    "mtime": 1794732586.1157808,
-    "seen": 1794733142.2058492,
-    "ast_hash": "280cccfd651f408785f588803953adff",
-    "semantic_hash": "280cccfd651f408785f588803953adff"
+    "mtime": 1794735400.0556436,
+    "seen": 1794736126.84944,
+    "ast_hash": "842c47ec1abbc6eab2e36c0ff5515335",
+    "semantic_hash": "842c47ec1abbc6eab2e36c0ff5515335"
   },
   "docs/scope/_root/010 - Schemas free of sample names.md": {
-    "mtime": 1794732586.135462,
-    "seen": 1794733142.2058501,
-    "ast_hash": "d8a8185c3874e4b2bffe0f4c516dd136",
-    "semantic_hash": "d8a8185c3874e4b2bffe0f4c516dd136"
+    "mtime": 1794735400.0559008,
+    "seen": 1794736126.849441,
+    "ast_hash": "d25ab57ac3e2a25b8027210f15d2a7c5",
+    "semantic_hash": "d25ab57ac3e2a25b8027210f15d2a7c5"
   },
-  "docs/specs/_root/0003-new-project-from-foundation.md": {
-    "mtime": 1794732537.4002469,
-    "seen": 1794733142.205853,
-    "ast_hash": "792fa25d312bb5b6269eaf7c54e62f57",
-    "semantic_hash": "792fa25d312bb5b6269eaf7c54e62f57"
+  "scripts/init-project.sh": {
+    "mtime": 1794733667.7997184,
+    "seen": 1794736126.8494232,
+    "ast_hash": "34564d28a2b2c58ef924b3472d5fbbb5",
+    "semantic_hash": "34564d28a2b2c58ef924b3472d5fbbb5"
+  },
+  "tooling/derive/init_project.py": {
+    "mtime": 1794735019.7901793,
+    "seen": 1794736126.849432,
+    "ast_hash": "9236f3d67c70436835d96b7f1cbabd6e",
+    "semantic_hash": "9236f3d67c70436835d96b7f1cbabd6e"
+  },
+  "tooling/derive/test_init_project.py": {
+    "mtime": 1794735019.7907956,
+    "seen": 1794736126.8494332,
+    "ast_hash": "aa9ef28bb5566d7117414052d9fd0665",
+    "semantic_hash": "aa9ef28bb5566d7117414052d9fd0665"
+  },
+  "docs/specs/_root/0003-new-project-from-foundation/index.md": {
+    "mtime": 1794735400.0550702,
+    "seen": 1794736126.849443,
+    "ast_hash": "2ce44d8a1c4fb36b2af1477f080ad977",
+    "semantic_hash": "2ce44d8a1c4fb36b2af1477f080ad977"
+  },
+  "docs/specs/_root/0003-new-project-from-foundation/rationale.md": {
+    "mtime": 1794735400.0554163,
+    "seen": 1794736126.8494442,
+    "ast_hash": "c0cf6fda2e816ea5ec0042dd8bd35c27",
+    "semantic_hash": "c0cf6fda2e816ea5ec0042dd8bd35c27"
+  },
+  "docs/specs/_root/0003-new-project-from-foundation/verify.md": {
+    "mtime": 1794735442.7251043,
+    "seen": 1794736126.849445,
+    "ast_hash": "b9dde2606f9e6e854ccbd45f36842074",
+    "semantic_hash": "b9dde2606f9e6e854ccbd45f36842074"
+  },
+  "tooling/derive/verification-record.md": {
+    "mtime": 1794733609.3687923,
+    "seen": 1794736126.8494458,
+    "ast_hash": "4a3061315d472a74e8555e32b4bb14f0",
+    "semantic_hash": "4a3061315d472a74e8555e32b4bb14f0"
   }
 }

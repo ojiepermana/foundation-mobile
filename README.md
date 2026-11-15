@@ -46,11 +46,59 @@ The Gradle build cross-compiles Rust with the pinned NDK and packages `arm64-v8a
 
 ```sh
 scripts/build-android.sh :app:installDebug
-adb shell am start -n foundation.mobile/.MainActivity
+APP_ID=$(sed -n 's/^applicationId=//p' apps/android/identity.properties)
+adb shell am start -n "$APP_ID/foundation.mobile.MainActivity"
 scripts/build-android.sh :app:connectedDebugAndroidTest
 ```
 
 The debug package is `apps/android/app/build/outputs/apk/debug/app-debug.apk`. The instrumentation suite exercises the native binding and Compose UI in the active appearance. To verify both palettes, run with the emulator in each system mode. CI automates that sequence.
+
+## Start a project from this foundation
+
+A product is a clone of this repository that keeps the foundation as a second remote. One command gives the clone its own display name, application ID and version. Every other name stays as the foundation wrote it, including the Xcode project, the crates, the Kotlin packages and the generated types. That is what lets a later foundation release arrive by an ordinary merge.
+
+```sh
+git clone --branch foundation-vX.Y.Z <foundation URL> acme-notes
+cd acme-notes
+git switch -c main
+git remote rename origin foundation
+scripts/init-project.sh --name "Acme Notes" --app-id com.acme.notes
+git remote add origin <product repository URL>
+```
+
+Cloning a tag leaves no branch checked out, which is why the branch is created first. The command needs a clean working tree. It writes the name, the ID, version `0.1.0` and build `1` into `apps/ios/Config/Identity.xcconfig` and `apps/android/identity.properties`. It puts the product name and an origin line at the top of this README, replaces the [verification record](docs/quality/verification.md) with an empty one and removes `graphify-out/`. It renames nothing and changes no git state. Use `--ios-bundle-id`, `--android-app-id` or `--version` to override a single value. A bad input, a tree with uncommitted files or a checkout that is already derived is refused with one line and exit code `2`, and nothing is written.
+
+Then finish the start by hand:
+
+1. Rebuild the knowledge graph. The usual way is `/graphify .`.
+2. Mark the inherited scope rows `existing`. The usual way is `/scope`.
+3. Commit.
+4. Run `scripts/test.sh` and both native builds.
+5. Push with `git push -u origin main`.
+6. Record the first local and hosted results in the verification record.
+
+`scripts/init-project.sh --check` prints `foundation` or `derived`. When a checkout is in between, it exits `1` and names each mismatch. `scripts/test.sh` runs it on every change. To change the name, ID or version later, edit the two identity files. If the command stops part way, `git restore .` returns the checkout to the foundation state.
+
+### Who owns which path
+
+| Paths | Owner | On a merge from the foundation |
+| --- | --- | --- |
+| `apps/ios/Config/Identity.xcconfig`, `apps/android/identity.properties`, `docs/scope/`, `docs/specs/`, `docs/quality/verification.md`, `graphify-out/`, the README title and origin line, and everything the product adds | The product | Keep the product's side |
+| `scripts/`, `tooling/`, `.github/workflows/foundation.yml`, `design-system/schemas/`, `shared/specifications/`, the toolchain pins, the Xcode project file and the Gradle build files | The foundation | Take the foundation's side. A fix to these paths is made in the foundation and arrives by merge |
+| The rule documents, `AGENTS.md`, the rest of the README, the crates, the app sources, token values and catalogs | Shared | Merge by hand |
+
+### Take a later foundation release
+
+```sh
+git fetch foundation --tags
+git merge foundation-vX.Y.Z
+```
+
+Every such merge reports conflicts on the paths the product owns, because the foundation changes its own graph, scope and verification record in most commits. Keep the product's side there. Use `git checkout --ours -- <path>` for a file both sides changed and `git rm <path>` for a file only the foundation has under `docs/scope/` or `docs/specs/`. Then rebuild the graph and run every check. The origin line is not changed. It records where the product started, and `git log --merges` shows each release taken since. These merge steps have not been exercised yet. The first release merged into a product will prove them.
+
+### Release the foundation
+
+This part applies to the foundation repository only. Run the workflow by hand with `derived` set. Both native jobs then run the command on the runner checkout and build and test both apps under a sample identity. When all three jobs pass, create an annotated tag `foundation-vMAJOR.MINOR.PATCH` on `main` and push it. A product never creates a tag that starts with `foundation-v`.
 
 ## Toolchain
 

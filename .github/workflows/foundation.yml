@@ -4,6 +4,11 @@ on:
   push:
   pull_request:
   workflow_dispatch:
+    inputs:
+      derived:
+        description: Build and test both apps under a sample product identity
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -29,8 +34,29 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: Install Apple targets
         run: rustup target add aarch64-apple-ios-sim aarch64-apple-ios x86_64-apple-ios
+      - name: Derive a sample product from this checkout
+        if: ${{ inputs.derived }}
+        run: |
+          state=$(scripts/init-project.sh --check)
+          if [[ "$state" == foundation ]]; then
+            scripts/init-project.sh --name "Zoë's Proof" --app-id dev.example.derived
+          else
+            echo "This proof is for the foundation repository only. This checkout is $state."
+          fi
       - name: Build for Simulator
         run: scripts/build-ios.sh simulator
+      - name: Compare the built app with the identity file
+        run: |
+          identity=apps/ios/Config/Identity.xcconfig
+          plist=build/ios/Build/Products/Debug-iphonesimulator/MobileFoundation.app/Info.plist
+          expected_id=$(sed -n 's/^APP_BUNDLE_IDENTIFIER = //p' "$identity")
+          expected_name=$(sed -n 's/^APP_DISPLAY_NAME = //p' "$identity")
+          actual_id=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$plist")
+          actual_name=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleDisplayName' "$plist")
+          echo "Identity file: $expected_id, $expected_name"
+          echo "Built app: $actual_id, $actual_name"
+          test -n "$expected_id" && test -n "$expected_name"
+          test "$actual_id" = "$expected_id" && test "$actual_name" = "$expected_name"
       - name: Verify device linkage without signing
         run: scripts/build-ios.sh device
       - name: Run the greeting on an iPhone simulator
@@ -60,8 +86,30 @@ jobs:
         run: |
           sdkmanager 'platforms;android-36' 'build-tools;36.0.0' 'ndk;28.2.13676358'
           rustup target add aarch64-linux-android x86_64-linux-android
+      - name: Derive a sample product from this checkout
+        if: ${{ inputs.derived }}
+        run: |
+          state=$(scripts/init-project.sh --check)
+          if [[ "$state" == foundation ]]; then
+            scripts/init-project.sh --name "Zoë's Proof" --app-id dev.example.derived
+          else
+            echo "This proof is for the foundation repository only. This checkout is $state."
+          fi
       - name: Assemble app and instrumentation tests
         run: scripts/build-android.sh :app:assembleDebug :app:assembleDebugAndroidTest
+      - name: Compare the built app with the identity file
+        run: |
+          identity=apps/android/identity.properties
+          apk=apps/android/app/build/outputs/apk/debug/app-debug.apk
+          badging=$("$ANDROID_HOME/build-tools/36.0.0/aapt2" dump badging "$apk")
+          expected_id=$(sed -n 's/^applicationId=//p' "$identity")
+          expected_name=$(sed -n 's/^displayName=//p' "$identity")
+          actual_id=$(sed -n "s/^package: name='\([^']*\)'.*/\1/p" <<<"$badging")
+          actual_name=$(sed -n "s/^application-label:'\(.*\)'$/\1/p" <<<"$badging")
+          echo "Identity file: $expected_id, $expected_name"
+          echo "Built app: $actual_id, $actual_name"
+          test -n "$expected_id" && test -n "$expected_name"
+          test "$actual_id" = "$expected_id" && test "$actual_name" = "$expected_name"
       - name: Allow runner access to KVM
         run: sudo chmod a+rw /dev/kvm
       - name: Exercise the Kotlin binding and Compose UI

@@ -13,7 +13,7 @@ You can build two native apps that display a greeting from one shared implementa
 | [iOS](ios/scope.md) | The native greeting on Apple devices | 1 of 2 | 002 Lowest supported iOS and large text |
 | [Android](android/scope.md) | The native greeting on Android devices | 1 of 2 | 002 Lowest supported Android and large text |
 
-All three hosted jobs passed on `6587579`, including the iOS and Android greeting tests in both appearances. [Hosted results](https://github.com/ojiepermana/foundation-mobile/actions/runs/43593365100)
+The [verification record](../quality/verification.md) lists what ran, local and hosted.
 
 ## Deferred
 

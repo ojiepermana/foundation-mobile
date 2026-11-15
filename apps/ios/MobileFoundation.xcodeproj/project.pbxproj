@@ -21,6 +21,7 @@
 		FA0000000000000000000004 /* MobileFoundationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = MobileFoundationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA0000000000000000000005 /* Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Project.xcconfig; path = Config/Project.xcconfig; sourceTree = "<group>"; };
 		FA0000000000000000000006 /* App.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = App.xcconfig; path = Config/App.xcconfig; sourceTree = "<group>"; };
+		FA0000000000000000000007 /* Identity.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Identity.xcconfig; path = Config/Identity.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -43,6 +44,7 @@
 			FA0000000000000000000001 /* mobile_ffi.swift */,
 			FA0000000000000000000005 /* Project.xcconfig */,
 			FA0000000000000000000006 /* App.xcconfig */,
+			FA0000000000000000000007 /* Identity.xcconfig */,
 			AB0000000000000000000006 /* Products */,
 		); sourceTree = "<group>"; };
 		AB0000000000000000000006 /* Products */ = {isa = PBXGroup; children = (FA0000000000000000000003, FA0000000000000000000004, FA0000000000000000000002,); name = Products; sourceTree = "<group>"; };
@@ -126,8 +128,8 @@
 		AD0000000000000000000002 /* Release */ = {isa = XCBuildConfiguration; baseConfigurationReference = FA0000000000000000000005 /* Project.xcconfig */; buildSettings = {DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym"; SWIFT_COMPILATION_MODE = wholemodule; VALIDATE_PRODUCT = YES; }; name = Release; };
 		AD0000000000000000000003 /* Debug */ = {isa = XCBuildConfiguration; baseConfigurationReference = FA0000000000000000000006 /* App.xcconfig */; buildSettings = {}; name = Debug; };
 		AD0000000000000000000004 /* Release */ = {isa = XCBuildConfiguration; baseConfigurationReference = FA0000000000000000000006 /* App.xcconfig */; buildSettings = {}; name = Release; };
-		AD0000000000000000000005 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {PRODUCT_BUNDLE_IDENTIFIER = dev.foundation.mobile.uitests; TEST_TARGET_NAME = MobileFoundation; }; name = Debug; };
-		AD0000000000000000000006 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {PRODUCT_BUNDLE_IDENTIFIER = dev.foundation.mobile.uitests; TEST_TARGET_NAME = MobileFoundation; }; name = Release; };
+		AD0000000000000000000005 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_IDENTIFIER).uitests"; TEST_TARGET_NAME = MobileFoundation; }; name = Debug; };
+		AD0000000000000000000006 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_IDENTIFIER).uitests"; TEST_TARGET_NAME = MobileFoundation; }; name = Release; };
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */

@@ -87,7 +87,7 @@ The rule set. The file named in each row is the owner of the wording.
 
 | # | Rule | Owner file | Enforced by |
 | --- | --- | --- | --- |
-| R1 | Each responsibility has one authoritative owner. The matrix lists ten. | `docs/architecture/ownership-matrix.md` | Review |
+| R1 | Each responsibility has one authoritative owner. The matrix lists eleven. | `docs/architecture/ownership-matrix.md` | Review |
 | R2 | Dependencies run one way, `mobile-ffi → foundation-core`. The core has no dependencies, so no UI or UniFFI code. `mobile-ffi` depends on the core and `uniffi` only. | `docs/architecture/dependency-rules.md` | `tooling/validation/check-architecture.py` (exact match on direct dependencies, including optional, target, build and dev) |
 | R3 | The two app trees do not import one another. Each depends on its own SDK, the generated bindings, its native theme and its resources. | `docs/architecture/dependency-rules.md` | Review. Separate build systems (Xcode and Gradle) make a cross import hard, not impossible |
 | R4 | Shared behavior lives in the core. The export stays thin. A mobile API changes at the Rust export, and both clients stay on the same contract. | `docs/rules/rust-rules.md`, `docs/contracts/ffi-conventions.md` | `cargo test` in `scripts/test.sh` (runs `tests/contracts/greeting.rs`), `scripts/generate-bindings.sh --check`, review |

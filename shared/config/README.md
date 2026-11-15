@@ -5,7 +5,7 @@
 | Kind | Ownership and consumption |
 | --- | --- |
 | Shared build settings | Put cross-platform public values in the versioned shared schema and generate only the outputs required by a consumer. |
-| Native build settings | Keep deployment targets, bundle and application IDs, entitlements and manifest entries in Xcode or Gradle. |
+| Native build settings | Keep deployment targets, bundle and application IDs, entitlements and manifest entries in Xcode or Gradle. Product identity lives in `apps/ios/Config/Identity.xcconfig` and `apps/android/identity.properties`. |
 | Environments | If environments become necessary, define their names and public override fields in the shared schema. Resolve them at build time and validate the resulting configuration for each environment. |
 | Runtime settings and future feature flags | Add a definition through an approved design that specifies typing, defaults, ownership, compatibility and the runtime consumer. |
 | Signing and other secrets | Provision through the native credential store or CI secret store. Only public settings belong here. |

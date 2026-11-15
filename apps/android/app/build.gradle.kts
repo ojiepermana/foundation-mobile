@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.plugin.compose")
@@ -8,17 +10,24 @@ val nativeLibraries = layout.buildDirectory.dir("generated/rustJniLibs")
 val minimumApi = 24
 val pinnedNdk = "28.2.13676358"
 
+// Product identity has one home on this platform. scripts/init-project.sh writes it.
+val identityFile = rootProject.file("identity.properties")
+val identity = Properties().apply { identityFile.reader(Charsets.UTF_8).use { load(it) } }
+fun identityValue(key: String): String = identity.getProperty(key)?.takeIf { it.isNotEmpty() }
+    ?: throw GradleException("${identityFile.name}: missing key $key")
+
 android {
     namespace = "foundation.mobile"
     compileSdk = 36
     ndkVersion = pinnedNdk
 
     defaultConfig {
-        applicationId = "foundation.mobile"
+        applicationId = identityValue("applicationId")
         minSdk = minimumApi
         targetSdk = 36
-        versionCode = 1
-        versionName = "0.1.0"
+        versionCode = identityValue("versionCode").toInt()
+        versionName = identityValue("versionName")
+        manifestPlaceholders["appLabel"] = identityValue("displayName")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         ndk.abiFilters += listOf("arm64-v8a", "x86_64")
     }

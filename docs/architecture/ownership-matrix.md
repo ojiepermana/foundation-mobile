@@ -6,9 +6,10 @@
 | Cross-language API, records and typed errors | `crates/mobile-ffi/` using UniFFI | Generated native bindings |
 | Apple UI, presentation state and OS APIs | `apps/ios/` | iOS application |
 | Android UI, presentation state and OS APIs | `apps/android/` | Android application |
+| Product identity: display name, application IDs and app version | `apps/ios/Config/Identity.xcconfig` and `apps/android/identity.properties` | The Xcode and Gradle builds, `scripts/init-project.sh` |
 | Canonical visual values and semantic roles | `design-system/tokens/` and `design-system/schemas/` | Native theme generators |
 | Public settings, locale content, brand masters | `shared/config/`, `shared/localization/`, `shared/assets/` | Resource tooling and native packages |
-| Resource generation, schema checks and compliance | `tooling/` | Shell entry points and CI |
+| Resource generation, schema checks, compliance and project derivation | `tooling/` | Shell entry points and CI |
 | Generation of Swift and Kotlin FFI code | UniFFI from the compiled Rust library | `bindings/swift/` and `bindings/kotlin/` |
 | Build and verification orchestration | `scripts/` and `.github/workflows/` | Developers and CI |
 | Architecture, decision records, scope and agent workflow | `docs/` and root `AGENTS.md` | Contributors and coding agents |

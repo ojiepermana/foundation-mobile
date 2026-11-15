@@ -1,4 +1,4 @@
-# Foundation verification · 2026-11-14
+# Foundation verification · 2026-11-15
 
 This record lists what ran, where it ran and what has not run yet. Local checks used an Apple Silicon Mac running macOS 27.0.1. Hosted checks ran on GitHub Actions. A test result here describes the listed toolchain, ABI and runtime.
 
@@ -10,12 +10,13 @@ This record lists what ran, where it ran and what has not run yet. Local checks 
 | ABI generation | UniFFI 0.31.2 generated Swift, its C header and Clang module map, and Kotlin from the compiled host library. Regenerating in a temporary directory produced an identical tree. The check rejected an edited binding even with its original byte count and timestamp. Regenerating repaired it. A separate Swift executable linked the host static archive and round-tripped both `Zoë 🌍` and an empty name through the generated binding. |
 | Design system and resources | Generation and byte comparisons passed for both native token files and both English catalogs. Seven generator tests exercise invalid schemas, unresolved references, contrast, placeholder reordering, mismatched translations and edited or missing outputs. Apple `plutil` accepted the English strings resource. |
 | Architecture | Cargo dependency policy and required-document checks passed. In an isolated copy, the checker rejected a renamed, prohibited dev dependency and a missing contract document. |
+| Product identity | Ran on 2026-11-15, after the identity moved into `apps/ios/Config/Identity.xcconfig` and `apps/android/identity.properties`. `scripts/test.sh` passed, with `scripts/init-project.sh --check` printing `foundation` and `--test` passing 21 unit tests. One of them derived a temporary copy of the checkout, required `derived` from the copy's own check and passed the copy's architecture check. Both apps carried `dev.foundation.mobile`, `Mobile Foundation`, version `0.1.0` and build `1`, read from the simulator and device `Info.plist` and from `aapt2 dump badging` on the debug APK. The iOS greeting test passed in light and dark on the iPhone 17 simulator running iOS 27.0, with the UI test bundle as `dev.foundation.mobile.uitests`. Two instrumentation tests passed in each appearance on the API 36 arm64 emulator. In a temporary copy derived as `Zoë's Proof` with `dev.example.derived`, the simulator app and the debug APK built, and each matched its identity file with the same commands the workflow uses. The greeting tests did not run under the sample identity. |
 | iOS compilation | The Xcode 27.1 / Swift 6.4 build in Swift 6 language mode linked the generated Swift and Rust archive for arm64 and x86_64 simulators and produced an unsigned arm64 Release build for iOS hardware. The x86_64 simulator build was verified by inspecting its Mach-O architecture. |
 | iOS runtime | On an iPhone 17 simulator running iOS 27.0, XCTest launched the app in light and dark appearances, read **Hello, World!** through accessibility and verified that a background pixel actually changed between palettes. Xcode also packaged an additional locale in an isolated build through the synchronized App group. |
 | Android compilation | Gradle 9.3.1 and AGP 9.1.0 assembled the debug app, instrumentation APK and unsigned Release APK with Temurin 17.0.21. `lintDebug` reported zero errors and six dependency-version warnings. |
 | Android runtime | Two instrumentation tests passed in each appearance on an API 36 arm64 emulator. The tests exercise Unicode through Kotlin/JNA/Rust, read **Hello, World!** from Compose semantics, and compare the rendered text style with the generated size and foreground color. The saved screenshots provide independent pixel evidence for the background. |
 | Android packaging | APK zip alignment passed `zipalign -c -P 16`. ELF load segments have 16 KiB alignment in the packaged Rust, JNA and Compose libraries for both ABIs. Local runtime verification used a 4 KiB-page emulator. |
-| CI configuration | actionlint 1.7.12 passed for the GitHub Actions workflow. The jobs it configures ran in the [hosted run](#hosted-run) below. |
+| CI configuration | actionlint 1.7.12 passed for the GitHub Actions workflow as it stood on 2026-11-14. The jobs it configured ran in the [hosted run](#hosted-run) below. The `derived` input and the identity comparison steps added on 2026-11-15 were parsed as YAML only. actionlint was not run on them. |
 
 Separate samples of the four saved screenshots matched the canonical background exactly on both platforms, `#F4F6FA` in light appearance and `#111824` in dark appearance. The files are under `build/verification/ios/` and `build/verification/android/` and are excluded from source control.
 
@@ -45,6 +46,7 @@ The workflow runs on every push, so later revisions have their own runs. This re
 
 This is the one list of targets that have not run. A target leaves this list when a local or hosted result above covers it.
 
+- The workflow with the `derived` input and the identity comparison steps. They were added after the hosted run above and have not run on a hosted runner. No run with `derived` set has happened yet.
 - Physical devices on either platform.
 - Signed distribution.
 - The minimum supported OS versions.
