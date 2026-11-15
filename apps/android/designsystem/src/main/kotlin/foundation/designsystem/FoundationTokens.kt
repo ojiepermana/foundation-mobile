@@ -64,7 +64,7 @@ object FoundationTokens {
         lineHeight = 24.sp,
         fontWeight = FontWeight(400),
     )
-    val typographyGreeting = TextStyle(
+    val typographyHeading = TextStyle(
         fontSize = 32.sp,
         lineHeight = 40.sp,
         fontWeight = FontWeight(600),

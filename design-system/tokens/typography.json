@@ -7,7 +7,7 @@
     "weight": { "regular": 400, "semibold": 600 }
   },
   "semantic": {
-    "greeting": { "scale": "headline", "weight": "semibold" },
+    "heading": { "scale": "headline", "weight": "semibold" },
     "body": { "scale": "reading", "weight": "regular" }
   }
 }

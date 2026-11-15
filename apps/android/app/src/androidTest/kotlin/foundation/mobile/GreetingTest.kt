@@ -29,7 +29,7 @@ class GreetingTest {
         val layouts = mutableListOf<TextLayoutResult>()
         label.performSemanticsAction(SemanticsActions.GetTextLayoutResult) { it(layouts) }
         val style = layouts.single().layoutInput.style
-        assertEquals(FoundationTokens.typographyGreeting.fontSize, style.fontSize)
+        assertEquals(FoundationTokens.typographyHeading.fontSize, style.fontSize)
         assertEquals(FoundationTokens.palette(dark).textPrimary, style.color)
     }
 }

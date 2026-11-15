@@ -8,7 +8,7 @@ struct GreetingScreen: View {
         let palette = FoundationTokens.palette(for: appearance)
 
         Text(verbatim: greeting)
-            .font(FoundationTokens.typographyGreeting)
+            .font(FoundationTokens.typographyHeading)
             .foregroundStyle(palette.textPrimary)
             .multilineTextAlignment(.center)
             .accessibilityIdentifier("greeting")

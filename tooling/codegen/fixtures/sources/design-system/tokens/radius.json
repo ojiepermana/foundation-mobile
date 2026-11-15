@@ -1,0 +1,4 @@
+{
+  "primitives": { "round": 10 },
+  "semantic": { "surface": "round" }
+}

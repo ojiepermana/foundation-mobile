@@ -63,7 +63,7 @@
         },
         "semantic": {
           "type": "object",
-          "required": ["greeting", "body"],
+          "required": ["heading", "body"],
           "propertyNames": { "$ref": "#/definitions/name" },
           "additionalProperties": {
             "type": "object",

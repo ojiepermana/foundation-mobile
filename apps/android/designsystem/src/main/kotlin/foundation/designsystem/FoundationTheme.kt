@@ -23,7 +23,7 @@ internal fun FoundationTheme(content: @Composable () -> Unit) {
             onSurface = palette.textPrimary,
             outline = palette.border,
         ),
-        typography = Typography(headlineLarge = FoundationTokens.typographyGreeting),
+        typography = Typography(headlineLarge = FoundationTokens.typographyHeading),
         content = content,
     )
 }

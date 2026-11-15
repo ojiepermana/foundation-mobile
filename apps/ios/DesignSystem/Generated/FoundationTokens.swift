@@ -56,5 +56,5 @@ enum FoundationTokens {
     static let motionFeedback: TimeInterval = 160 / 1000
 
     static let typographyBody: Font = .system(.body, weight: .regular)
-    static let typographyGreeting: Font = .system(.title, weight: .semibold)
+    static let typographyHeading: Font = .system(.title, weight: .semibold)
 }

@@ -12,4 +12,6 @@ A primitive names a value. A semantic role describes where to use it. For exampl
 
 References are local to each group and point directly to primitives. Typography scales carry a size and line height in logical text units at the default user text setting. A scale name identifies its typographic intent. Platform adapters map that intent to native scaling behavior. The weight scale uses the nine conventional weights from 100 through 900.
 
+The schema requires a fixed set of roles so both apps can rely on them: the eleven color roles, `heading` and `body` for typography, `page` and `content` for spacing, `surface` for radius and `feedback` for motion. Each one is named for where it is used. `heading` is the most prominent line of text on a screen, and `body` is running text. Name a new role the same way, never after the screen or the sample that uses it first.
+
 Change the schema alongside a new token category or required role. Keep existing role names stable across both apps, or migrate their uses in the same change. Run generation and both platform builds when changing a consumed role. [Canonical token schema](../../design-system/schemas/tokens.schema.json)
