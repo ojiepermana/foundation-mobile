@@ -4,6 +4,7 @@ from io import StringIO
 from contextlib import redirect_stdout
 import shutil
 from pathlib import Path
+import re
 from tempfile import TemporaryDirectory
 import unittest
 
@@ -38,20 +39,43 @@ class GenerationTests(unittest.TestCase):
         invalid["colors"]["primitives"]["red"] = "red"
         with self.assertRaisesRegex(ValueError, "tokens:"):
             generate.check_schema(invalid, TOKEN_SCHEMA, "tokens")
+        # covers: AC-2 (a token set without a required role is refused with the exact message)
         for group, role in (("spacing", "page"), ("typography", "heading"), ("typography", "body")):
-            invalid = deepcopy(groups)
-            del invalid[group]["semantic"][role]
-            with self.assertRaisesRegex(ValueError, "tokens:"):
-                generate.check_schema(invalid, TOKEN_SCHEMA, "tokens")
+            with self.subTest(missing=f"{group}.{role}"):
+                invalid = deepcopy(groups)
+                del invalid[group]["semantic"][role]
+                message = f"tokens: data.{group}.semantic must contain ['{role}'] properties"
+                with self.assertRaisesRegex(ValueError, f"^{re.escape(message)}$"):
+                    generate.check_schema(invalid, TOKEN_SCHEMA, "tokens")
 
     def test_typography_uses_native_mapping_from_neutral_scales(self):
+        # covers: AC-3 (both generated files carry typographyHeading, read from the role heading)
         groups = token_groups()
         projections = tokens.render(groups)
-        self.assertIn("static let typographyHeading: Font = .system(.title, weight: .bold)",
-                      projections[tokens.SWIFT_PATH])
-        self.assertIn("val typographyHeading = TextStyle(", projections[tokens.KOTLIN_PATH])
-        self.assertIn("fontSize = 30.sp", projections[tokens.KOTLIN_PATH])
-        self.assertIn("lineHeight = 36.sp", projections[tokens.KOTLIN_PATH])
+        for path in (tokens.SWIFT_PATH, tokens.KOTLIN_PATH):
+            with self.subTest(names=str(path)):
+                names = re.findall(r"(?:static let|val) (typography\w+)", projections[path])
+                self.assertEqual(names, ["typographyBody", "typographyHeading"])
+        sample = deepcopy(groups)
+        sample["typography"] = {
+            "primitives": {"scale": {"headline": {"size": 32, "lineHeight": 40},
+                                     "reading": {"size": 17, "lineHeight": 24}},
+                           "weight": {"regular": 400, "semibold": 600}},
+            "semantic": {"heading": {"scale": "headline", "weight": "semibold"},
+                         "body": {"scale": "reading", "weight": "regular"}},
+        }
+        for case, source, swift_weight, size, line_height, weight in (
+                ("fixture", groups, "bold", 30, 36, 700),
+                ("spec 0004 values", sample, "semibold", 32, 40, 600)):
+            with self.subTest(case=case):
+                rendered = tokens.render(source)
+                self.assertIn(f"    static let typographyHeading: Font = .system(.title, weight: .{swift_weight})\n",
+                              rendered[tokens.SWIFT_PATH])
+                self.assertIn("    val typographyHeading = TextStyle(\n"
+                              f"        fontSize = {size}.sp,\n"
+                              f"        lineHeight = {line_height}.sp,\n"
+                              f"        fontWeight = FontWeight({weight}),\n"
+                              "    )\n", rendered[tokens.KOTLIN_PATH])
 
         groups["typography"]["primitives"]["scale"]["headline"]["appleStyle"] = "headline"
         with self.assertRaisesRegex(ValueError, "tokens:"):
