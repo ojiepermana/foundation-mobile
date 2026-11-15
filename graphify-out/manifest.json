@@ -246,10 +246,10 @@
     "semantic_hash": "487942bebe464f5f7445a54df427bb5e"
   },
   "tooling/codegen/test_generation.py": {
-    "mtime": 1794743304.8182359,
-    "seen": 1794744396.011639,
-    "ast_hash": "93f0d4bc250bfa32d1f89eea35cb3088",
-    "semantic_hash": "93f0d4bc250bfa32d1f89eea35cb3088"
+    "mtime": 1794745388.154704,
+    "seen": 1794752384.335548,
+    "ast_hash": "415f2b0c8f91e2e35968e8c8a545f272",
+    "semantic_hash": "415f2b0c8f91e2e35968e8c8a545f272"
   },
   "tooling/codegen/tokens.py": {
     "mtime": 1794655434.5162141,
@@ -468,10 +468,10 @@
     "semantic_hash": "ba5f20b4ab38a450dcebd80a02266bbd"
   },
   "docs/scope/_root/scope.md": {
-    "mtime": 1794741699.3899913,
-    "seen": 1794742626.857774,
+    "mtime": 1794745446.7773929,
+    "seen": 1794752384.416339,
     "ast_hash": "490d14601e212da409e051b28de911a0",
-    "semantic_hash": "0fe13cd8c1023770cb8897bc29c5d8d8"
+    "semantic_hash": "a9dc02db2b6d4958958033d196fa9e5e"
   },
   "docs/scope/android/001 - Native Android greeting.md": {
     "mtime": 1794661147.520863,
@@ -492,10 +492,10 @@
     "semantic_hash": "06eb03231c340acb71a94351a52900e8"
   },
   "docs/scope/index.md": {
-    "mtime": 1794738523.0896947,
-    "seen": 1794738747.459253,
+    "mtime": 1794745446.7891412,
+    "seen": 1794752384.416348,
     "ast_hash": "8f91ce15e69f9df900012ab3417554b1",
-    "semantic_hash": "8f91ce15e69f9df900012ab3417554b1"
+    "semantic_hash": "b8140eddf562ce124d6a93f90d7472bf"
   },
   "docs/scope/ios/001 - Native iOS greeting.md": {
     "mtime": 1794661147.5214124,
@@ -558,10 +558,10 @@
     "semantic_hash": "8340b7f4bd20f9b7130f0fcc6e826c9d"
   },
   "docs/scope/_root/010 - Schemas free of sample names.md": {
-    "mtime": 1794741699.3895366,
-    "seen": 1794742626.857771,
+    "mtime": 1794745446.7771614,
+    "seen": 1794752384.416329,
     "ast_hash": "d25ab57ac3e2a25b8027210f15d2a7c5",
-    "semantic_hash": "55ab8920c4c1dde1ce557b04b70a41aa"
+    "semantic_hash": "747bb2e00118c1629aa8616cb8a02e63"
   },
   "scripts/init-project.sh": {
     "mtime": 1794733667.7997184,
@@ -696,10 +696,10 @@
     "semantic_hash": "f7717b0d814fc620a6580f31f3d2f20f"
   },
   "docs/scope/coordination/010 - Schemas free of sample names.log.md": {
-    "mtime": 1794743426.6213524,
-    "seen": 1794744396.042822,
+    "mtime": 1794751828.9493654,
+    "seen": 1794752384.416343,
     "ast_hash": "",
-    "semantic_hash": "7adc1efa25ee87208bda6ec4deb774e1"
+    "semantic_hash": "b3cb830bb96a0aa32991b277eff4d2ee"
   },
   "docs/scope/coordination/010 - Schemas free of sample names.manual.md": {
     "mtime": 1794740419.6076636,
@@ -708,10 +708,10 @@
     "semantic_hash": "7a53841790071d32b68b9e20697d3100"
   },
   "docs/specs/_root/0004-schemas-free-of-sample-names/index.md": {
-    "mtime": 1794743304.6843987,
-    "seen": 1794744396.0428228,
+    "mtime": 1794745446.8076682,
+    "seen": 1794752384.416352,
     "ast_hash": "",
-    "semantic_hash": "60dd9e32ae378a0242fb37f7a8273bc1"
+    "semantic_hash": "0fd11b5ae2ba7bb9fcddaf135f4ccba2"
   },
   "docs/specs/_root/0004-schemas-free-of-sample-names/rationale.md": {
     "mtime": 1794741669.7439096,
@@ -762,9 +762,9 @@
     "semantic_hash": "9d1880df3fb72e79cefea05b9a6b6cfd"
   },
   "docs/specs/_root/0004-schemas-free-of-sample-names/verify.md": {
-    "mtime": 1794743304.702353,
-    "seen": 1794744396.042824,
+    "mtime": 1794745388.2550225,
+    "seen": 1794752384.4163551,
     "ast_hash": "",
-    "semantic_hash": "bc581586bfcde1f72726544e828e0154"
+    "semantic_hash": "ad2358beecc957beaa3c9515948f311f"
   }
 }

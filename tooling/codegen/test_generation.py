@@ -4,6 +4,7 @@ from io import StringIO
 from contextlib import redirect_stdout
 import shutil
 from pathlib import Path
+import re
 from tempfile import TemporaryDirectory
 import unittest
 
@@ -38,20 +39,43 @@ class GenerationTests(unittest.TestCase):
         invalid["colors"]["primitives"]["red"] = "red"
         with self.assertRaisesRegex(ValueError, "tokens:"):
             generate.check_schema(invalid, TOKEN_SCHEMA, "tokens")
+        # covers: AC-2 (a token set without a required role is refused with the exact message)
         for group, role in (("spacing", "page"), ("typography", "heading"), ("typography", "body")):
-            invalid = deepcopy(groups)
-            del invalid[group]["semantic"][role]
-            with self.assertRaisesRegex(ValueError, "tokens:"):
-                generate.check_schema(invalid, TOKEN_SCHEMA, "tokens")
+            with self.subTest(missing=f"{group}.{role}"):
+                invalid = deepcopy(groups)
+                del invalid[group]["semantic"][role]
+                message = f"tokens: data.{group}.semantic must contain ['{role}'] properties"
+                with self.assertRaisesRegex(ValueError, f"^{re.escape(message)}$"):
+                    generate.check_schema(invalid, TOKEN_SCHEMA, "tokens")
 
     def test_typography_uses_native_mapping_from_neutral_scales(self):
+        # covers: AC-3 (both generated files carry typographyHeading, read from the role heading)
         groups = token_groups()
         projections = tokens.render(groups)
-        self.assertIn("static let typographyHeading: Font = .system(.title, weight: .bold)",
-                      projections[tokens.SWIFT_PATH])
-        self.assertIn("val typographyHeading = TextStyle(", projections[tokens.KOTLIN_PATH])
-        self.assertIn("fontSize = 30.sp", projections[tokens.KOTLIN_PATH])
-        self.assertIn("lineHeight = 36.sp", projections[tokens.KOTLIN_PATH])
+        for path in (tokens.SWIFT_PATH, tokens.KOTLIN_PATH):
+            with self.subTest(names=str(path)):
+                names = re.findall(r"(?:static let|val) (typography\w+)", projections[path])
+                self.assertEqual(names, ["typographyBody", "typographyHeading"])
+        sample = deepcopy(groups)
+        sample["typography"] = {
+            "primitives": {"scale": {"headline": {"size": 32, "lineHeight": 40},
+                                     "reading": {"size": 17, "lineHeight": 24}},
+                           "weight": {"regular": 400, "semibold": 600}},
+            "semantic": {"heading": {"scale": "headline", "weight": "semibold"},
+                         "body": {"scale": "reading", "weight": "regular"}},
+        }
+        for case, source, swift_weight, size, line_height, weight in (
+                ("fixture", groups, "bold", 30, 36, 700),
+                ("spec 0004 values", sample, "semibold", 32, 40, 600)):
+            with self.subTest(case=case):
+                rendered = tokens.render(source)
+                self.assertIn(f"    static let typographyHeading: Font = .system(.title, weight: .{swift_weight})\n",
+                              rendered[tokens.SWIFT_PATH])
+                self.assertIn("    val typographyHeading = TextStyle(\n"
+                              f"        fontSize = {size}.sp,\n"
+                              f"        lineHeight = {line_height}.sp,\n"
+                              f"        fontWeight = FontWeight({weight}),\n"
+                              "    )\n", rendered[tokens.KOTLIN_PATH])
 
         groups["typography"]["primitives"]["scale"]["headline"]["appleStyle"] = "headline"
         with self.assertRaisesRegex(ValueError, "tokens:"):
@@ -69,14 +93,30 @@ class GenerationTests(unittest.TestCase):
                                   LOCALIZATION_SCHEMA, "localization")
 
     def test_localization_schema_asks_for_one_key_and_names_none(self):
+        # covers: AC-1 (one key of any name; the key pattern and the value rule stay)
         schema = generate.load(generate.ROOT / LOCALIZATION_SCHEMA)
         self.assertEqual(schema.get("minProperties"), 1)
         self.assertNotIn("required", schema)
         self.assertNotIn("properties", schema)
-        with self.assertRaisesRegex(ValueError, "localization: data must contain at least 1 properties"):
+        self.assertEqual(schema.get("propertyNames"), {"pattern": "^[a-z][a-z0-9]*(_[a-z0-9]+)*$"})
+        self.assertEqual(schema.get("additionalProperties"), {"type": "string", "minLength": 1})
+        with self.assertRaisesRegex(ValueError, "^localization: data must contain at least 1 properties$"):
             generate.check_schema({}, LOCALIZATION_SCHEMA, "localization")
-        for catalog in ({"a": "Text"}, {"welcome_title": "Welcome", "second_key": "More"}):
-            generate.check_schema(catalog, LOCALIZATION_SCHEMA, "localization")
+        for catalog in ({"a": "Text"}, {"x1": "Text"}, {"welcome_title": "Welcome"}, {"a_b2_c": "Text"},
+                        {"welcome_title": "Welcome", "second_key": "More"}):
+            with self.subTest(accepted=catalog):
+                generate.check_schema(catalog, LOCALIZATION_SCHEMA, "localization")
+        for catalog in ({"1a": "Text"}, {"_a": "Text"}, {"a__b": "Text"}, {"a-b": "Text"},
+                        {"a": ""}, {"a": 1}):
+            with self.subTest(refused=catalog):
+                with self.assertRaisesRegex(ValueError, "^localization: "):
+                    generate.check_schema(catalog, LOCALIZATION_SCHEMA, "localization")
+        with TemporaryDirectory() as temp, redirect_stdout(StringIO()):
+            root = Path(temp)
+            shutil.copytree(FIXTURE, root, dirs_exist_ok=True)
+            (root / "shared/localization/en.json").write_text("{}\n")
+            with self.assertRaisesRegex(ValueError, "^" + re.escape("en.json: data must contain at least 1 properties") + "$"):
+                generate.generate(root, check=True)
 
     def test_placeholders_reorder_and_literals_escape(self):
         catalogs = {"en": {"message": '{first} & {last}, "100%"'},
@@ -122,10 +162,17 @@ class GenerationTests(unittest.TestCase):
             shutil.copytree(FIXTURE, root, dirs_exist_ok=True)
             generate.generate(root, check=False)
             generate.generate(root, check=True)
+            # covers: AC-6 (the outputs hold only the names the sample free sources give them)
             strings = (root / resources.ANDROID_RESOURCES / "values/foundation_strings.xml").read_text()
             self.assertIn('<string name="welcome_title" formatted="false">"Welcome"</string>', strings)
-            self.assertIn("typographyHeading", (root / tokens.SWIFT_PATH).read_text())
-            self.assertIn("typographyHeading", (root / tokens.KOTLIN_PATH).read_text())
+            self.assertEqual(re.findall(r'<string name="(\w+)"', strings), ["welcome_title"])
+            apple = (root / resources.IOS_RESOURCES / "en.lproj/Localizable.strings").read_text()
+            self.assertIn('"welcome_title" = "Welcome";', apple)
+            self.assertEqual(re.findall(r'^"(\w+)" = ', apple, re.MULTILINE), ["welcome_title"])
+            for path in (tokens.SWIFT_PATH, tokens.KOTLIN_PATH):
+                with self.subTest(names=str(path)):
+                    names = re.findall(r"(?:static let|val) (typography\w+)", (root / path).read_text())
+                    self.assertEqual(names, ["typographyBody", "typographyHeading"])
 
 
 if __name__ == "__main__":
