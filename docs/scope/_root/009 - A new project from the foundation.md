@@ -13,4 +13,4 @@ You can turn this repository into a new product without hunting for names by han
    * [ ] The workflow input for a derived run and the identity comparison in both native jobs (AC-10)
    * [x] The README path and the document updates (AC-11, AC-12)
 * [ ] Verify it: `/check verify a new project from the foundation`
-* [ ] Test it: `/test a new project from the foundation`
+* [x] Test it: `/test a new project from the foundation`
