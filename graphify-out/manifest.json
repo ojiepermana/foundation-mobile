@@ -604,5 +604,23 @@
     "seen": 1794736126.8494458,
     "ast_hash": "4a3061315d472a74e8555e32b4bb14f0",
     "semantic_hash": "4a3061315d472a74e8555e32b4bb14f0"
+  },
+  "docs/scope/coordination/009 - A new project from the foundation.log.md": {
+    "mtime": 1794736882.77792,
+    "seen": 1794737194.542596,
+    "ast_hash": "",
+    "semantic_hash": "3f08ac03853d4e6a1734ccb49b6d6dd8"
+  },
+  "docs/scope/coordination/009 - A new project from the foundation.brief-umum.md": {
+    "mtime": 1794736773.3715515,
+    "seen": 1794737194.542603,
+    "ast_hash": "",
+    "semantic_hash": "bb5cbc414f98754aafae9254a4afb224"
+  },
+  "docs/scope/coordination/009 - A new project from the foundation.manual.md": {
+    "mtime": 1794736773.390204,
+    "seen": 1794737194.542607,
+    "ast_hash": "",
+    "semantic_hash": "e753254581b8f4ce78929bd3362a5842"
   }
 }
