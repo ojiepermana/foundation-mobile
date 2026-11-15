@@ -43,7 +43,17 @@ On a separate iOS 26.5 simulator the greeting appeared, but both the app and sys
 
 [Hosted run 43701281055](https://github.com/ojiepermana/foundation-mobile/actions/runs/43701281055) ran on the push of the same revision. All three jobs passed. In the `ios` and `android` jobs the derive step was skipped, and both comparison steps passed with `dev.foundation.mobile` and `Mobile Foundation`.
 
-The workflow runs on every push, so later revisions have their own runs. This record describes the three runs above.
+[Hosted run 43723923953](https://github.com/ojiepermana/foundation-mobile/actions/runs/43723923953) ran the same workflow on revision `b64055a6d5e2259e9fba401dbdd70deabaf0eac6`, pushed to `main` on 2026-11-15. It was the first hosted run after the localization schema stopped naming a key and the typography role `greeting` became `heading`. All three jobs passed.
+
+| Job | Runner | Outcome | What ran |
+| --- | --- | --- | --- |
+| `foundation` | `ubuntu-24.04`, image 20261111.370.1 | Passed | `cargo build --locked --workspace` and `scripts/test.sh` passed with Rust 1.100.0 and Python 3.12. Three Rust tests, 50 derivation tests and nine generator tests passed. |
+| `ios` | `macos-26-arm64`, image 20261102.0473.1 | Passed | Xcode 26.5 built the app for the arm64 simulator and linked the unsigned device build. The derive step was skipped, and the comparison step printed `Identity file: dev.foundation.mobile, Mobile Foundation` and `Built app: dev.foundation.mobile, Mobile Foundation`. On an iPhone 17 simulator running iOS 26.5, the greeting test passed once in light and once in dark appearance, with the simulator set to each appearance before its run. |
+| `android` | `ubuntu-24.04`, image 20261111.370.1 | Passed | Gradle 9.3.1 assembled the debug app and the instrumentation APK with Temurin 17.0.21. The derive step was skipped, and the comparison step printed the same two lines. On an API 36 x86_64 emulator (`google_apis` image, emulator 37.2.13.0), two instrumentation tests passed with night mode off and again with night mode on. |
+
+[Hosted run 43724499680](https://github.com/ojiepermana/foundation-mobile/actions/runs/43724499680) ran on the push of revision `3019db7e2a3a0a80027bf7afc9818df9b993b479` on 2026-11-15. That revision changed only the coordination log of scope 010 and the knowledge graph. All three jobs passed with the same test counts. Its `android` job ran on image 20261111.127.1.
+
+The workflow runs on every push, so later revisions have their own runs. This record describes the five runs above.
 
 ## Runtimes exercised
 
