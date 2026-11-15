@@ -1,6 +1,6 @@
 # Localization
 
-Each UTF-8 JSON object maps stable lower snake case keys to strings. `greeting_recipient` names the recipient passed to the Rust greeting. Its English translation is the canonical terminology for this example. Both applications render the exact string returned from Rust.
+Each UTF-8 JSON object maps stable lower snake case keys to strings. A catalog needs at least one key. The schema names none, so the keys are yours to choose. The sample catalog has one key, `greeting_recipient`, which names the recipient passed to the Rust greeting. Its English translation is the canonical terminology for this example. Both applications render the exact string returned from Rust. Replace that key together with the greeting screen when your first feature arrives.
 
 Use `ll.json` for a two-letter language or `ll-RR.json` for a regional variant, following BCP 47 casing. Every catalog must have the same keys as the configured default, currently `en`. Unsupported device languages use the platform’s fallback resource. A missing key in a supplied catalog fails generation.
 
