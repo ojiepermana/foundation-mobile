@@ -12,10 +12,10 @@
     "semantic_hash": "dfd1a0d18af4162594b700b281dde5ca"
   },
   "apps/android/app/src/androidTest/kotlin/foundation/mobile/GreetingTest.kt": {
-    "mtime": 1794655562.4077172,
-    "seen": 1794661938.251235,
-    "ast_hash": "bfaab8992fb30a22a061d3689ce2f7c9",
-    "semantic_hash": "bfaab8992fb30a22a061d3689ce2f7c9"
+    "mtime": 1794743304.5322206,
+    "seen": 1794744396.0114439,
+    "ast_hash": "fdac04201e0d95a2dc3907829276ed00",
+    "semantic_hash": "fdac04201e0d95a2dc3907829276ed00"
   },
   "apps/android/app/src/main/kotlin/foundation/mobile/MainActivity.kt": {
     "mtime": 1794654962.4745653,
@@ -30,16 +30,16 @@
     "semantic_hash": "f4da7ec151390f327abebb73adc05bb6"
   },
   "apps/android/designsystem/src/main/kotlin/foundation/designsystem/FoundationTheme.kt": {
-    "mtime": 1794655075.4767807,
-    "seen": 1794661938.2512372,
-    "ast_hash": "bd81950ea3951933dc1ea81889b82cd0",
-    "semantic_hash": "bd81950ea3951933dc1ea81889b82cd0"
+    "mtime": 1794743304.5514114,
+    "seen": 1794744396.0114481,
+    "ast_hash": "6f27837f705aa2ec5561aad1d7d195b7",
+    "semantic_hash": "6f27837f705aa2ec5561aad1d7d195b7"
   },
   "apps/android/designsystem/src/main/kotlin/foundation/designsystem/FoundationTokens.kt": {
-    "mtime": 1794655077.2997136,
-    "seen": 1794661938.2512379,
-    "ast_hash": "cc6463aec7504b772b81d102a2f2b2e5",
-    "semantic_hash": "cc6463aec7504b772b81d102a2f2b2e5"
+    "mtime": 1794743304.5693395,
+    "seen": 1794744396.011449,
+    "ast_hash": "baaea4b627a74704f1d73dfe3ab4d9f6",
+    "semantic_hash": "baaea4b627a74704f1d73dfe3ab4d9f6"
   },
   "apps/android/gradlew": {
     "mtime": 1794654933.9483979,
@@ -66,16 +66,16 @@
     "semantic_hash": "99e4923afa6a5aad33c9227cdba5ca16"
   },
   "apps/ios/DesignSystem/Generated/FoundationTokens.swift": {
-    "mtime": 1794655077.29956,
-    "seen": 1794661938.251242,
-    "ast_hash": "c9d9af150c38d369bd8717dca5a85f64",
-    "semantic_hash": "c9d9af150c38d369bd8717dca5a85f64"
+    "mtime": 1794743304.5824666,
+    "seen": 1794744396.01145,
+    "ast_hash": "2f87a3c74eb91d89ffe1510a1b8847fd",
+    "semantic_hash": "2f87a3c74eb91d89ffe1510a1b8847fd"
   },
   "apps/ios/Presentation/GreetingScreen.swift": {
-    "mtime": 1794655034.171055,
-    "seen": 1794661938.251243,
-    "ast_hash": "98593d12589916391094fbcea69eddde",
-    "semantic_hash": "98593d12589916391094fbcea69eddde"
+    "mtime": 1794743304.5935228,
+    "seen": 1794744396.0114508,
+    "ast_hash": "cc6832b10ab0bcb6116a03b4da4627ed",
+    "semantic_hash": "cc6832b10ab0bcb6116a03b4da4627ed"
   },
   "apps/ios/UITests/GreetingUITests.swift": {
     "mtime": 1794658102.1973753,
@@ -156,10 +156,10 @@
     "semantic_hash": "75ef78c732cae8100816ba059a6867ab"
   },
   "design-system/tokens/typography.json": {
-    "mtime": 1794655434.51455,
-    "seen": 1794661938.251252,
-    "ast_hash": "d4088d391f6c5f16a3512778aa6c4e3a",
-    "semantic_hash": "d4088d391f6c5f16a3512778aa6c4e3a"
+    "mtime": 1794743304.6272755,
+    "seen": 1794744396.0115972,
+    "ast_hash": "3233089dbdf9c1b9330116546cd658ad",
+    "semantic_hash": "3233089dbdf9c1b9330116546cd658ad"
   },
   "scripts/build-android-rust.sh": {
     "mtime": 1794654933.9682548,
@@ -222,10 +222,10 @@
     "semantic_hash": "6057f4a99cd5ff40c5050e3f49d1725c"
   },
   "shared/specifications/localization.schema.json": {
-    "mtime": 1794654995.0774963,
-    "seen": 1794661938.2512598,
-    "ast_hash": "1b3772194516bf1689f39215811f324f",
-    "semantic_hash": "1b3772194516bf1689f39215811f324f"
+    "mtime": 1794743304.7304394,
+    "seen": 1794744396.0116138,
+    "ast_hash": "c3d08b39bc84d5b69f8b49a37e63418c",
+    "semantic_hash": "c3d08b39bc84d5b69f8b49a37e63418c"
   },
   "tests/contracts/greeting.rs": {
     "mtime": 1794654859.0105717,
@@ -246,10 +246,10 @@
     "semantic_hash": "487942bebe464f5f7445a54df427bb5e"
   },
   "tooling/codegen/test_generation.py": {
-    "mtime": 1794655434.523183,
-    "seen": 1794661938.251262,
-    "ast_hash": "bc23a860592b86e739d363bbd99a7157",
-    "semantic_hash": "bc23a860592b86e739d363bbd99a7157"
+    "mtime": 1794743304.8182359,
+    "seen": 1794744396.011639,
+    "ast_hash": "93f0d4bc250bfa32d1f89eea35cb3088",
+    "semantic_hash": "93f0d4bc250bfa32d1f89eea35cb3088"
   },
   "tooling/codegen/tokens.py": {
     "mtime": 1794655434.5162141,
@@ -342,10 +342,10 @@
     "semantic_hash": "7a9d38ac14687af45338a44225759aed"
   },
   "docs/design-system/platform-mapping.md": {
-    "mtime": 1794655434.522144,
-    "seen": 1794661938.251273,
+    "mtime": 1794743304.6317143,
+    "seen": 1794744396.042817,
     "ast_hash": "94367eb822da34f8ca38a3be74286c6a",
-    "semantic_hash": "94367eb822da34f8ca38a3be74286c6a"
+    "semantic_hash": "f59b44c72b4ac63794a721f9b82069d2"
   },
   "docs/design-system/principles.md": {
     "mtime": 1794655221.068058,
@@ -354,22 +354,22 @@
     "semantic_hash": "321f4edbba4c8b3b0714b777e3e80209"
   },
   "docs/design-system/token-conventions.md": {
-    "mtime": 1794655434.5175273,
-    "seen": 1794661938.2512739,
+    "mtime": 1794743304.6345022,
+    "seen": 1794744396.042819,
     "ast_hash": "148f1b660d8d4af43cabec9bb2bf15ed",
-    "semantic_hash": "148f1b660d8d4af43cabec9bb2bf15ed"
+    "semantic_hash": "e72d195fb9f240994bee1d738fd6aa5a"
   },
   "docs/quality/architecture-compliance.md": {
-    "mtime": 1794733854.3703518,
-    "seen": 1794736126.849438,
+    "mtime": 1794743304.649319,
+    "seen": 1794744396.04282,
     "ast_hash": "12434a56cc45cc3413dca0c98ed35a82",
-    "semantic_hash": "12434a56cc45cc3413dca0c98ed35a82"
+    "semantic_hash": "d6d209727642f04360b434f20c92d8f2"
   },
   "docs/quality/verification.md": {
-    "mtime": 1794737839.0081716,
-    "seen": 1794738141.044064,
+    "mtime": 1794743304.6655483,
+    "seen": 1794744396.0428212,
     "ast_hash": "1f7169648d5ab808865be9921093a16f",
-    "semantic_hash": "1f7169648d5ab808865be9921093a16f"
+    "semantic_hash": "7c4c26f107ea7893e65750a7a5d7bb66"
   },
   "docs/rules/android-rules.md": {
     "mtime": 1794655108.0934105,
@@ -528,10 +528,10 @@
     "semantic_hash": "04199ed5cf30140de6c48cfb1b23e630"
   },
   "shared/localization/README.md": {
-    "mtime": 1794655493.8994746,
-    "seen": 1794661938.251295,
+    "mtime": 1794743304.716389,
+    "seen": 1794744396.042826,
     "ast_hash": "11b63b3a738f9c557f124cae8ed1ae7f",
-    "semantic_hash": "11b63b3a738f9c557f124cae8ed1ae7f"
+    "semantic_hash": "ccb2963c0c8fbaed9efe912419163528"
   },
   "tooling/codegen/requirements.txt": {
     "mtime": 1794654945.139328,
@@ -696,10 +696,10 @@
     "semantic_hash": "f7717b0d814fc620a6580f31f3d2f20f"
   },
   "docs/scope/coordination/010 - Schemas free of sample names.log.md": {
-    "mtime": 1794741775.7386684,
-    "seen": 1794742626.8577762,
+    "mtime": 1794743426.6213524,
+    "seen": 1794744396.042822,
     "ast_hash": "",
-    "semantic_hash": "5bd2804bf3fbe0766873918df2d1069f"
+    "semantic_hash": "7adc1efa25ee87208bda6ec4deb774e1"
   },
   "docs/scope/coordination/010 - Schemas free of sample names.manual.md": {
     "mtime": 1794740419.6076636,
@@ -708,15 +708,63 @@
     "semantic_hash": "7a53841790071d32b68b9e20697d3100"
   },
   "docs/specs/_root/0004-schemas-free-of-sample-names/index.md": {
-    "mtime": 1794741669.7436354,
-    "seen": 1794742626.8577778,
+    "mtime": 1794743304.6843987,
+    "seen": 1794744396.0428228,
     "ast_hash": "",
-    "semantic_hash": "f4982fa064c963ba56246b80a83fe533"
+    "semantic_hash": "60dd9e32ae378a0242fb37f7a8273bc1"
   },
   "docs/specs/_root/0004-schemas-free-of-sample-names/rationale.md": {
     "mtime": 1794741669.7439096,
     "seen": 1794742626.857779,
     "ast_hash": "",
     "semantic_hash": "7ba0dc2a37df22b64704507e53f01e98"
+  },
+  "tooling/codegen/fixtures/sources/design-system/tokens/colors.json": {
+    "mtime": 1794743304.773768,
+    "seen": 1794744396.011619,
+    "ast_hash": "c6b07711bb79002b95d5d6696c0ef854",
+    "semantic_hash": "c6b07711bb79002b95d5d6696c0ef854"
+  },
+  "tooling/codegen/fixtures/sources/design-system/tokens/motion.json": {
+    "mtime": 1794743304.7843544,
+    "seen": 1794744396.011622,
+    "ast_hash": "19dd9f8cba72404cdfa6a89f0882f878",
+    "semantic_hash": "19dd9f8cba72404cdfa6a89f0882f878"
+  },
+  "tooling/codegen/fixtures/sources/design-system/tokens/radius.json": {
+    "mtime": 1794743304.7885668,
+    "seen": 1794744396.011625,
+    "ast_hash": "8787c27789738a5e07b2473ec6ae7ab9",
+    "semantic_hash": "8787c27789738a5e07b2473ec6ae7ab9"
+  },
+  "tooling/codegen/fixtures/sources/design-system/tokens/spacing.json": {
+    "mtime": 1794743304.7918582,
+    "seen": 1794744396.0116282,
+    "ast_hash": "870e247d438e1d7cf1efc00bc82a2eb0",
+    "semantic_hash": "870e247d438e1d7cf1efc00bc82a2eb0"
+  },
+  "tooling/codegen/fixtures/sources/design-system/tokens/typography.json": {
+    "mtime": 1794743304.8005311,
+    "seen": 1794744396.011631,
+    "ast_hash": "e4f29cd2b3b0c9a38f1acad17e03a600",
+    "semantic_hash": "e4f29cd2b3b0c9a38f1acad17e03a600"
+  },
+  "tooling/codegen/fixtures/sources/shared/config/foundation.json": {
+    "mtime": 1794743304.807603,
+    "seen": 1794744396.0116339,
+    "ast_hash": "e4b8587f504532eeb39c8328432c8c23",
+    "semantic_hash": "e4b8587f504532eeb39c8328432c8c23"
+  },
+  "tooling/codegen/fixtures/sources/shared/localization/en.json": {
+    "mtime": 1794743304.8079476,
+    "seen": 1794744396.011636,
+    "ast_hash": "9d1880df3fb72e79cefea05b9a6b6cfd",
+    "semantic_hash": "9d1880df3fb72e79cefea05b9a6b6cfd"
+  },
+  "docs/specs/_root/0004-schemas-free-of-sample-names/verify.md": {
+    "mtime": 1794743304.702353,
+    "seen": 1794744396.042824,
+    "ast_hash": "",
+    "semantic_hash": "bc581586bfcde1f72726544e828e0154"
   }
 }

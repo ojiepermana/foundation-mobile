@@ -5,16 +5,16 @@
 - **Mode keputusan:** `auto` · **Ketentuan tambahan:** tidak ada
 - **Aturan umum brief:** `010 - Schemas free of sample names.brief-umum.md` · **Langkah manual:** `010 - Schemas free of sample names.manual.md`
 - **Wave aktif:** `1`, mulai `2026-11-15`
-- **Diperbarui:** `2026-11-15 18:25`
+- **Diperbarui:** `2026-11-15 19:20`
 
 ## Sub sesi wave `1`
 
 | Nama | Peran | Item | Scope | Ownership | Branch | Model | Status |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | `arc-f010-spec` | architect | 010, `Design it (spec)`, spec `0004` | `_root/010` | `docs/specs/_root/0004-schemas-free-of-sample-names/`, plus satu baris Follow-up di `docs/specs/_root/0003-new-project-from-foundation/index.md` | `claude/arc-f010-spec-6c76d1` · worktree `~/worktrees/mobile/arc-f010-spec-6c76d1` · sesi `local_b348c635-7892-4f44-b57e-4cc3d0f59a32` | `fable-5-2 · high` | `merged` |
-| `dev-f010-m1` | developer | 010, `Build it`, ketiga milestone, langkah Build plan 1 sampai 5 spec `0004` | `_root/010` | `shared/specifications/localization.schema.json`, `design-system/schemas/tokens.schema.json`, `design-system/tokens/typography.json`, dua file `FoundationTokens` hasil generator, `apps/ios/Presentation/GreetingScreen.swift`, `FoundationTheme.kt`, `GreetingTest.kt`, `tooling/codegen/fixtures/sources/`, `tooling/codegen/test_generation.py`, lima dokumen dari Build plan, `verify.md` dan baris Status spec `0004` | `claude/dev-f010-m1-6599c9` · worktree `~/worktrees/mobile/dev-f010-m1-6599c9` · sesi `local_91079f2a-06c8-4a13-8a09-59883e83bf89` | `opus-5-5 · medium` | `aktif` |
-| `chk-f010-verify` | checker (verify) | 010, verify milestone dan verify penuh, menutup `Build it` dan `Verify it` | `_root/010` | centang `verify.md` spec `0004` | `claude/chk-f010-verify-59dbd8` · worktree `~/worktrees/mobile/chk-f010-verify-59dbd8` · sesi `local_6039274d-f7c6-49d4-816c-9407f01f81f6` | `fable-5-2 · high` | `standby` |
-| `tst-f010-test` | tester | 010, `Test it` | `_root/010` | file test dari Range perubahan, ditetapkan lead | `claude/tst-f010-test-ba5361` · worktree `~/worktrees/mobile/tst-f010-test-ba5361` · sesi `local_c00d6993-aea5-4ed6-9957-6275400f7c10` | `opus-5-5 · high` | `standby` |
+| `dev-f010-m1` | developer | 010, `Build it`, ketiga milestone, langkah Build plan 1 sampai 5 spec `0004`. Langkah Build plan selesai: 1, 2, 3, 4, 5 (`6b92beb`, `861bc7d`, `eba5c48`, `efb0a6c`, `db8fe2f`; `6efe3c4` Status, `e874293` `verify.md`). Pointer code in: `design-system/`, `shared/specifications/`, `tooling/codegen/` | `_root/010` | `shared/specifications/localization.schema.json`, `design-system/schemas/tokens.schema.json`, `design-system/tokens/typography.json`, dua file `FoundationTokens` hasil generator, `apps/ios/Presentation/GreetingScreen.swift`, `FoundationTheme.kt`, `GreetingTest.kt`, `tooling/codegen/fixtures/sources/`, `tooling/codegen/test_generation.py`, lima dokumen dari Build plan, `verify.md` dan baris Status spec `0004` | `claude/dev-f010-m1-6599c9` · worktree `~/worktrees/mobile/dev-f010-m1-6599c9` · sesi `local_91079f2a-06c8-4a13-8a09-59883e83bf89` | `opus-5-5 · medium` | `merged` |
+| `chk-f010-verify` | checker (verify) | 010, verify penuh AC-1 sampai AC-7 dari branch developer, menutup ketiga milestone, `Build it`, dan `Verify it` | `_root/010` | centang `verify.md` spec `0004` | `claude/chk-f010-verify-59dbd8` · worktree `~/worktrees/mobile/chk-f010-verify-59dbd8` · sesi `local_6039274d-f7c6-49d4-816c-9407f01f81f6` | `fable-5-2 · high` | `aktif` |
+| `tst-f010-test` | tester | 010, `Test it`, Range `7c906fb..claude/dev-f010-m1-6599c9` | `_root/010` | `tooling/codegen/test_generation.py`, file test baru di `tooling/codegen/` | `claude/tst-f010-test-ba5361` · worktree `~/worktrees/mobile/tst-f010-test-ba5361` · sesi `local_c00d6993-aea5-4ed6-9957-6275400f7c10` | `opus-5-5 · high` | `aktif` |
 
 ## Keputusan
 
@@ -36,6 +36,9 @@
 | 2026-11-15 | `verify.md` spec `0004` ditulis developer dari `## Verification matrix` dalam bentuk `verify.md` spec `0003` (satu daftar per AC, tanpa bagian per milestone). Architect tidak membuatnya. | lead |
 | 2026-11-15 | Developer dimulai sebelum merge spec di-commit, dengan `git merge claude/arc-f010-spec-6c76d1` di worktree-nya, supaya build tidak menunggu pembaruan graph (sekitar 15 menit per kejadian gerbang). Isi branch itu sama dengan yang masuk `main` lewat commit merge ini. | lead |
 | 2026-11-15 | Pembaruan graph untuk commit `903248f`: pengelompokan ulang menggeser partisi, jadi 10 label komunitas lama diganti dan 5 komunitas baru diberi label; node dan edge lama tidak berubah. 12 dokumen di dua folder `.claude/skills/rust-*` yang untracked tetap antre. | lead |
+| 2026-11-15 | Gerbang lead untuk branch developer di `main`: `scripts/test.sh` dan `scripts/generate-design-tokens.sh --check`. Build native kedua platform, yang gerbang minta bila `apps/` berubah, dibuktikan checker pada tree yang sama (branch developer sudah memuat `main`), karena disk (26 GiB bebas) hanya memberi tempat untuk satu build native pada satu waktu. Milestone baru dicentang sesudah checker melapor `done`. | lead |
+| 2026-11-15 | Checker dan tester dimulai bersamaan dari branch developer (`git merge claude/dev-f010-m1-6599c9` di worktree masing masing), sebelum merge build di-commit, karena ownership keduanya tidak beririsan (`verify.md` dan `tooling/codegen/test_generation.py`) dan hanya checker yang membangun native. | lead |
+| 2026-11-15 | Spec, `verify.md`, dan record verifikasi menyebut "nine generator tests". Tester diminta mengunci celah AC dengan memperkuat kesembilan test yang ada; fungsi test baru hanya bila tidak ada cara lain, dan jumlah barunya dilaporkan supaya lead mengurus teks spec dan record lewat item tersendiri. | lead |
 
 ## Keputusan delegasi
 
@@ -55,13 +58,15 @@ Keputusan spec yang diambil dari opsi rekomendasi atas nama user (SKILL.md bagia
 
 ## Blocker terbuka
 
-- 010 · `Verify it` dan `Test it` ← `Build it`: menunggu laporan `done` `dev-f010-m1` (verify dari branch developer) dan merge branch itu ke `main` (test).
+- 010 · ketiga milestone, `Build it`, dan `Verify it` ← laporan `chk-f010-verify`; `Test it` ← laporan `tst-f010-test`. Keduanya berjalan.
+- Catatan developer, bukan blocker: `scripts/build-ios.sh test <udid> dark` gagal bila simulator masih mode terang; `xcrun simctl ui <udid> appearance dark` harus dijalankan lebih dulu. Developer mencatatnya di `docs/quality/verification.md`. Checker diminta menilai apakah langkah AC-4 di `verify.md` cukup jelas; menyebut langkah itu di README atau skrip build ada di luar scope ini.
 - Tiga Follow-up spec `0004` (peta skala ke gaya SwiftUI di `tokens.py`, prosa "greeting" di `tooling/derive/` dan workflow, jumlah role wajib) tidak memblokir apa pun; kandidat Deferred, diusulkan ke user di akhir wave.
 - `.claude/skills/rust-async-patterns/` dan `.claude/skills/rust-best-practices/` untracked di checkout utama (terbawa dari scope 009). Saat push langkah 9 keduanya diperlakukan sebagai pengecualian yang sudah diketahui, kecuali user meminta commit.
 
 ## Dicentang pada wave ini
 
-- 010 · `Design it (spec): /architect schemas free of sample names` · laporan `arc-f010-spec` `needs-decision` lalu `done` (commit `3802a9d`, spec `0004` `Proposed`, AC-1 sampai AC-7, 5 langkah Build plan, cross check `Another model`) · `claude/arc-f010-spec-6c76d1` → commit merge yang memuat catatan ini · di `main` dengan merge ter-stage: tidak ada penanda konflik, diff branch hanya `index.md` dan `rationale.md` spec `0004` plus satu baris Follow-up spec `0003`, `scripts/test.sh` keluar `0` (7 test generator) · commit yang sama. Lead juga mengubah heading fitur ke `in-progress`, menambah link spec `0004` di baris Done when, menempel `Build it` dengan tiga milestone serta `Verify it` dan `Test it` dari blok usulan, dan mengubah baris 010 di `_root/scope.md` ke `in-progress`.
+- 010 · `Design it (spec): /architect schemas free of sample names` · laporan `arc-f010-spec` `needs-decision` lalu `done` (commit `3802a9d`, spec `0004` `Proposed`, AC-1 sampai AC-7, 5 langkah Build plan, cross check `Another model`) · `claude/arc-f010-spec-6c76d1` → `7c906fb` · di `main` dengan merge ter-stage: tidak ada penanda konflik, diff branch hanya `index.md` dan `rationale.md` spec `0004` plus satu baris Follow-up spec `0003`, `scripts/test.sh` keluar `0` (7 test generator) · `7c906fb`. Lead juga mengubah heading fitur ke `in-progress`, menambah link spec `0004` di baris Done when, menempel `Build it` dengan tiga milestone serta `Verify it` dan `Test it` dari blok usulan, dan mengubah baris 010 di `_root/scope.md` ke `in-progress`.
+- Belum dicentang, branch sudah di-merge: 010 · ketiga milestone `Build it` · laporan `dev-f010-m1` `done` (langkah Build plan 1 sampai 5, 23 file, semuanya di ownership) · `claude/dev-f010-m1-6599c9` → commit merge yang memuat catatan ini · di `main` dengan merge ter-stage: tidak ada penanda konflik, `scripts/test.sh` keluar `0` (Rust 2 dan 1 test, `Ran 50 tests` OK, `Ran 9 tests` OK), `scripts/generate-design-tokens.sh --check` keluar `0` (`4 generated files`). Centang menunggu `chk-f010-verify`.
 
 ## Riwayat wave
 
