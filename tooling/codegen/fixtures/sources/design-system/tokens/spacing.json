@@ -1,0 +1,4 @@
+{
+  "primitives": { "near": 8, "far": 20 },
+  "semantic": { "content": "near", "page": "far" }
+}

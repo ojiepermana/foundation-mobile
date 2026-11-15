@@ -1,0 +1,13 @@
+{
+  "primitives": {
+    "scale": {
+      "headline": { "size": 30, "lineHeight": 36 },
+      "reading": { "size": 15, "lineHeight": 22 }
+    },
+    "weight": { "regular": 400, "bold": 700 }
+  },
+  "semantic": {
+    "heading": { "scale": "headline", "weight": "bold" },
+    "body": { "scale": "reading", "weight": "regular" }
+  }
+}

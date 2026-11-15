@@ -1,0 +1,16 @@
+{
+  "primitives": { "paper": "#FFFFFF", "coal": "#000000" },
+  "semantic": {
+    "brand":         { "light": "coal", "dark": "paper" },
+    "primary":       { "light": "coal", "dark": "paper" },
+    "secondary":     { "light": "coal", "dark": "paper" },
+    "background":    { "light": "paper", "dark": "coal" },
+    "surface":       { "light": "paper", "dark": "coal" },
+    "textPrimary":   { "light": "coal", "dark": "paper" },
+    "textSecondary": { "light": "coal", "dark": "paper" },
+    "border":        { "light": "coal", "dark": "paper" },
+    "success":       { "light": "coal", "dark": "paper" },
+    "warning":       { "light": "coal", "dark": "paper" },
+    "error":         { "light": "coal", "dark": "paper" }
+  }
+}

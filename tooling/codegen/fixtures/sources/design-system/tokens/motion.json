@@ -1,0 +1,4 @@
+{
+  "primitives": { "brisk": 120 },
+  "semantic": { "feedback": "brisk" }
+}
