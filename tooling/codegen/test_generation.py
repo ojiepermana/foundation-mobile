@@ -93,14 +93,30 @@ class GenerationTests(unittest.TestCase):
                                   LOCALIZATION_SCHEMA, "localization")
 
     def test_localization_schema_asks_for_one_key_and_names_none(self):
+        # covers: AC-1 (one key of any name; the key pattern and the value rule stay)
         schema = generate.load(generate.ROOT / LOCALIZATION_SCHEMA)
         self.assertEqual(schema.get("minProperties"), 1)
         self.assertNotIn("required", schema)
         self.assertNotIn("properties", schema)
-        with self.assertRaisesRegex(ValueError, "localization: data must contain at least 1 properties"):
+        self.assertEqual(schema.get("propertyNames"), {"pattern": "^[a-z][a-z0-9]*(_[a-z0-9]+)*$"})
+        self.assertEqual(schema.get("additionalProperties"), {"type": "string", "minLength": 1})
+        with self.assertRaisesRegex(ValueError, "^localization: data must contain at least 1 properties$"):
             generate.check_schema({}, LOCALIZATION_SCHEMA, "localization")
-        for catalog in ({"a": "Text"}, {"welcome_title": "Welcome", "second_key": "More"}):
-            generate.check_schema(catalog, LOCALIZATION_SCHEMA, "localization")
+        for catalog in ({"a": "Text"}, {"x1": "Text"}, {"welcome_title": "Welcome"}, {"a_b2_c": "Text"},
+                        {"welcome_title": "Welcome", "second_key": "More"}):
+            with self.subTest(accepted=catalog):
+                generate.check_schema(catalog, LOCALIZATION_SCHEMA, "localization")
+        for catalog in ({"1a": "Text"}, {"_a": "Text"}, {"a__b": "Text"}, {"a-b": "Text"},
+                        {"a": ""}, {"a": 1}):
+            with self.subTest(refused=catalog):
+                with self.assertRaisesRegex(ValueError, "^localization: "):
+                    generate.check_schema(catalog, LOCALIZATION_SCHEMA, "localization")
+        with TemporaryDirectory() as temp, redirect_stdout(StringIO()):
+            root = Path(temp)
+            shutil.copytree(FIXTURE, root, dirs_exist_ok=True)
+            (root / "shared/localization/en.json").write_text("{}\n")
+            with self.assertRaisesRegex(ValueError, "^" + re.escape("en.json: data must contain at least 1 properties") + "$"):
+                generate.generate(root, check=True)
 
     def test_placeholders_reorder_and_literals_escape(self):
         catalogs = {"en": {"message": '{first} & {last}, "100%"'},
