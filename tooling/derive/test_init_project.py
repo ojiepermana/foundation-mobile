@@ -70,12 +70,15 @@ FOUNDATION_FILES = {
     "graphify-out/cache/semantic/entry.json": "{}\n",
     "crates/core/src/lib.rs": "pub fn greeting() {}\n",
 }
+COMMAND_FILES = ("scripts/init-project.sh", "tooling/derive/init_project.py", "tooling/derive/verification-record.md")
 
 
 class Checkout(unittest.TestCase):
     """A small foundation checkout in a temporary folder, in git unless a test says otherwise."""
 
     in_git = True
+    # Copy the checked in command into the fixture, so a test can run it through scripts/init-project.sh.
+    with_command = False
 
     def setUp(self):
         folder = TemporaryDirectory()
@@ -88,6 +91,11 @@ class Checkout(unittest.TestCase):
         self.root = Path(folder.name).resolve() / "checkout"
         for relative, text in FOUNDATION_FILES.items():
             self.write(relative, text)
+        if self.with_command:
+            for relative in COMMAND_FILES:
+                target = self.root / relative
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(str(init_project.ROOT / relative), str(target))
         if self.in_git:
             self.git("init", "-q")
             self.git("remote", "add", "origin", "https://example.invalid/owner/foundation.git")
@@ -135,6 +143,7 @@ class Checkout(unittest.TestCase):
 
 class DerivationTests(Checkout):
     def test_writes_identity_readme_and_empty_record(self):
+        """AC-3, AC-5, AC-6, AC-8: the happy path writes every file and the checkout then reads as derived."""
         self.assertEqual(self.run_command("--check"), (0, "foundation\n", ""))
         code, output, errors = self.run_command(*SAMPLE, *SAMPLE_ORIGIN)
         self.assertEqual((code, errors), (0, ""))
@@ -152,6 +161,7 @@ class DerivationTests(Checkout):
         self.assertEqual(self.run_command("--check"), (0, "derived\n", ""))
 
     def test_changes_exactly_the_documented_paths(self):
+        """AC-4: git sees changes in exactly the documented paths, and no rename."""
         self.assertEqual(self.run_command(*SAMPLE, *SAMPLE_ORIGIN)[0], 0)
         self.assertEqual(self.git("status", "--porcelain").splitlines(), [
             " M README.md",
@@ -163,6 +173,7 @@ class DerivationTests(Checkout):
         ])
 
     def test_overrides_reach_only_their_own_platform(self):
+        """AC-3: each override reaches only its own identity file, and --version reaches both."""
         code, _, errors = self.run_command(
             *SAMPLE, *SAMPLE_ORIGIN, "--ios-bundle-id", "com.Acme.notes-ios",
             "--android-app-id", "com.acme.notes_android", "--version", "2.10.3")
@@ -176,6 +187,7 @@ class DerivationTests(Checkout):
         self.assertEqual(self.run_command("--check"), (0, "derived\n", ""))
 
     def test_one_override_leaves_the_other_platform_on_the_shared_id(self):
+        """AC-3: with one override the other platform keeps --app-id."""
         cases = (("--ios-bundle-id", "com.Acme.notes-ios", "com.Acme.notes-ios", SAMPLE_ID),
                  ("--android-app-id", "com.acme.notes_android", SAMPLE_ID, "com.acme.notes_android"))
         for flag, value, ios_id, android_id in cases:
@@ -187,12 +199,14 @@ class DerivationTests(Checkout):
                 self.git("restore", ".")
 
     def test_a_name_that_starts_with_a_hyphen_uses_the_equals_form(self):
+        """AC-3, AC-7: a value that starts with a hyphen is refused, and its equals form is accepted."""
         self.assert_refused(["--name", "-Acme", "--app-id", SAMPLE_ID],
                             "--name: expected one value; write a value that starts with a hyphen as --name=VALUE")
         self.assertEqual(self.run_command("--name=-Acme", "--app-id", SAMPLE_ID)[0], 0)
         self.assertIn("displayName=-Acme\n", self.read(init_project.ANDROID_IDENTITY))
 
     def test_reads_url_revision_and_date_from_the_checkout(self):
+        """AC-6: without the flags the origin line takes the remote, HEAD and today."""
         head = self.git("rev-parse", "HEAD").strip()
         self.assertEqual(self.run_command(*SAMPLE)[0], 0)
         line = self.read(init_project.README).split("\n")[2]
@@ -201,6 +215,7 @@ class DerivationTests(Checkout):
         self.assertEqual(day, init_project.date.today().isoformat())
 
     def test_prefers_the_foundation_remote_and_the_highest_release_tag(self):
+        """AC-6: the foundation remote wins over origin, and the highest release tag wins."""
         self.git("remote", "add", "foundation", "git@example.invalid:base/mobile.git")
         for tag in ("foundation-v0.9.0", "foundation-v0.10.0", "foundation-v0.10.0-rc", "v9.9.9"):
             self.git("tag", tag)
@@ -209,6 +224,7 @@ class DerivationTests(Checkout):
                       self.read(init_project.README).split("\n")[2])
 
     def test_remote_forms_are_written_as_https_without_credentials(self):
+        """AC-6, AC-7: every accepted remote form becomes https without credentials; the rest is refused."""
         for raw in ("https://user:token@example.invalid/owner/repo.git",
                     "http://example.invalid/owner/repo/",
                     "ssh://git@example.invalid:22/owner/repo.git",
@@ -219,12 +235,14 @@ class DerivationTests(Checkout):
             self.assertIsNone(init_project.normalize_url(raw), raw)
 
     def test_refuses_a_remote_that_is_a_local_path(self):
+        """AC-7: a local path remote, or no remote, is no usable foundation URL."""
         self.git("remote", "set-url", "origin", "/srv/git/foundation")
         self.assert_refused(SAMPLE, "no usable foundation URL; pass --foundation-url")
         self.git("remote", "remove", "origin")
         self.assert_refused(SAMPLE, "no usable foundation URL; pass --foundation-url")
 
     def test_refuses_inputs_that_break_a_rule(self):
+        """AC-7: each input that breaks its rule is refused with exit 2, one line and no write."""
         cases = (
             (["--name", "Acme", "--app-id", "com.Acme.notes"], "--app-id: expected reverse DNS in lowercase"),
             (["--name", "Acme", "--app-id", "notes"], "--app-id: expected reverse DNS in lowercase"),
@@ -272,6 +290,7 @@ class DerivationTests(Checkout):
                 self.assert_refused(arguments, reason)
 
     def test_refuses_a_tree_with_uncommitted_or_untracked_files(self):
+        """AC-7: a modified or untracked file is refused, even when git status hides untracked files."""
         self.write("crates/core/src/lib.rs", "pub fn changed() {}\n")
         self.assert_refused(SAMPLE, "uncommitted or untracked files")
         self.git("restore", ".")
@@ -282,16 +301,19 @@ class DerivationTests(Checkout):
         self.assert_refused(SAMPLE, "uncommitted or untracked files")
 
     def test_refuses_a_remote_url_that_is_not_text(self):
+        """AC-7: a remote URL that is not UTF-8 is no usable foundation URL."""
         self.git("remote", "set-url", "origin", b"https://example.invalid/\xff/foundation")
         self.assert_refused(SAMPLE, "no usable foundation URL; pass --foundation-url")
 
     def test_a_checkout_reached_through_a_link_is_still_in_git(self):
+        """AC-7: the in git test compares folders, not path spellings."""
         link = self.root.parent / "link"
         link.symlink_to(self.root, target_is_directory=True)
         self.assertTrue(init_project.in_git(link))
         self.assertFalse(init_project.in_git(self.root / "crates"))
 
     def test_names_a_graph_removal_that_stopped_part_way(self):
+        """AC-4: a graph removal that fails names every changed path and the way back."""
         def stop_part_way(path):
             (Path(path) / "graph.json").unlink()
             raise PermissionError("cannot remove " + path)
@@ -314,17 +336,20 @@ class DerivationTests(Checkout):
         self.assertEqual(self.git("status", "--porcelain"), "")
 
     def test_refuses_a_checkout_that_is_already_derived(self):
+        """AC-7: a derived checkout is refused."""
         self.assertEqual(self.run_command(*SAMPLE, *SAMPLE_ORIGIN)[0], 0)
         self.commit("Derived")
         self.assert_refused(["--name", "Second Name", "--app-id", "com.second.name"], "checkout is already derived")
 
     def test_refuses_a_mixed_checkout(self):
+        """AC-7: a mixed checkout is refused."""
         self.write(init_project.ANDROID_IDENTITY,
                    FOUNDATION_FILES[init_project.ANDROID_IDENTITY].replace(init_project.DEFAULT_APP_ID, "com.acme.notes"))
         self.commit("Half derived")
         self.assert_refused(SAMPLE, "checkout is mixed; run scripts/init-project.sh --check")
 
     def test_check_names_each_mismatch(self):
+        """AC-8: every departure from the exact form is a mismatch that names the file and the key or line."""
         ios = FOUNDATION_FILES[init_project.IOS_IDENTITY]
         readme = FOUNDATION_FILES[init_project.README]
         cases = (
@@ -371,6 +396,7 @@ class DerivationTests(Checkout):
         self.assert_mixed("apps/android/identity.properties: file is missing")
 
     def test_check_names_a_derived_checkout_that_lost_a_part(self):
+        """AC-8: a derived checkout that lost one signal names that signal."""
         self.assertEqual(self.run_command(*SAMPLE, *SAMPLE_ORIGIN)[0], 0)
         derived = self.read(init_project.README)
         self.write(init_project.README, FOUNDATION_FILES[init_project.README])
@@ -380,19 +406,368 @@ class DerivationTests(Checkout):
         self.assert_mixed("APP_BUNDLE_IDENTIFIER is still the foundation default dev.foundation.mobile, "
                           "but the rest of the checkout is derived")
 
+    def test_the_spec_example_writes_version_0_1_0_and_build_1(self):
+        """AC-3: the example of the criterion, with no other flag, writes 0.1.0 and build 1 into both files."""
+        code, _, errors = self.run_command("--name", "Acme Notes", "--app-id", "com.acme.notes")
+        self.assertEqual((code, errors), (0, ""))
+        self.assertEqual(self.read(init_project.IOS_IDENTITY),
+                         "APP_BUNDLE_IDENTIFIER = com.acme.notes\nAPP_DISPLAY_NAME = Acme Notes\n"
+                         "MARKETING_VERSION = 0.1.0\nCURRENT_PROJECT_VERSION = 1\n")
+        self.assertEqual(self.read(init_project.ANDROID_IDENTITY),
+                         "applicationId=com.acme.notes\ndisplayName=Acme Notes\nversionName=0.1.0\nversionCode=1\n")
+
+    def test_without_a_graph_the_write_set_is_the_four_files(self):
+        """AC-4: a checkout that has no graph changes only the two identity files, README.md and the record."""
+        self.git("rm", "-q", "-r", "graphify-out")
+        self.commit("No graph")
+        code, output, errors = self.run_command(*SAMPLE, *SAMPLE_ORIGIN)
+        self.assertEqual((code, errors), (0, ""))
+        self.assertEqual(output.splitlines(), [init_project.IOS_IDENTITY, init_project.ANDROID_IDENTITY,
+                                               init_project.README, init_project.RECORD])
+        self.assertEqual(self.git("status", "--porcelain").splitlines(), [
+            " M README.md",
+            " M apps/android/identity.properties",
+            " M apps/ios/Config/Identity.xcconfig",
+            " M docs/quality/verification.md",
+        ])
+
+    def test_writes_the_identity_files_first_and_removes_the_graph_last(self):
+        """AC-4: each file is replaced in the documented order, and graphify-out/ goes after every write."""
+        steps = []
+        replace_file, rmtree = init_project.replace_file, init_project.shutil.rmtree
+
+        def record_replace(path, text):
+            steps.append(str(Path(path).relative_to(self.root)))
+            replace_file(path, text)
+
+        def record_rmtree(path, *arguments, **options):
+            steps.append(str(Path(path).relative_to(self.root)) + "/")
+            rmtree(path, *arguments, **options)
+
+        with mock.patch.object(init_project, "replace_file", record_replace), \
+                mock.patch.object(init_project.shutil, "rmtree", record_rmtree):
+            code, _, errors = self.run_command(*SAMPLE, *SAMPLE_ORIGIN)
+        self.assertEqual((code, errors), (0, ""))
+        self.assertEqual(steps, [init_project.IOS_IDENTITY, init_project.ANDROID_IDENTITY, init_project.README,
+                                 init_project.RECORD, "graphify-out/"])
+
+    def test_a_write_that_fails_leaves_the_later_files_and_no_temporary_file(self):
+        """AC-4: when README.md cannot be replaced, the files after it and the graph stay as they were."""
+        before = self.snapshot()
+        replace = os.replace
+
+        def refuse_readme(source, target):
+            if Path(target).name == init_project.README:
+                raise PermissionError("README.md is read only")
+            replace(source, target)
+
+        with mock.patch.object(init_project.os, "replace", refuse_readme):
+            code, output, errors = self.run_command(*SAMPLE, *SAMPLE_ORIGIN)
+        self.assertEqual((code, output), (1, ""))
+        self.assertEqual(errors.splitlines()[1:], [
+            "Already changed: apps/ios/Config/Identity.xcconfig",
+            "Already changed: apps/android/identity.properties",
+            "Run `git restore .` to return to the foundation state.",
+        ])
+        after = self.snapshot()
+        for relative in (init_project.README, init_project.RECORD, "graphify-out/graph.json",
+                         "graphify-out/cache/semantic/entry.json"):
+            self.assertEqual(after[relative], before[relative], relative)
+        self.assertEqual(sorted(set(after) - set(before)), [], "a failed write must leave no temporary file")
+        self.git("restore", ".")
+        self.assertEqual(self.run_command("--check"), (0, "foundation\n", ""))
+
+    def test_a_token_in_the_remote_never_reaches_the_readme_or_the_record(self):
+        """AC-5, AC-6: the remote's user and token are dropped before the URL is written anywhere."""
+        self.git("remote", "set-url", "origin", "https://user:s3cret@example.invalid/owner/foundation.git")
+        self.assertEqual(self.run_command(*SAMPLE)[0], 0)
+        readme, record = self.read(init_project.README), self.read(init_project.RECORD)
+        self.assertIn("[mobile foundation](https://example.invalid/owner/foundation) at `", readme.split("\n")[2])
+        self.assertIn("[mobile foundation](https://example.invalid/owner/foundation) at `", record)
+        for leaked in ("s3cret", "user:", "@", ".git)"):
+            self.assertNotIn(leaked, readme + record)
+
+    def test_the_record_names_the_product_and_lists_every_target_unverified(self):
+        """AC-5: the record names the product, URL and revision, keeps nine unverified targets and no hosted run link."""
+        head = self.git("rev-parse", "HEAD").strip()
+        self.assertEqual(self.run_command(*SAMPLE, "--date", "2026-02-03")[0], 0)
+        record = self.read(init_project.RECORD)
+        self.assertTrue(record.startswith("# Zoë's Proof verification · 2026-02-03\n"))
+        self.assertIn("[mobile foundation](https://example.invalid/owner/foundation) at `{}`.".format(head), record)
+        unverified = record.split("## Still unverified\n", 1)[1]
+        self.assertEqual(len([line for line in unverified.splitlines() if line.startswith("- ")]), 9)
+        self.assertEqual(record.count("]("), 1, "the only link is the foundation URL")
+        self.assertNotIn("runs/", record)
+        self.assertTrue(record.endswith(".\n") and not record.endswith("\n\n"))
+
+    def test_the_record_template_holds_each_placeholder_once(self):
+        """AC-5: the template on disk, filled with the sample values, is the empty record of the spec."""
+        template = init_project.TEMPLATE.read_bytes().decode("utf-8")
+        for placeholder in ("{name}", "{foundation_url}", "{ref}", "{date}"):
+            self.assertEqual(template.count(placeholder), 1, placeholder)
+        filled = template
+        for placeholder, value in (("{name}", SAMPLE_NAME), ("{foundation_url}", "https://example.invalid/foundation"),
+                                   ("{ref}", "foundation-v0.0.0"), ("{date}", "2026-01-01")):
+            filled = filled.replace(placeholder, value)
+        self.assertEqual(filled, EXPECTED_RECORD)
+
+    def test_a_readme_with_only_a_title_gets_the_origin_line_and_a_blank_line(self):
+        """AC-6: a README.md of one line without a newline still ends with the title, origin line and blank line 4."""
+        self.write(init_project.README, "# Native mobile foundation")
+        self.commit("Short README")
+        self.assertEqual(self.run_command(*SAMPLE, *SAMPLE_ORIGIN)[0], 0)
+        self.assertEqual(self.read(init_project.README).split("\n")[:4], ["# Zoë's Proof", "", ORIGIN_LINE, ""])
+        self.assertEqual(self.run_command("--check"), (0, "derived\n", ""))
+
+    def test_the_url_ref_and_date_flags_win_over_git(self):
+        """AC-6: --foundation-url, --foundation-ref and --date win over the remotes, the release tags and today."""
+        self.git("remote", "add", "foundation", "git@example.invalid:base/mobile.git")
+        self.git("tag", "foundation-v1.0.0")
+        self.assertEqual(self.run_command(*SAMPLE, "--foundation-url", "ssh://git@example.invalid:2222/chosen/repo.git/",
+                                          "--foundation-ref", "release/1.x", "--date", "2026-03-04")[0], 0)
+        self.assertEqual(self.read(init_project.README).split("\n")[2],
+                         "Started from the [mobile foundation](https://example.invalid/chosen/repo) "
+                         "at `release/1.x` on 2026-03-04.")
+
+    def test_a_release_tag_on_an_older_commit_is_not_the_ref(self):
+        """AC-6: only a foundation-v tag that points exactly at HEAD names the ref; otherwise the full HEAD ID."""
+        self.git("tag", "foundation-v1.0.0")
+        self.write("crates/core/src/lib.rs", "pub fn greeting() { }\n")
+        self.commit("After the release")
+        head = self.git("rev-parse", "HEAD").strip()
+        self.assertEqual(self.run_command(*SAMPLE)[0], 0)
+        self.assertEqual(init_project.ORIGIN.match(self.read(init_project.README).split("\n")[2]).group(2), head)
+        self.assertEqual(len(head), 40)
+
+    def test_accepts_values_at_the_edge_of_their_rules(self):
+        """AC-3, AC-6, AC-7: a 30 code point name, a 100 character ref, a leap day and a long version are accepted."""
+        name = "Ö" * 25 + " 1.-'"
+        ref = "foundation/" + "x" * 89
+        url = "https://git.example-host.invalid/~owner/repo_name.x-y"
+        self.assertEqual((len(name), len(ref)), (30, 100))
+        code, _, errors = self.run_command("--name", name, "--app-id", "a.b0", "--version", "10.20.300",
+                                           "--foundation-url", url, "--foundation-ref", ref, "--date", "2028-02-29")
+        self.assertEqual((code, errors), (0, ""))
+        self.assertIn("APP_DISPLAY_NAME = " + name + "\n", self.read(init_project.IOS_IDENTITY))
+        self.assertIn("versionName=10.20.300\n", self.read(init_project.ANDROID_IDENTITY))
+        self.assertEqual(self.read(init_project.README).split("\n")[2],
+                         "Started from the [mobile foundation]({}) at `{}` on 2028-02-29.".format(url, ref))
+        self.assertEqual(self.run_command("--check"), (0, "derived\n", ""))
+
+    def test_names_inside_the_rule_are_valid(self):
+        """AC-7: letters from any script, digits 0 to 9, single spaces, periods, hyphens and U+0027 pass the name rule."""
+        for name in ("A", "Zoë's Proof", "日本語", "Straße 9", "Mobile-App.2", "Ö" * 30, "O'Neil Notes"):
+            with self.subTest(name=name):
+                self.assertTrue(init_project.valid_name(name))
+
+    def test_refuses_each_name_that_breaks_the_rule(self):
+        """AC-7: each name outside the rule is refused on its own, with exit 2, one line and no write."""
+        for name in ("Acme ", " ", "Acme\tNotes", "Acme’s", "Acme ٣", "Zoé", "Ö" * 31,
+                     "Acme_Notes", "Acme:Notes", 'Acme "Notes"', "Acme#1", "Acme Notes", "Acme​Notes"):
+            with self.subTest(name=name):
+                self.assert_refused(["--name", name, "--app-id", SAMPLE_ID], "--name: expected 1 to 30 letters")
+
+    def test_refuses_each_id_that_breaks_its_rule(self):
+        """AC-7: each application ID outside the rule of its flag is refused on its own."""
+        cases = [("--app-id", value, "--app-id: expected reverse DNS in lowercase")
+                 for value in ("com.acme-notes", "com..acme", ".com.acme", "com.acme.", "com.acme.1notes",
+                               "1com.acme", "com.acme notes", "com.acme_notes", "com", "com.acmé")]
+        cases += [("--ios-bundle-id", value, "--ios-bundle-id: expected dot separated parts")
+                  for value in ("com", "com..acme", "com.acme!", "com.acme notes", "com.acmé")]
+        cases += [("--android-app-id", value, "--android-app-id: expected dot separated parts")
+                  for value in ("com.acme-notes", "com._acme", "com", "com.acme.notes.")]
+        for flag, value, reason in cases:
+            with self.subTest(flag=flag, value=value):
+                arguments = ["--name", "Acme", flag, value] if flag == "--app-id" else [*SAMPLE, flag, value]
+                self.assert_refused(arguments, reason)
+
+    def test_refuses_each_version_date_url_and_ref_that_breaks_its_rule(self):
+        """AC-7: each version, date, foundation URL and ref outside its rule is refused on its own."""
+        cases = [("--version", value, "--version: expected three numbers")
+                 for value in ("1.2.3.4", "v1.2.3", "1..3", "1.2.x", " 1.2.3", "1.2.-3")]
+        cases += [("--date", value, "--date: expected a real date as YYYY-MM-DD")
+                  for value in ("2026-02-30", "20260101", "2026-1-01", "٢٠٢٦-٠١-٠١",
+                                "2026-01-01T00:00", "0000-01-01", "2027-02-29")]
+        cases += [("--foundation-url", value, "--foundation-url: expected an https, ssh or user@host:path URL")
+                  for value in ("ftp://example.invalid/a", "https://example.invalid/", "example.invalid/a",
+                                "https://example.invalid/a?b=c", "https://example.invalid/a#b",
+                                "https://exa_mple.invalid/a", "git@example.invalid:", "ssh://git@example.invalid:22",
+                                "https://example.invalid/a%20b")]
+        cases += [("--foundation-ref", value, "--foundation-ref: expected 1 to 100 letters")
+                  for value in ("x" * 101, "main branch", "ré", "a)b", "a[b", "a:b", "a~1")]
+        for flag, value, reason in cases:
+            with self.subTest(flag=flag, value=value):
+                self.assert_refused([*SAMPLE, flag, value], reason)
+
+    def test_refuses_a_staged_change_or_a_deleted_file(self):
+        """AC-7: a change only in the index, and a deleted tracked file, both make the tree dirty."""
+        self.write("crates/core/src/lib.rs", "pub fn staged() {}\n")
+        self.git("add", "crates/core/src/lib.rs")
+        self.assert_refused(SAMPLE, "the working tree has uncommitted or untracked files")
+        self.git("reset", "-q", "--hard")
+        (self.root / "crates/core/src/lib.rs").unlink()
+        self.assert_refused(SAMPLE, "the working tree has uncommitted or untracked files")
+
+    def test_an_ignored_file_does_not_make_the_tree_dirty(self):
+        """AC-7: git status leaves ignored files out, so an ignored local file is no refusal."""
+        self.write(".gitignore", "local.properties\n")
+        self.commit("Ignore local settings")
+        self.write("local.properties", "sdk.dir=/opt/android\n")
+        code, _, errors = self.run_command(*SAMPLE, *SAMPLE_ORIGIN)
+        self.assertEqual((code, errors), (0, ""))
+        self.assertEqual(self.read("local.properties"), "sdk.dir=/opt/android\n")
+
+    def test_an_unusable_foundation_remote_is_refused_even_when_origin_works(self):
+        """AC-7: the foundation remote is read first; when it exists and is unusable, origin is not tried."""
+        self.git("remote", "add", "foundation", "/srv/git/foundation")
+        self.assert_refused(SAMPLE, "no usable foundation URL; pass --foundation-url")
+
+    def test_refuses_a_mode_flag_with_other_arguments_and_unknown_or_short_flags(self):
+        """AC-7: --check and --test stand alone, abbreviations are unknown, and a flag needs a value."""
+        cases = (
+            (["--test", "--name", "Acme"], "--test takes no other argument"),
+            (["--check", "--test"], "--check takes no other argument"),
+            (["--name", "Acme", "--app", SAMPLE_ID], "unrecognized arguments: --app"),
+            (["--app-id", SAMPLE_ID, "--name"], "--name: expected one value"),
+        )
+        for arguments, reason in cases:
+            with self.subTest(arguments=arguments):
+                self.assert_refused(arguments, reason)
+
+    def test_check_names_every_mismatch_at_once_and_writes_nothing(self):
+        """AC-8: three broken parts give exit 1 and one line each, in file order, and --check changes no file."""
+        ios = FOUNDATION_FILES[init_project.IOS_IDENTITY].replace("MARKETING_VERSION = 0.1.0\n", "")
+        self.write(init_project.IOS_IDENTITY, ios)
+        self.write(init_project.ANDROID_IDENTITY, FOUNDATION_FILES[init_project.ANDROID_IDENTITY] + "signingTeam=X\n")
+        self.write(init_project.README, FOUNDATION_FILES[init_project.README] + ORIGIN_LINE + "\n")
+        before = self.snapshot()
+        code, output, errors = self.run_command("--check")
+        self.assertEqual((code, output), (1, ""))
+        self.assertEqual(errors.splitlines(), [
+            "apps/ios/Config/Identity.xcconfig: missing key MARKETING_VERSION",
+            "apps/android/identity.properties: unexpected line 'signingTeam=X'",
+            "README.md: line 8 starts like the origin line, which belongs on line 3",
+        ])
+        self.assertEqual(self.snapshot(), before)
+
+    def test_check_names_a_file_that_is_not_text_or_is_gone(self):
+        """AC-8: an identity file that is not UTF-8, and a missing README.md, are mismatches that name the file."""
+        (self.root / init_project.ANDROID_IDENTITY).write_bytes(
+            FOUNDATION_FILES[init_project.ANDROID_IDENTITY].encode("utf-8").replace(b"Foundation", b"Found\xffation"))
+        self.assert_mixed("apps/android/identity.properties: file is missing or is not UTF-8")
+        self.write(init_project.ANDROID_IDENTITY, FOUNDATION_FILES[init_project.ANDROID_IDENTITY])
+        (self.root / init_project.README).unlink()
+        self.assert_mixed("README.md: file is missing or is not UTF-8")
+
+    def test_check_names_a_single_android_change_in_the_foundation(self):
+        """AC-8: changing only applicationId names that file and key against a foundation checkout."""
+        self.write(init_project.ANDROID_IDENTITY,
+                   FOUNDATION_FILES[init_project.ANDROID_IDENTITY].replace(init_project.DEFAULT_APP_ID, "com.acme.notes"))
+        self.assert_mixed("apps/android/identity.properties: applicationId differs from the foundation default "
+                          "dev.foundation.mobile, but the rest of the checkout is the foundation")
+
+    def test_check_names_a_derived_checkout_with_default_ids_or_a_second_origin_line(self):
+        """AC-8: default IDs under an origin line, and a second origin line, each make a derived checkout mixed."""
+        self.assertEqual(self.run_command(*SAMPLE, *SAMPLE_ORIGIN)[0], 0)
+        derived = {relative: self.read(relative) for relative in (init_project.IOS_IDENTITY, init_project.ANDROID_IDENTITY)}
+        for relative in derived:
+            self.write(relative, FOUNDATION_FILES[relative])
+        self.assert_mixed("README.md: the origin line is present on line 3, but the rest of the checkout is the foundation")
+        for relative, text in derived.items():
+            self.write(relative, text)
+        self.write(init_project.README, self.read(init_project.README) + ORIGIN_LINE + "\n")
+        self.assert_mixed("README.md: line 10 starts like the origin line, which belongs on line 3")
+
+    def test_the_shared_checks_run_check_then_test_after_the_architecture_check(self):
+        """AC-8, AC-9: scripts/test.sh stops on a failure and runs --check, then --test, right after check-architecture.py."""
+        lines = (init_project.ROOT / "scripts/test.sh").read_text(encoding="utf-8").splitlines()
+        self.assertIn("set -euo pipefail", lines)
+        after = lines.index("python3 tooling/validation/check-architecture.py") + 1
+        self.assertEqual(lines[after:after + 2], ["scripts/init-project.sh --check", "scripts/init-project.sh --test"])
+
+    def test_the_test_form_exits_1_when_a_unit_test_fails(self):
+        """AC-9: --test runs every test_*.py beside the command and exits 0 only when all of them pass."""
+        for outcome, body, expected in (("pass", "pass", 0), ("fail", "self.fail('probe')", 1)):
+            with self.subTest(outcome=outcome):
+                folder = self.root.parent / ("probe_" + outcome)
+                folder.mkdir()
+                module = "test_derive_probe_" + outcome
+                (folder / (module + ".py")).write_text(
+                    "import unittest\n\n\nclass Probe(unittest.TestCase):\n"
+                    "    def test_probe(self):\n        {}\n".format(body), encoding="utf-8")
+                self.addCleanup(sys.modules.pop, module, None)
+                self.addCleanup(lambda entry=str(folder): sys.path.remove(entry) if entry in sys.path else None)
+                # The shared default loader remembers the top folder of the run that is running this test.
+                with mock.patch.object(init_project, "HERE", folder), \
+                        mock.patch.object(unittest, "defaultTestLoader", unittest.TestLoader()):
+                    code, _, errors = self.run_command("--test")
+                self.assertEqual(code, expected, errors)
+                self.assertIn("test_probe", errors)
+
+    def test_the_derivation_test_skips_a_derived_checkout(self):
+        """AC-9: the derivation proof is skipped, with its reason, in a checkout that is already derived."""
+        self.assertEqual(self.run_command(*SAMPLE, *SAMPLE_ORIGIN)[0], 0)
+        self.commit("Derived")
+        result = unittest.TestResult()
+        with mock.patch.object(init_project, "ROOT", self.root):
+            RealCheckoutTests("test_derivation_on_a_copy").run(result)
+        self.assertEqual([reason for _, reason in result.skipped],
+                         ["this checkout is already derived; the derivation proof belongs to the foundation"])
+
+
+class CommandLineTests(Checkout):
+    """Run the copied scripts/init-project.sh from another folder, as a person or CI would."""
+
+    with_command = True
+
+    def run_script(self, *arguments):
+        return subprocess.run([str(self.root / "scripts/init-project.sh"), *arguments], cwd=str(self.root.parent),
+                              stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="utf-8")
+
+    def test_the_script_derives_the_checkout_it_lives_in(self):
+        """AC-3, AC-8: the wrapper finds its own checkout, prints the five changed paths, and --check then says derived."""
+        self.assertEqual(self.run_script("--check").stdout, "foundation\n")
+        derived = self.run_script(*SAMPLE, *SAMPLE_ORIGIN)
+        self.assertEqual((derived.returncode, derived.stderr), (0, ""))
+        self.assertEqual(derived.stdout.splitlines(), [init_project.IOS_IDENTITY, init_project.ANDROID_IDENTITY,
+                                                       init_project.README, init_project.RECORD,
+                                                       "graphify-out/ (removed)"])
+        self.assertIn("displayName=Zoë's Proof\n", self.read(init_project.ANDROID_IDENTITY))
+        checked = self.run_script("--check")
+        self.assertEqual((checked.returncode, checked.stdout, checked.stderr), (0, "derived\n", ""))
+
+    def test_the_script_refuses_with_exit_2_and_one_line(self):
+        """AC-7: through the wrapper a refusal exits 2, prints one line on stderr only, and git sees no change."""
+        refused = self.run_script("--name", "Acme $(HOME)", "--app-id", SAMPLE_ID)
+        self.assertEqual((refused.returncode, refused.stdout), (2, ""))
+        self.assertEqual(refused.stderr.count("\n"), 1, refused.stderr)
+        self.assertTrue(refused.stderr.startswith("--name: expected"), refused.stderr)
+        self.assertEqual(self.git("status", "--porcelain"), "")
+
+    def test_the_script_check_exits_1_on_a_mixed_checkout(self):
+        """AC-8: through the wrapper --check exits 1 and names the mismatch on stderr."""
+        self.write(init_project.IOS_IDENTITY, FOUNDATION_FILES[init_project.IOS_IDENTITY] + "DEVELOPMENT_TEAM = X\n")
+        checked = self.run_script("--check")
+        self.assertEqual((checked.returncode, checked.stdout), (1, ""))
+        self.assertEqual(checked.stderr, "apps/ios/Config/Identity.xcconfig: unexpected line 'DEVELOPMENT_TEAM = X'\n")
+
 
 class OutsideGitTests(Checkout):
     in_git = False
 
     def test_needs_both_foundation_values(self):
+        """AC-7: outside git both foundation values are required."""
         self.assert_refused(SAMPLE, "--foundation-url and --foundation-ref are both required outside git")
         self.assert_refused([*SAMPLE, "--foundation-url", "https://example.invalid/foundation"],
+                            "--foundation-url and --foundation-ref are both required outside git")
+        self.assert_refused([*SAMPLE, "--foundation-ref", "foundation-v0.0.0"],
                             "--foundation-url and --foundation-ref are both required outside git")
         code, _, errors = self.run_command(*SAMPLE, *SAMPLE_ORIGIN)
         self.assertEqual((code, errors), (0, ""))
         self.assertEqual(self.run_command("--check"), (0, "derived\n", ""))
 
     def test_a_folder_inside_another_repository_is_not_in_git(self):
+        """AC-7: a folder inside another repository counts as outside git."""
         outer = self.root.parent
         subprocess.run(["git", "-C", str(outer), "init", "-q"], check=True)
         self.assertFalse(init_project.in_git(self.root))
@@ -410,6 +785,7 @@ class RealCheckoutTests(unittest.TestCase):
         return files, (root / init_project.GRAPH).exists()
 
     def test_derivation_on_a_copy(self):
+        """AC-9: the copy's own command derives the copy, which then reads derived and passes check-architecture.py."""
         root = init_project.ROOT
         if not init_project.in_git(root):
             self.skipTest("this checkout is not in git, so there is no file list to copy")
