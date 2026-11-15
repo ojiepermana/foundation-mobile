@@ -15,5 +15,5 @@ You can change shared behavior, visual definitions or text in one place and cons
 | 006 | [Hosted build verification](006%20-%20Hosted%20build%20verification.md) | Verification | done |
 | 007 | [One planning path](007%20-%20One%20planning%20path.md) | Foundation | done |
 | 008 | [Hosted results in the verification record](008%20-%20Hosted%20results%20in%20the%20verification%20record.md) | Verification | done |
-| 009 | [A new project from the foundation](009%20-%20A%20new%20project%20from%20the%20foundation.md) | Foundation | in-progress |
+| 009 | [A new project from the foundation](009%20-%20A%20new%20project%20from%20the%20foundation.md) | Foundation | done |
 | 010 | [Schemas free of sample names](010%20-%20Schemas%20free%20of%20sample%20names.md) | Foundation | planned |

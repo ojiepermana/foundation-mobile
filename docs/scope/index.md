@@ -9,7 +9,7 @@ You can build two native apps that display a greeting from one shared implementa
 
 | Workspace | What it owns | Complete | Open |
 | --- | --- | --- | --- |
-| [Shared foundation](_root/scope.md) | Ownership, shared behavior, design, resources and build checks | 8 of 10 | 009 A new project from the foundation, 010 Schemas free of sample names |
+| [Shared foundation](_root/scope.md) | Ownership, shared behavior, design, resources and build checks | 9 of 10 | 010 Schemas free of sample names |
 | [iOS](ios/scope.md) | The native greeting on Apple devices | 1 of 2 | 002 Lowest supported iOS and large text |
 | [Android](android/scope.md) | The native greeting on Android devices | 1 of 2 | 002 Lowest supported Android and large text |
 

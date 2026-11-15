@@ -1,7 +1,7 @@
 # 0003. A new project from the foundation: product identity in two files, one init command, updates by merge
 
 **Date**: 2026-11-15
-**Status**: In Progress
+**Status**: Accepted
 
 ## Summary
 

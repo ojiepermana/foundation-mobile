@@ -468,10 +468,10 @@
     "semantic_hash": "ba5f20b4ab38a450dcebd80a02266bbd"
   },
   "docs/scope/_root/scope.md": {
-    "mtime": 1794732586.1578748,
-    "seen": 1794733142.2058508,
-    "ast_hash": "4a4e162305529f3624e31bfee4cd0f6c",
-    "semantic_hash": "4a4e162305529f3624e31bfee4cd0f6c"
+    "mtime": 1794738523.0894086,
+    "seen": 1794738747.4592519,
+    "ast_hash": "490d14601e212da409e051b28de911a0",
+    "semantic_hash": "490d14601e212da409e051b28de911a0"
   },
   "docs/scope/android/001 - Native Android greeting.md": {
     "mtime": 1794661147.520863,
@@ -492,10 +492,10 @@
     "semantic_hash": "06eb03231c340acb71a94351a52900e8"
   },
   "docs/scope/index.md": {
-    "mtime": 1794733854.3479102,
-    "seen": 1794736126.849442,
-    "ast_hash": "02d627fae587935e3328630119c4de10",
-    "semantic_hash": "02d627fae587935e3328630119c4de10"
+    "mtime": 1794738523.0896947,
+    "seen": 1794738747.459253,
+    "ast_hash": "8f91ce15e69f9df900012ab3417554b1",
+    "semantic_hash": "8f91ce15e69f9df900012ab3417554b1"
   },
   "docs/scope/ios/001 - Native iOS greeting.md": {
     "mtime": 1794661147.5214124,
@@ -552,10 +552,10 @@
     "semantic_hash": "9aa7022aefbe1f43a15080943eb7b546"
   },
   "docs/scope/_root/009 - A new project from the foundation.md": {
-    "mtime": 1794737894.0900607,
-    "seen": 1794738141.044068,
-    "ast_hash": "13742880e749a152d2d7a10db0e8f004",
-    "semantic_hash": "13742880e749a152d2d7a10db0e8f004"
+    "mtime": 1794738523.089005,
+    "seen": 1794738747.459251,
+    "ast_hash": "8340b7f4bd20f9b7130f0fcc6e826c9d",
+    "semantic_hash": "8340b7f4bd20f9b7130f0fcc6e826c9d"
   },
   "docs/scope/_root/010 - Schemas free of sample names.md": {
     "mtime": 1794735400.0559008,
@@ -582,10 +582,10 @@
     "semantic_hash": "ff378a68cc84f486d470675e58f98009"
   },
   "docs/specs/_root/0003-new-project-from-foundation/index.md": {
-    "mtime": 1794735400.0550702,
-    "seen": 1794736126.849443,
-    "ast_hash": "2ce44d8a1c4fb36b2af1477f080ad977",
-    "semantic_hash": "2ce44d8a1c4fb36b2af1477f080ad977"
+    "mtime": 1794738523.090055,
+    "seen": 1794738747.4592488,
+    "ast_hash": "d809cf95a2b6a6ba0bb10ce7e42d4433",
+    "semantic_hash": "d809cf95a2b6a6ba0bb10ce7e42d4433"
   },
   "docs/specs/_root/0003-new-project-from-foundation/rationale.md": {
     "mtime": 1794735400.0554163,
@@ -594,10 +594,10 @@
     "semantic_hash": "c0cf6fda2e816ea5ec0042dd8bd35c27"
   },
   "docs/specs/_root/0003-new-project-from-foundation/verify.md": {
-    "mtime": 1794735442.7251043,
-    "seen": 1794736126.849445,
-    "ast_hash": "b9dde2606f9e6e854ccbd45f36842074",
-    "semantic_hash": "b9dde2606f9e6e854ccbd45f36842074"
+    "mtime": 1794738499.9665308,
+    "seen": 1794738747.459245,
+    "ast_hash": "e9c7d662ab825d5653b5f8a367abcdd6",
+    "semantic_hash": "e9c7d662ab825d5653b5f8a367abcdd6"
   },
   "tooling/derive/verification-record.md": {
     "mtime": 1794733609.3687923,
@@ -606,10 +606,10 @@
     "semantic_hash": "4a3061315d472a74e8555e32b4bb14f0"
   },
   "docs/scope/coordination/009 - A new project from the foundation.log.md": {
-    "mtime": 1794737894.0905256,
-    "seen": 1794738141.044069,
-    "ast_hash": "dc8035772cad0d65e184fee7463db591",
-    "semantic_hash": "dc8035772cad0d65e184fee7463db591"
+    "mtime": 1794738552.1470356,
+    "seen": 1794738747.459254,
+    "ast_hash": "9d7dd48ec5aaa711003abc2afa80940b",
+    "semantic_hash": "9d7dd48ec5aaa711003abc2afa80940b"
   },
   "docs/scope/coordination/009 - A new project from the foundation.brief-umum.md": {
     "mtime": 1794736773.3715515,
@@ -618,10 +618,10 @@
     "semantic_hash": "bb5cbc414f98754aafae9254a4afb224"
   },
   "docs/scope/coordination/009 - A new project from the foundation.manual.md": {
-    "mtime": 1794736773.390204,
-    "seen": 1794737640.785276,
-    "ast_hash": "e753254581b8f4ce78929bd3362a5842",
-    "semantic_hash": "e753254581b8f4ce78929bd3362a5842"
+    "mtime": 1794738552.1465335,
+    "seen": 1794738747.459255,
+    "ast_hash": "8d45470269df4dbc914e94550758d16d",
+    "semantic_hash": "8d45470269df4dbc914e94550758d16d"
   },
   ".claude/skills/coordinate/SKILL.md": {
     "mtime": 1794735177.538391,
