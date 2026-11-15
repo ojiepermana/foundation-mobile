@@ -162,10 +162,17 @@ class GenerationTests(unittest.TestCase):
             shutil.copytree(FIXTURE, root, dirs_exist_ok=True)
             generate.generate(root, check=False)
             generate.generate(root, check=True)
+            # covers: AC-6 (the outputs hold only the names the sample free sources give them)
             strings = (root / resources.ANDROID_RESOURCES / "values/foundation_strings.xml").read_text()
             self.assertIn('<string name="welcome_title" formatted="false">"Welcome"</string>', strings)
-            self.assertIn("typographyHeading", (root / tokens.SWIFT_PATH).read_text())
-            self.assertIn("typographyHeading", (root / tokens.KOTLIN_PATH).read_text())
+            self.assertEqual(re.findall(r'<string name="(\w+)"', strings), ["welcome_title"])
+            apple = (root / resources.IOS_RESOURCES / "en.lproj/Localizable.strings").read_text()
+            self.assertIn('"welcome_title" = "Welcome";', apple)
+            self.assertEqual(re.findall(r'^"(\w+)" = ', apple, re.MULTILINE), ["welcome_title"])
+            for path in (tokens.SWIFT_PATH, tokens.KOTLIN_PATH):
+                with self.subTest(names=str(path)):
+                    names = re.findall(r"(?:static let|val) (typography\w+)", (root / path).read_text())
+                    self.assertEqual(names, ["typographyBody", "typographyHeading"])
 
 
 if __name__ == "__main__":
