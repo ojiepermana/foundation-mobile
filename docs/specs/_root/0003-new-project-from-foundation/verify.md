@@ -35,7 +35,7 @@ Run the derivation steps in a scratch clone, never in your working checkout. A c
 - [x] `scripts/init-project.sh --test` → every test passes, and `test_derivation_on_a_copy` reports `ok`, not `skipped`. `git status --porcelain` is the same before and after        → AC-9
 - [x] `gh workflow run foundation.yml -f derived=true` then `gh run watch` → all three jobs pass, the two native logs show the derive step writing `Zoë's Proof` and `dev.example.derived`, and each comparison step prints matching `Identity file` and `Built app` lines        → AC-10
 - [x] Open a run that a push started → the derive step is skipped in both native jobs and the comparison step passes with `dev.foundation.mobile` and `Mobile Foundation`        → AC-10
-- [ ] `grep -n "derived" docs/quality/verification.md` → the record names one hosted run with `derived` set, its link and its revision        → AC-10
+- [x] `grep -n "derived" docs/quality/verification.md` → the record names one hosted run with `derived` set, its link and its revision        → AC-10
 - [x] `grep -c "actions/runs" docs/scope/index.md` → `0`        → AC-12
 - [x] `grep -n "Identity.xcconfig\|init-project" docs/architecture/ownership-matrix.md docs/architecture/repository-structure.md docs/quality/architecture-compliance.md shared/config/README.md` → each file names the identity files or the command        → AC-12
 
