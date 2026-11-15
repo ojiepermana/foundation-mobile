@@ -14,4 +14,4 @@ You can change shared behavior, visual definitions or text in one place and cons
 | 005 | [Reproducible local builds and checks](005%20-%20Reproducible%20local%20builds%20and%20checks.md) | Verification | existing |
 | 006 | [Hosted build verification](006%20-%20Hosted%20build%20verification.md) | Verification | done |
 | 007 | [One planning path](007%20-%20One%20planning%20path.md) | Foundation | done |
-| 008 | [Hosted results in the verification record](008%20-%20Hosted%20results%20in%20the%20verification%20record.md) | Verification | planned |
+| 008 | [Hosted results in the verification record](008%20-%20Hosted%20results%20in%20the%20verification%20record.md) | Verification | done |

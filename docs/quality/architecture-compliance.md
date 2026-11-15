@@ -1,6 +1,6 @@
 # Architecture compliance
 
-Run `scripts/test.sh` from a checkout on macOS or Linux. The script stops on the first failed command. Run either native build separately or use the GitHub Actions jobs. The [verification record](verification.md) distinguishes local results from the configured CI matrix.
+Run `scripts/test.sh` from a checkout on macOS or Linux. The script stops on the first failed command. Run either native build separately or use the GitHub Actions jobs. The [verification record](verification.md) lists local results beside hosted results and keeps one list of targets that are still unverified.
 
 | Automated check | Evidence and failure condition |
 | --- | --- |

@@ -360,16 +360,16 @@
     "semantic_hash": "148f1b660d8d4af43cabec9bb2bf15ed"
   },
   "docs/quality/architecture-compliance.md": {
-    "mtime": 1794704867.2166579,
-    "seen": 1794705644.381997,
-    "ast_hash": "772fd5847f0582aae039e06a734aece4",
-    "semantic_hash": "772fd5847f0582aae039e06a734aece4"
+    "mtime": 1794706214.3914773,
+    "seen": 1794717084.9671009,
+    "ast_hash": "44323726a97e2493aa5a32ad7ba2e066",
+    "semantic_hash": "44323726a97e2493aa5a32ad7ba2e066"
   },
   "docs/quality/verification.md": {
-    "mtime": 1794655953.5454888,
-    "seen": 1794661938.251276,
-    "ast_hash": "496aa7efabe79ea15e9d72922545393c",
-    "semantic_hash": "496aa7efabe79ea15e9d72922545393c"
+    "mtime": 1794706214.3912697,
+    "seen": 1794717084.967102,
+    "ast_hash": "a026c967b4595c7e8ed01c865f320ab7",
+    "semantic_hash": "a026c967b4595c7e8ed01c865f320ab7"
   },
   "docs/rules/android-rules.md": {
     "mtime": 1794655108.0934105,
@@ -462,16 +462,16 @@
     "semantic_hash": "aa201e3ef7f72478331d8ae57514e02a"
   },
   "docs/scope/_root/008 - Hosted results in the verification record.md": {
-    "mtime": 1794661147.5205426,
-    "seen": 1794661938.251287,
-    "ast_hash": "7b3b174ea150523272bdd05bc64b2a42",
-    "semantic_hash": "7b3b174ea150523272bdd05bc64b2a42"
+    "mtime": 1794716913.1534257,
+    "seen": 1794717084.967103,
+    "ast_hash": "ba5f20b4ab38a450dcebd80a02266bbd",
+    "semantic_hash": "ba5f20b4ab38a450dcebd80a02266bbd"
   },
   "docs/scope/_root/scope.md": {
-    "mtime": 1794705591.752997,
-    "seen": 1794705644.382011,
-    "ast_hash": "ac0343efdd844ae07ccfc9dd91b72abb",
-    "semantic_hash": "ac0343efdd844ae07ccfc9dd91b72abb"
+    "mtime": 1794716913.153596,
+    "seen": 1794717084.967104,
+    "ast_hash": "a44ec94c578e0e3fd48d34e7fa67407c",
+    "semantic_hash": "a44ec94c578e0e3fd48d34e7fa67407c"
   },
   "docs/scope/android/001 - Native Android greeting.md": {
     "mtime": 1794661147.520863,
@@ -492,10 +492,10 @@
     "semantic_hash": "06eb03231c340acb71a94351a52900e8"
   },
   "docs/scope/index.md": {
-    "mtime": 1794705591.914795,
-    "seen": 1794705644.382014,
-    "ast_hash": "f0f9db7d8a9c1908753b68d9821d4c91",
-    "semantic_hash": "f0f9db7d8a9c1908753b68d9821d4c91"
+    "mtime": 1794716913.1541169,
+    "seen": 1794717084.967104,
+    "ast_hash": "b42c7a35fbdf95c8516ecc4707f247bc",
+    "semantic_hash": "b42c7a35fbdf95c8516ecc4707f247bc"
   },
   "docs/scope/ios/001 - Native iOS greeting.md": {
     "mtime": 1794661147.5214124,
