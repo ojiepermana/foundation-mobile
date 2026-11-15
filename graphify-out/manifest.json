@@ -468,10 +468,10 @@
     "semantic_hash": "ba5f20b4ab38a450dcebd80a02266bbd"
   },
   "docs/scope/_root/scope.md": {
-    "mtime": 1794738523.0894086,
-    "seen": 1794738747.4592519,
+    "mtime": 1794741699.3899913,
+    "seen": 1794742626.857774,
     "ast_hash": "490d14601e212da409e051b28de911a0",
-    "semantic_hash": "490d14601e212da409e051b28de911a0"
+    "semantic_hash": "0fe13cd8c1023770cb8897bc29c5d8d8"
   },
   "docs/scope/android/001 - Native Android greeting.md": {
     "mtime": 1794661147.520863,
@@ -558,10 +558,10 @@
     "semantic_hash": "8340b7f4bd20f9b7130f0fcc6e826c9d"
   },
   "docs/scope/_root/010 - Schemas free of sample names.md": {
-    "mtime": 1794735400.0559008,
-    "seen": 1794736126.849441,
+    "mtime": 1794741699.3895366,
+    "seen": 1794742626.857771,
     "ast_hash": "d25ab57ac3e2a25b8027210f15d2a7c5",
-    "semantic_hash": "d25ab57ac3e2a25b8027210f15d2a7c5"
+    "semantic_hash": "55ab8920c4c1dde1ce557b04b70a41aa"
   },
   "scripts/init-project.sh": {
     "mtime": 1794733667.7997184,
@@ -582,10 +582,10 @@
     "semantic_hash": "e441eff999a8fb4390bdbb8ff98775b2"
   },
   "docs/specs/_root/0003-new-project-from-foundation/index.md": {
-    "mtime": 1794738523.090055,
-    "seen": 1794738747.4592488,
+    "mtime": 1794741669.7432652,
+    "seen": 1794742626.8577769,
     "ast_hash": "d809cf95a2b6a6ba0bb10ce7e42d4433",
-    "semantic_hash": "d809cf95a2b6a6ba0bb10ce7e42d4433"
+    "semantic_hash": "67d767988fb62d02388d0546f81e31a1"
   },
   "docs/specs/_root/0003-new-project-from-foundation/rationale.md": {
     "mtime": 1794735400.0554163,
@@ -696,15 +696,27 @@
     "semantic_hash": "f7717b0d814fc620a6580f31f3d2f20f"
   },
   "docs/scope/coordination/010 - Schemas free of sample names.log.md": {
-    "mtime": 1794740536.3538697,
-    "seen": 1794741299.8176808,
+    "mtime": 1794741775.7386684,
+    "seen": 1794742626.8577762,
     "ast_hash": "",
-    "semantic_hash": "869ca6eba263a2c70b99fee54f3f1d2e"
+    "semantic_hash": "5bd2804bf3fbe0766873918df2d1069f"
   },
   "docs/scope/coordination/010 - Schemas free of sample names.manual.md": {
     "mtime": 1794740419.6076636,
     "seen": 1794741299.817682,
     "ast_hash": "",
     "semantic_hash": "7a53841790071d32b68b9e20697d3100"
+  },
+  "docs/specs/_root/0004-schemas-free-of-sample-names/index.md": {
+    "mtime": 1794741669.7436354,
+    "seen": 1794742626.8577778,
+    "ast_hash": "",
+    "semantic_hash": "f4982fa064c963ba56246b80a83fe533"
+  },
+  "docs/specs/_root/0004-schemas-free-of-sample-names/rationale.md": {
+    "mtime": 1794741669.7439096,
+    "seen": 1794742626.857779,
+    "ast_hash": "",
+    "semantic_hash": "7ba0dc2a37df22b64704507e53f01e98"
   }
 }

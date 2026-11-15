@@ -311,7 +311,7 @@ Content of the README section (step 9). Write it in the README's own voice, with
 - [ ] Write how a change proven in a product returns to the foundation (needed by every product, already exercised by a real caller, free of product nouns, touches foundation owned paths only) once a product closes a Deferred item.
 - [ ] Record where `/graphify` and `/scope` come from, with a way to do each step by hand. The written path depends on both. Spec `0002` already lists this for the second contributor.
 - [ ] Decide where dependency update bots run. A bot in every product changes foundation owned files and will conflict with merges. Running it in the foundation only is the likely answer.
-- [ ] Two foundation schemas still require sample names (`greeting_recipient` in the localization schema, the `greeting` role in the token schema). A product that replaces the greeting hits both. This deserves its own scope row.
+- [x] Two foundation schemas still require sample names (`greeting_recipient` in the localization schema, the `greeting` role in the token schema). A product that replaces the greeting hits both. This deserves its own scope row. Designed in spec 0004 (2026-11-15).
 - [ ] Decide in the release path spec whether the iOS and Android versions must match, and add that test to `--check` if they must.
 - [ ] Allow a localized display name when a product needs one. It would move from the identity files to the catalogs.
 - [ ] Revisit keeping `MobileFoundation` as the Xcode project and scheme name if it confuses contributors to a product in practice.
