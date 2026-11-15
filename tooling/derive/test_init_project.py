@@ -207,12 +207,19 @@ class DerivationTests(Checkout):
 
     def test_reads_url_revision_and_date_from_the_checkout(self):
         """AC-6: without the flags the origin line takes the remote, HEAD and today."""
+        class FixedDay(init_project.date):
+            # A fixed day keeps the comparison true when the run crosses midnight.
+            @classmethod
+            def today(cls):
+                return cls(2031, 7, 9)
+
         head = self.git("rev-parse", "HEAD").strip()
-        self.assertEqual(self.run_command(*SAMPLE)[0], 0)
+        with mock.patch.object(init_project, "date", FixedDay):
+            self.assertEqual(self.run_command(*SAMPLE)[0], 0)
         line = self.read(init_project.README).split("\n")[2]
         url, ref, day = init_project.ORIGIN.match(line).groups()
         self.assertEqual((url, ref), ("https://example.invalid/owner/foundation", head))
-        self.assertEqual(day, init_project.date.today().isoformat())
+        self.assertEqual(day, "2031-07-09")
 
     def test_prefers_the_foundation_remote_and_the_highest_release_tag(self):
         """AC-6: the foundation remote wins over origin, and the highest release tag wins."""

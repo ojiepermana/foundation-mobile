@@ -49,7 +49,7 @@ Belum ada.
 - Catatan checker, bukan blocker: caption ikon iOS tertulis `MobileFoundation` tanpa spasi walau `CFBundleDisplayName` adalah `Mobile Foundation`. Itu cara SpringBoard memendekkan nama panjang; `Acme Notes` tampil dengan spasi. Caption berspasi butuh nama yang lebih pendek, dan itu keputusan produk.
 - Catatan checker, bukan blocker: baris Value sourcing "Default application ID for the check" di `verify.md` menyebut pesan "still the foundation default", sedangkan dengan kedua ID di default `--check` keluar `1` dengan pesan tentang origin line. Teks AC-8 terpenuhi; kalimat langkahnya layak dirapikan lewat item `architect (update)` bila user mau.
 - `.claude/skills/rust-async-patterns/` dan `.claude/skills/rust-best-practices/` untracked di checkout utama. Saat push langkah 9 keduanya diperlakukan sebagai pengecualian yang sudah diketahui, kecuali user meminta commit.
-- Catatan tester, bukan blocker: test lama `test_reads_url_revision_and_date_from_the_checkout` membandingkan dengan `date.today()` dan bisa gagal tepat di tengah malam. Perbaikannya hanya di file test; menunggu kata user.
+- Catatan tester, selesai sesudah penutupan: test lama `test_reads_url_revision_and_date_from_the_checkout` membandingkan dengan `date.today()` dan bisa gagal tepat di tengah malam. User meminta perbaikannya pada 2026-11-15; test itu sekarang membekukan `init_project.date` ke hari tetap, dan `scripts/test.sh` keluar `0` dengan 50 test.
 
 ## Dicentang pada wave ini
 

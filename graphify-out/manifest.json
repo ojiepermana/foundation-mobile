@@ -576,10 +576,10 @@
     "semantic_hash": "9236f3d67c70436835d96b7f1cbabd6e"
   },
   "tooling/derive/test_init_project.py": {
-    "mtime": 1794737839.1029344,
-    "seen": 1794738141.0440252,
-    "ast_hash": "ff378a68cc84f486d470675e58f98009",
-    "semantic_hash": "ff378a68cc84f486d470675e58f98009"
+    "mtime": 1794739148.4498498,
+    "seen": 1794739248.467133,
+    "ast_hash": "e441eff999a8fb4390bdbb8ff98775b2",
+    "semantic_hash": "e441eff999a8fb4390bdbb8ff98775b2"
   },
   "docs/specs/_root/0003-new-project-from-foundation/index.md": {
     "mtime": 1794738523.090055,
@@ -606,10 +606,10 @@
     "semantic_hash": "4a3061315d472a74e8555e32b4bb14f0"
   },
   "docs/scope/coordination/009 - A new project from the foundation.log.md": {
-    "mtime": 1794738871.153633,
-    "seen": 1794738944.607777,
-    "ast_hash": "54a92a944b994df21d9e8b06ac12b759",
-    "semantic_hash": "54a92a944b994df21d9e8b06ac12b759"
+    "mtime": 1794739199.6963785,
+    "seen": 1794739248.467136,
+    "ast_hash": "c6eaf2b8184ad96aa39e3fd56f2da243",
+    "semantic_hash": "c6eaf2b8184ad96aa39e3fd56f2da243"
   },
   "docs/scope/coordination/009 - A new project from the foundation.brief-umum.md": {
     "mtime": 1794736773.3715515,
