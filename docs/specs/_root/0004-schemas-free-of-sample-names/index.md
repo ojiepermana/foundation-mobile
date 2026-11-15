@@ -1,7 +1,7 @@
 # 0004. Schemas free of sample names: one key of any name, a `heading` role, generator tests on their own sources
 
 **Date**: 2026-11-15
-**Status**: Proposed
+**Status**: In Progress
 
 ## Summary
 
