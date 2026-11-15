@@ -360,14 +360,14 @@
     "semantic_hash": "148f1b660d8d4af43cabec9bb2bf15ed"
   },
   "docs/quality/architecture-compliance.md": {
-    "mtime": 1794706214.3914773,
-    "seen": 1794717084.9671009,
+    "mtime": 1794719556.7256694,
+    "seen": 1794724379.502442,
     "ast_hash": "44323726a97e2493aa5a32ad7ba2e066",
     "semantic_hash": "44323726a97e2493aa5a32ad7ba2e066"
   },
   "docs/quality/verification.md": {
-    "mtime": 1794706214.3912697,
-    "seen": 1794717084.967102,
+    "mtime": 1794719556.726204,
+    "seen": 1794724379.502443,
     "ast_hash": "a026c967b4595c7e8ed01c865f320ab7",
     "semantic_hash": "a026c967b4595c7e8ed01c865f320ab7"
   },
@@ -420,32 +420,32 @@
     "semantic_hash": "8180431d0d4cbefd0068b2eb14c8d060"
   },
   "docs/scope/_root/001 - Ownership and development rules.md": {
-    "mtime": 1794720479.8488026,
-    "seen": 1794720931.227865,
+    "mtime": 1794721134.7725928,
+    "seen": 1794724379.50245,
     "ast_hash": "63a239861ab1c4629ff09a0aaf34ef90",
     "semantic_hash": "63a239861ab1c4629ff09a0aaf34ef90"
   },
   "docs/scope/_root/002 - Shared greeting contract.md": {
-    "mtime": 1794720479.8491538,
-    "seen": 1794720931.227869,
+    "mtime": 1794721134.7729857,
+    "seen": 1794724379.50245,
     "ast_hash": "99832c60bdff56688a5d04bb2f567c0f",
     "semantic_hash": "99832c60bdff56688a5d04bb2f567c0f"
   },
   "docs/scope/_root/003 - Shared visual definitions.md": {
-    "mtime": 1794720479.8495746,
-    "seen": 1794720931.227871,
+    "mtime": 1794721134.7732794,
+    "seen": 1794724379.502451,
     "ast_hash": "51d960155bd8ed292876bb2c2037e129",
     "semantic_hash": "51d960155bd8ed292876bb2c2037e129"
   },
   "docs/scope/_root/004 - Shared settings, text and brand assets.md": {
-    "mtime": 1794720479.8498366,
-    "seen": 1794720931.227874,
+    "mtime": 1794721134.773569,
+    "seen": 1794724379.502452,
     "ast_hash": "e76917fb358d9c0161ccc963baf98248",
     "semantic_hash": "e76917fb358d9c0161ccc963baf98248"
   },
   "docs/scope/_root/005 - Reproducible local builds and checks.md": {
-    "mtime": 1794720479.8500612,
-    "seen": 1794720931.2278771,
+    "mtime": 1794721134.7738183,
+    "seen": 1794724379.502453,
     "ast_hash": "ecdf62555d449012fdd0fcb4dfdc4905",
     "semantic_hash": "ecdf62555d449012fdd0fcb4dfdc4905"
   },
@@ -462,14 +462,14 @@
     "semantic_hash": "aa201e3ef7f72478331d8ae57514e02a"
   },
   "docs/scope/_root/008 - Hosted results in the verification record.md": {
-    "mtime": 1794716913.1534257,
-    "seen": 1794717084.967103,
+    "mtime": 1794719556.7265625,
+    "seen": 1794724379.502455,
     "ast_hash": "ba5f20b4ab38a450dcebd80a02266bbd",
     "semantic_hash": "ba5f20b4ab38a450dcebd80a02266bbd"
   },
   "docs/scope/_root/scope.md": {
-    "mtime": 1794720471.3393617,
-    "seen": 1794720931.2278788,
+    "mtime": 1794721134.7742336,
+    "seen": 1794724379.502456,
     "ast_hash": "8c8f81e22910ab5e0be21342f31148ee",
     "semantic_hash": "8c8f81e22910ab5e0be21342f31148ee"
   },
@@ -492,8 +492,8 @@
     "semantic_hash": "06eb03231c340acb71a94351a52900e8"
   },
   "docs/scope/index.md": {
-    "mtime": 1794716913.1541169,
-    "seen": 1794717084.967104,
+    "mtime": 1794719556.7272375,
+    "seen": 1794724379.5024588,
     "ast_hash": "b42c7a35fbdf95c8516ecc4707f247bc",
     "semantic_hash": "b42c7a35fbdf95c8516ecc4707f247bc"
   },
