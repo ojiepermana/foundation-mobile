@@ -14,3 +14,7 @@ Inspect the checkout and read the [ownership matrix](docs/architecture/ownership
 ## Before handoff
 
 Run `scripts/test.sh` and the [build and device checks](README.md) for each affected platform. For a contract change, verify both clients. Include exact commands, target/toolchain, observed result and any unverified target in the handoff.
+
+## Before commit
+
+Run `/graphify . --update` so the knowledge graph covers every file the change adds, edits or deletes. Stage the tracked files under `graphify-out/` into the same commit as the change.
