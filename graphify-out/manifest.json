@@ -1,10 +1,4 @@
 {
-  "Cargo.toml": {
-    "mtime": 1794654858.9479094,
-    "seen": 1794661938.2512262,
-    "ast_hash": "",
-    "semantic_hash": ""
-  },
   "apps/android/app/build.gradle.kts": {
     "mtime": 1794733596.0249064,
     "seen": 1794736126.8493922,
@@ -94,12 +88,6 @@
     "seen": 1794661938.251245,
     "ast_hash": "711ef69a25ce71e0bbba6ae958842c5a",
     "semantic_hash": "711ef69a25ce71e0bbba6ae958842c5a"
-  },
-  "bindings/swift/mobile_ffiFFI.h": {
-    "mtime": 1794654916.3023713,
-    "seen": 1794661938.251245,
-    "ast_hash": "907d0aa234d0404b7854ae48f1112f2e",
-    "semantic_hash": "907d0aa234d0404b7854ae48f1112f2e"
   },
   "crates/core/Cargo.toml": {
     "mtime": 1794654858.962515,

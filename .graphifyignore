@@ -1,0 +1,9 @@
+# The root Cargo manifest is a virtual workspace without [package]. Graphify
+# 0.9.48's package parser returns no nodes for it. Keep both crate manifests
+# indexed; they own the package identities and dependency edges.
+/Cargo.toml
+
+# UniFFI generates this header with Apple's _Nullable and _Nonnull annotations,
+# which Graphify 0.9.48's C parser cannot parse. Keep the generated file intact.
+# Rust exports and the generated Swift and Kotlin bindings remain indexed.
+/bindings/swift/mobile_ffiFFI.h
